@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Beaker, Dna, Activity, RotateCcw, ChevronRight } from 'lucide-react';
+import { Beaker, Dna, Activity, RotateCcw } from 'lucide-react';
 
 const atomicWeights: Record<string, number> = {
     'H': 1.008, 'He': 4.0026, 'Li': 6.94, 'Be': 9.0122, 'B': 10.81, 'C': 12.011, 'N': 14.007, 'O': 15.999, 'F': 18.998, 'Ne': 20.180,
@@ -17,7 +17,7 @@ export const Calculators = () => {
                 // If there's a specific calc in state or default to mw
             }
         };
-        const handleChange = (e: any) => {
+        const handleChange = (e: Event & { detail?: 'mw' | 'coverage' | 'age' }) => {
             if (e.detail) setActiveTab(e.detail);
         };
         window.addEventListener('changeCalculator', handleChange);
@@ -47,7 +47,7 @@ export const Calculators = () => {
                 }
             }
             setMwResult(total);
-        } catch (e) {
+        } catch {
             alert("Invalid Formula. Use standard notation like H2O or C6H12O6");
         }
     };
@@ -92,7 +92,7 @@ export const Calculators = () => {
                 ].map(tab => (
                     <button
                         key={tab.id}
-                        onClick={() => setActiveTab(tab.id as any)}
+                        onClick={() => setActiveTab(tab.id as 'mw' | 'coverage' | 'age')}
                         className={`btn ${activeTab === tab.id ? 'btn-primary' : 'btn-outline'}`}
                         style={{ padding: '0.8rem 1.5rem', fontSize: '0.9rem' }}
                     >
