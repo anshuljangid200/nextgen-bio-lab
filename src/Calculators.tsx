@@ -10,6 +10,24 @@ const atomicWeights: Record<string, number> = {
 export const Calculators = () => {
     const [activeTab, setActiveTab] = useState<'mw' | 'coverage' | 'age'>('mw');
 
+    React.useEffect(() => {
+        const handleHash = () => {
+            const hash = window.location.hash.split('?')[0];
+            if (hash === '#calculators') {
+                // If there's a specific calc in state or default to mw
+            }
+        };
+        const handleChange = (e: any) => {
+            if (e.detail) setActiveTab(e.detail);
+        };
+        window.addEventListener('changeCalculator', handleChange);
+        window.addEventListener('hashchange', handleHash);
+        return () => {
+            window.removeEventListener('changeCalculator', handleChange);
+            window.removeEventListener('hashchange', handleHash);
+        };
+    }, []);
+
     // Molecular Weight State
     const [formula, setFormula] = useState('');
     const [mwResult, setMwResult] = useState<number | null>(null);

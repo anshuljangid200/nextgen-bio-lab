@@ -13,8 +13,8 @@
   /* Navy Blue/Black for text */
   --text-muted: #475569;
   /* Grayish blue for muted text */
-  --glass: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(30, 58, 138, 0.1);
+  --glass: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(30, 58, 138, 0.15);
   --font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -35,10 +35,174 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background: var(--secondary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 a:hover {
+  color: var(--secondary);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 220px;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 1rem;
+  z-index: 1001;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 10px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+}
+
+/* Create an invisible bridge to prevent dropdown from closing when moving mouse from link to content */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: modalScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalScale {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #F8FAFC;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  color: var(--text-main);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: var(--accent);
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+.dropdown-item svg {
   color: var(--secondary);
 }
 
@@ -51,11 +215,17 @@ a:hover {
 /* Glassmorphism utility */
 .glass {
   background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12);
+  transform: translateY(-2px);
 }
 
 /* Typography */
@@ -68,23 +238,36 @@ h3 {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+  background: linear-gradient(135deg, #1E3A8A, #3B82F6, #60A5FA);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Animations */
 @keyframes float {
-  0% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
 
   50% {
-    transform: translateY(-15px);
-  }
-
-  100% {
-    transform: translateY(0px);
+    transform: translateY(-20px);
   }
 }
 
@@ -94,7 +277,18 @@ h3 {
 
 /* Sections */
 section {
-  padding: 10rem 0;
+  padding: 8rem 0;
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
 }
 
 #hero {
@@ -103,33 +297,41 @@ section {
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  background:
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.06) 0%, transparent 50%);
 }
 
 .hero-content {
   z-index: 10;
-  max-width: 650px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: 4.2rem;
   line-height: 1.1;
   margin-bottom: 2rem;
   font-weight: 800;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
   margin-bottom: 3rem;
-  max-width: 500px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
 }
 
 .hero-3d {
   position: absolute;
   top: 0;
-  right: -5%;
-  width: 65%;
+  left: 0;
+  width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 1;
@@ -152,7 +354,9 @@ section {
   position: relative;
   overflow: hidden;
   background: white;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
 }
 
 .team-card::before {
@@ -167,9 +371,27 @@ section {
   transition: transform 0.4s ease;
 }
 
+.team-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.team-card:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
 .team-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px -12px rgba(30, 58, 138, 0.15);
   border-color: rgba(59, 130, 246, 0.2);
 }
 
@@ -183,15 +405,25 @@ section {
   border-radius: 24px;
   object-fit: cover;
   margin-bottom: 2rem;
-  border: 2px solid var(--secondary);
+  border: 3px solid var(--secondary);
   padding: 4px;
   background: white;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.team-card:hover .member-img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
 }
 
 .member-name {
   font-size: 1.6rem;
   margin-bottom: 0.5rem;
   color: var(--primary);
+  position: relative;
+  z-index: 1;
 }
 
 .member-role {
@@ -201,6 +433,8 @@ section {
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
 }
 
 .member-bio {
@@ -208,6 +442,8 @@ section {
   color: var(--text-muted);
   flex-grow: 1;
   line-height: 1.7;
+  position: relative;
+  z-index: 1;
 }
 
 /* Buttons */
@@ -223,35 +459,68 @@ section {
   border: none;
   font-size: 1rem;
   gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
-  background: #1a357a;
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--primary);
+  border: 2px solid var(--primary);
   color: var(--primary);
 }
 
 .btn-outline:hover {
-  background: rgba(30, 58, 138, 0.05);
+  background: var(--primary);
+  color: white;
   transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
 }
 
 /* Footer */
 footer {
   padding: 6rem 0;
-  background: #F1F5F9;
+  background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
 }
 
 .scroll-indicator {
@@ -266,6 +535,19 @@ footer {
   color: var(--text-muted);
   font-size: 0.8rem;
   letter-spacing: 0.2em;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
 }
 
 .scroll-line {
@@ -281,7 +563,8 @@ footer {
 
   .hero-3d {
     opacity: 0.3;
-    right: -20%;
+    left: 0;
+    width: 100%;
   }
 
   section {
