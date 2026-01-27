@@ -59,7 +59,7 @@ const teamMembers = [
     name: "Anshul Jangid",
     role: "Lead Systems Architect",
     image: "https://github.com/anshuljangid.png",
-    bio: "Digital strategist responsible for the NextGen BioLab digital infrastructure. Crafting immersive experiences with cutting-edge web technologies.",
+    bio: "Chief Technology Architect and Lead Developer. Responsible for building the entire NextGen BioLab digital ecosystem and managing the end-to-end technology infrastructure.",
     linkedin: "https://www.linkedin.com/in/anshuljangid",
   }
 ];
