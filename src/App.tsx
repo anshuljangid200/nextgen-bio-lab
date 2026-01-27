@@ -8,51 +8,59 @@ import './App.css';
 const teamMembers = [
   {
     name: "Foram Mokani",
-    role: "MSc Biotechnology | Univ. of Bath",
+    role: "Co-Founder | MSc Biotechnology | Univ. of Bath",
     image: "/assets/logo.png",
     bio: "Pioneering research in Molecular Biology and Bioprocessing. Expertise in neurodegenerative pathways and innovative algal-based health solutions.",
+    linkedin: "https://www.linkedin.com/in/foram-mokani-493831242/",
   },
   {
     name: "Karan Panchal",
     role: "Founder | Tip BioScience",
     image: "/assets/logo.png",
     bio: "Visionary leader bridging biotechnology and strategic management. Focused on FESEM imaging and advanced material science research.",
+    linkedin: "#",
   },
   {
     name: "Manthan Viradiya",
-    role: "Co-Founder | AI & Cybersecurity",
+    role: "Co-Founder | Artificial Intelligence And Data Science",
     image: "/assets/logo.png",
-    bio: "Architecting the intersection of AI and data security. Certified Cyber Cadet with a mission to secure the future of biometric data.",
+    bio: "Architecting the intersection of Artificial Intelligence And Data Science. Certified Cyber Cadet with a mission to secure the future of biometric data.",
+    linkedin: "#",
   },
   {
     name: "Samrat",
     role: "Microbiology Scholar | AACR & ASCO",
     image: "/assets/samrat.png",
     bio: "Microbiology student with a focus on oncology. Summer Research Fellow at University of Tsukuba, Japan. Selected for iGEM Community Paris Desi program among top 30 students globally.",
+    linkedin: "https://www.linkedin.com/in/samratpaul-biotech?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
-    name: "NextGen Researcher",
+    name: "Sai Manogna",
     role: "Biotechnology | NIT Warangal",
     image: "/assets/nit_student.png",
     bio: "Biotechnology undergraduate at NIT Warangal specializing in wet-lab research, biochemistry, and cancer biology. Actively exploring CRISPR technology and Drug Discovery.",
+    linkedin: "https://www.linkedin.com/in/nsaimanognareddy/",
   },
   {
-    name: "Sai Shresta AG",
+    name: "Sai Shresta",
     role: "Computational Bio Specialist",
     image: "/assets/sai.png",
     bio: "Unlocking the secrets of genomics through advanced bioinformatics. IEEE EMBS member recognized for excellence in computational research.",
+    linkedin: "https://www.linkedin.com/in/sai-shresta-ambati-ganga-b677ba305?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
     name: "Vishad Chauhan",
     role: "Microbiology Research Lead",
     image: "/assets/manthan.png",
     bio: "Leading critical market analysis for student ventures while spearheading literature-driven polycarbonate analysis at NextGen BioLab.",
+    linkedin: "https://www.linkedin.com/in/vishad-chauhan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
     name: "Anshul Jangid",
     role: "Lead Systems Architect",
     image: "https://github.com/anshuljangid.png",
     bio: "Digital strategist responsible for the NextGen BioLab digital infrastructure. Crafting immersive experiences with cutting-edge web technologies.",
+    linkedin: "https://www.linkedin.com/in/anshuljangid",
   }
 ];
 
@@ -95,8 +103,17 @@ function App() {
               <a href="#calculators" className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('changeCalculator', { detail: 'coverage' }))}>
                 <Dna size={16} /> NGS Coverage
               </a>
-              <a href="#calculators" className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('changeCalculator', { detail: 'age' }))}>
-                <Activity size={16} /> Bio-Age
+              <a href="#calculators" className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('changeCalculator', { detail: 'tm' }))}>
+                <Dna size={16} /> Tm Calculator
+              </a>
+              <a href="#calculators" className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('changeCalculator', { detail: 'hwe' }))}>
+                <Activity size={16} /> H-W Equilibrium
+              </a>
+              <a href="#calculators" className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('changeCalculator', { detail: 'hemo' }))}>
+                <Beaker size={16} /> Hemocytometer
+              </a>
+              <a href="#calculators" className="dropdown-item" onClick={() => window.dispatchEvent(new CustomEvent('changeCalculator', { detail: 'biodiversity' }))}>
+                <Activity size={16} /> Biodiversity
               </a>
             </div>
           </div>
@@ -495,7 +512,9 @@ function App() {
                     <p className="member-bio">{member.bio}</p>
                     <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', gap: '1rem' }}>
-                        <Linkedin size={18} style={{ color: 'var(--text-muted)', cursor: 'pointer' }} />
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                          <Linkedin size={18} style={{ color: 'var(--text-muted)', cursor: 'pointer' }} />
+                        </a>
                         <Mail size={18} style={{ color: 'var(--text-muted)', cursor: 'pointer' }} />
                       </div>
                       <button style={{ background: 'transparent', border: 'none', color: 'var(--secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
