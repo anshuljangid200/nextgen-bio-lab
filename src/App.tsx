@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: "Karan Panchal",
     role: "Founder | Tip BioScience",
-    image: "/assets/logo.png",
+    image: "/assets/karan.png",
     bio: "Visionary leader bridging biotechnology and strategic management. Focused on FESEM imaging and advanced material science research.",
     linkedin: "#",
   },
@@ -60,7 +60,7 @@ const teamMembers = [
     role: "Lead Systems Architect",
     image: "https://github.com/anshuljangid.png",
     bio: "Chief Technology Architect and Lead Developer. Responsible for building the entire NextGen BioLab digital ecosystem and managing the end-to-end technology infrastructure.",
-    linkedin: "https://www.linkedin.com/in/anshuljangid",
+    linkedin: "https://www.linkedin.com/in/anshul-jangid-78a406256/",
   }
 ];
 
