@@ -65,7 +65,7 @@ const teamMembers = [
   }
 ];
 
-const AboutPage = ({ setIsApplicationsDetailOpen }: { setIsApplicationsDetailOpen: (open: boolean) => void }) => {
+const AboutPage = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   const tabs = [
@@ -579,7 +579,7 @@ function App() {
       {page === 'calculators' ? (
         <Calculators />
       ) : page === 'about' ? (
-        <AboutPage setIsApplicationsDetailOpen={setIsApplicationsDetailOpen} />
+        <AboutPage />
       ) : page === 'pioneers' ? (
         <PioneersPage />
       ) : (
