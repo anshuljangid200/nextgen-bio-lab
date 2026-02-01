@@ -9,35 +9,35 @@ import './App.css';
 const teamMembers = [
   {
     name: "Karan Panchal",
-    role: "Founder | Tip BioScience",
+    role: "Founder",
     image: "/assets/karan.png",
     bio: "Visionary leader bridging biotechnology and strategic management. Focused on FESEM imaging and advanced material science research.",
     linkedin: "#",
   },
   {
     name: "Foram Mokani",
-    role: "Co-Founder | MSc Biotechnology | Univ. of Bath",
+    role: "Co-Founder",
     image: "/assets/logo.png",
     bio: "Pioneering research in Molecular Biology and Bioprocessing. Expertise in neurodegenerative pathways and innovative algal-based health solutions.",
     linkedin: "https://www.linkedin.com/in/foram-mokani-493831242/",
   },
   {
     name: "Manthan Viradiya",
-    role: "Co-Founder | Artificial Intelligence And Data Science",
+    role: "Co-Founder",
     image: "/assets/logo.png",
     bio: "Architecting the intersection of Artificial Intelligence And Data Science. Certified Cyber Cadet with a mission to secure the future of biometric data.",
     linkedin: "#",
   },
   {
     name: "Samrat",
-    role: "Microbiology Scholar | AACR & ASCO",
+    role: "Microbiology Scholar",
     image: "/assets/samrat.png",
     bio: "Microbiology student with a focus on oncology. Summer Research Fellow at University of Tsukuba, Japan. Selected for iGEM Community Paris Desi program among top 30 students globally.",
     linkedin: "https://www.linkedin.com/in/samratpaul-biotech?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
     name: "Sai Manogna",
-    role: "Biotechnology | NIT Warangal",
+    role: "Biotechnology Researcher",
     image: "/assets/nit_student.png",
     bio: "Biotechnology undergraduate at NIT Warangal specializing in wet-lab research, biochemistry, and cancer biology. Actively exploring CRISPR technology and Drug Discovery.",
     linkedin: "https://www.linkedin.com/in/nsaimanognareddy/",
@@ -342,8 +342,8 @@ const PioneersPage = () => (
               whileHover={{ y: -5 }}
               style={{ background: 'white', padding: '1.5rem 2.5rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}
             >
-              <div style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '2rem', letterSpacing: '-0.02em' }}>14+</div>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Patents Pending</div>
+              <div style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '2rem', letterSpacing: '-0.02em' }}>Novel</div>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>IP Protected</div>
             </motion.div>
             <motion.div
               whileHover={{ y: -5 }}
@@ -443,8 +443,8 @@ const PioneersPage = () => (
           </motion.div>
         ))}
       </div>
-    </motion.div>
-  </div>
+    </motion.div >
+  </div >
 );
 
 
