@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Microscope, ChevronRight, Zap, Beaker, Dna, Calculator, Layers, Activity, FileText, Target, Users, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Linkedin, Microscope, ChevronRight, Zap, Beaker, Dna, Calculator, Activity, FileText, Target, Users, X, RotateCcw, Check } from 'lucide-react';
 import { ThreeScene } from './components/ThreeScene';
 import { Calculators } from './Calculators';
 import { ChatBot } from './components/ChatBot';
@@ -65,119 +65,342 @@ const teamMembers = [
   }
 ];
 
-const AboutPage = () => (
-  <div style={{ background: '#F8FAFC', minHeight: '100vh' }}>
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '6rem', paddingBottom: '5rem' }}>
-      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h1 style={{ fontSize: '3.8rem', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 800 }}>About <span className="gradient-text">Micrylis</span></h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
-          Leading the way in sustainable laboratory innovation through precision engineering, advanced material science, and a deep-rooted commitment to the scientific community.
-        </p>
-      </div>
+const AboutPage = ({ setIsApplicationsDetailOpen }: { setIsApplicationsDetailOpen: (open: boolean) => void }) => {
+  const [activeTab, setActiveTab] = useState('overview');
 
-      <div className="about-grid-top" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center', marginBottom: '6rem' }}>
-        <div>
-          <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 700 }}>Our Mission</h2>
-          <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.1rem', marginBottom: '2.5rem' }}>
-            At Micrylis, we bridge the gap between high-end research requirements and sustainable manufacturing. We empower researchers with precision tools that are technically superior and environmentally responsible.
-          </p>
-          <div style={{ display: 'flex', gap: '3rem' }}>
-            <div>
-              <div style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--secondary)', marginBottom: '-0.3rem' }}>100%</div>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase' }}>Precision Driven</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--secondary)', marginBottom: '-0.3rem' }}>BIO-PP</div>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase' }}>Eco Innovations</div>
-            </div>
-          </div>
-        </div>
-        <div className="glass" style={{ padding: '3rem', borderRadius: '32px', background: 'linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%)', color: '#fff', boxShadow: '0 20px 40px rgba(30, 58, 138, 0.2)' }}>
-          <Target size={48} style={{ marginBottom: '1.5rem', opacity: 0.9 }} />
-          <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', fontWeight: 700 }}>A Global Vision</h3>
-          <p style={{ opacity: 0.9, lineHeight: '1.7', fontSize: '1rem' }}>
-            We envision a future where laboratories globally operate with tools as kind to the planet as they are helpful to science. India-born innovation for a global scientific community.
-          </p>
-        </div>
-      </div>
+  const tabs = [
+    { id: 'overview', label: 'Overview', icon: <Target size={20} /> },
+    { id: 'sustainability', label: 'Sustainability', icon: <Zap size={20} /> },
+    { id: 'applications', label: 'Applications', icon: <Beaker size={20} /> },
+    { id: 'rd', label: 'R&D', icon: <Activity size={20} /> }
+  ];
 
-      <div style={{ marginBottom: '6rem' }}>
-        <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '3.5rem', fontWeight: 700 }}>Our Core Values</h2>
-        <div className="about-grid-bottom" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-          {[
-            { icon: <FileText size={32} />, title: "Uncompromising Quality", desc: "Adhering to ISO 9001:2015 standards, ensuring every pipette meets rigorous volumetric accuracy." },
-            { icon: <Users size={32} />, title: "Scientific Partnership", desc: "We don't just sell tools; we partner with scholars to understand the evolving needs of modern wet-labs." },
-            { icon: <Beaker size={32} />, title: "Circular Innovation", desc: "From Bio-PP material sourcing to recyclability, sustainability is woven into our engineering DNA." }
-          ].map((item, i) => (
-            <div key={i} style={{ padding: '2.5rem', borderRadius: '24px', background: 'white', border: '1px solid rgba(0,0,0,0.03)', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-              <div style={{ color: 'var(--secondary)', marginBottom: '1.5rem' }}>{item.icon}</div>
-              <h4 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: 700 }}>{item.title}</h4>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>{item.desc}</p>
-            </div>
+  return (
+    <div style={{ background: '#F4F7FA', minHeight: '100vh' }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '10rem', paddingBottom: '5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            style={{ fontSize: '4.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.04em' }}
+          >
+            About <span className="gradient-text">Micrylis</span>
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7', fontWeight: 500 }}
+          >
+            Micrylis Biotech is a mission-driven scientific technology company committed to advancing laboratory practice through sustainable, high-precision pipette consumables.
+          </motion.p>
+        </div>
+
+        {/* Inner Navigation */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', marginBottom: '5rem', flexWrap: 'wrap' }}>
+          {tabs.map(tab => (
+            <motion.button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.8rem',
+                padding: '1rem 1.8rem',
+                borderRadius: '16px',
+                border: 'none',
+                background: activeTab === tab.id ? 'var(--primary)' : 'white',
+                color: activeTab === tab.id ? 'white' : 'var(--text-muted)',
+                cursor: 'pointer',
+                fontWeight: 700,
+                fontSize: '1rem',
+                boxShadow: activeTab === tab.id ? '0 15px 30px rgba(30,58,138,0.15)' : '0 4px 10px rgba(0,0,0,0.03)',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <span style={{ color: activeTab === tab.id ? 'white' : 'var(--secondary)' }}>{tab.icon}</span>
+              {tab.label}
+            </motion.button>
           ))}
         </div>
-      </div>
-    </motion.div>
-  </div>
-);
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          >
+            {activeTab === 'overview' && (
+              <div className="about-sections-group">
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
+                  <div>
+                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em' }}>Mission & Vision</h2>
+                    <div style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.15rem' }}>
+                      <p style={{ marginBottom: '1.5rem' }}>
+                        Micrylis Biotech is a mission-driven scientific technology company committed to advancing laboratory practice through sustainable, high-precision pipette consumables. Micrylis stands at the forefront of sustainable laboratory innovation, pioneering the next generation of precision liquid handling consumables. Founded on the principle that scientific excellence and environmental responsibility are not mutually exclusive, we are transforming the laboratory plastics industry through breakthrough material science and circular economy principles.
+                      </p>
+                      <p style={{ marginBottom: '1.5rem' }}>
+                        Our mission is clear: to eliminate the environmental burden of single-use laboratory plastics while maintaining the uncompromising quality standards demanded by modern scientific research. Every year, research laboratories worldwide generate approximately 5.5 million metric tons of plastic waste, with pipette tips and their packaging constituting up to 80% of laboratory plastic waste streams. This staggering figure represents not just an environmental crisis, but a call to action for innovation.
+                      </p>
+                      <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Our Vision</h3>
+                      <p style={{ marginBottom: '1.5rem' }}>
+                        Our vision harmonizes rigorous scientific performance with environmental responsibility: to reduce the ecological footprint of everyday laboratory operations without compromising data integrity, reproducibility, and precision. We operate with a global outlook, placing emphasis on serving the Indian scientific community as well as internationally, academic institutions, research laboratories, diagnostics centers, and industries across life sciences, biotechnology, environmental engineering, and pharmaceutical R&D.
+                      </p>
+                      <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Commitment</h3>
+                      <p>
+                        <strong>Community Engagement:</strong> We support local communities through educational partnerships with schools, sponsorship of environmental cleanup initiatives, and donation of products to underserved research institutions. Micrylis is committed to building a diverse workforce that reflects the communities we serve. We have established recruitment partnerships with organizations supporting women and underrepresented minorities in STEM fields.
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ position: 'relative' }}>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      style={{ padding: '1rem', borderRadius: '48px', background: 'white', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
+                    >
+                      <img src="/assets/about_hero.jpg" alt="Lab Research" style={{ width: '100%', borderRadius: '40px' }} />
+                    </motion.div>
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: '4rem' }}>
+                  <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '3rem', fontWeight: 900, letterSpacing: '-0.02em' }}>Our Core Values</h2>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem' }}>
+                    {[
+                      { icon: <FileText size={36} />, title: "Precision Quality", desc: "Adhering to strict global ISO standards, ensuring every pipette meets rigorous volumetric accuracy." },
+                      { icon: <Users size={36} />, title: "Scientific Partnership", desc: "We partner with elite scholars to understand the evolving needs of modern high-throughput labs." },
+                      { icon: <RotateCcw size={36} />, title: "Circular Innovation", desc: "From Bio-PP material sourcing to recyclability, sustainability is woven into our engineering DNA." }
+                    ].map((item, i) => (
+                      <motion.div
+                        key={i}
+                        whileHover={{ y: -10 }}
+                        style={{ padding: '3.5rem 2.5rem', borderRadius: '40px', background: 'white', border: '1px solid rgba(0,0,0,0.03)', boxShadow: '0 20px 40px rgba(0,0,0,0.02)' }}
+                      >
+                        <div style={{ color: 'var(--secondary)', marginBottom: '2rem' }}>{item.icon}</div>
+                        <h4 style={{ color: 'var(--primary)', marginBottom: '1.2rem', fontSize: '1.5rem', fontWeight: 800 }}>{item.title}</h4>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7' }}>{item.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'sustainability' && (
+              <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Sustainable Lifecycle</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  <p style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '1rem' }}>
+                    Sustainability is not a marketing message for Micrylis - it is the core of our business model and the reason we exist. We believe that the transition to a circular, carbon-neutral economy is both an environmental imperative and an economic opportunity. Our comprehensive approach addresses every aspect of the product lifecycle:
+                  </p>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
+                    <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse—agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Carbon-Neutral Manufacturing</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Renewable Energy:</strong> Our manufacturing facilities are powered by 100% renewable electricity sourced from wind and solar farms.</p>
+                    <p><strong>Carbon Offset Programs:</strong> For unavoidable emissions (employee commuting, business travel), we invest in verified carbon offset projects including reforestation initiatives and renewable energy development in emerging economies. We prioritize projects that provide co-benefits such as biodiversity conservation and community development.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Water Stewardship</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Closed-Loop Water Systems:</strong> Advanced water recycling technology allows us to recirculate 95% of process water. Cooling water is continuously filtered and reused, while wash water undergoes membrane filtration and UV treatment before reintroduction to the process.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Water Quality Monitoring:</strong> Real-time monitoring ensures that any discharge meets or exceeds local water quality standards. Annual third-party audits verify compliance with environmental regulations.</p>
+                    <p><strong>Rainwater Harvesting:</strong> Facility rooftops are equipped with rainwater collection systems that capture precipitation for use in landscaping and non-process applications, reducing demand on municipal water supplies.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Zero Waste Manufacturing</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Material Recovery:</strong> Production scrap (runners, rejected parts) is collected and reprocessed back into feedstock for non-critical components, achieving 98% material utilization efficiency.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Packaging Minimization:</strong> We have systematically reduced packaging materials by 85% through innovations such as biodegradable racks, reload systems, and elimination of inner plastic bags.</p>
+                    <p><strong>Supplier Take-Back:</strong> We work with packaging suppliers who accept returns of excess or damaged packaging materials for recycling, ensuring nothing goes to landfill.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Continuous Improvement and Transparency</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Annual Sustainability Report:</strong> We publish a comprehensive annual report documenting our environmental performance including carbon emissions, water usage, waste diversion, and progress toward sustainability goals. This report is independently verified and publicly available.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Science-Based Targets:</strong> Our emissions reduction targets are aligned with the Paris Agreement's goal of limiting global temperature rise to 1.5°C. We have committed to achieving net-zero emissions across our value chain by 2050.</p>
+                    <p><strong>Stakeholder Engagement:</strong> We actively solicit feedback from customers, suppliers, employees, and environmental organizations to identify opportunities for improvement.</p>
+                  </section>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'applications' && (
+              <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '1rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Multidisciplinary Applications</h2>
+                <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem', fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto 3rem' }}>
+                  Micrylis sustainable pipette tips are designed for multidisciplinary scientific applications, including but not limited to:
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Molecular Biology</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
+                    <p><strong>Polymerase Chain Reaction (PCR):</strong> PCR requires accurate pipetting of template DNA, primers, nucleotides, and polymerase enzyme in precise ratios. Volume inaccuracies as small as 2% can significantly impact amplification efficiency. Micrylis tips maintain ±1.0% accuracy across their full volume range, ensuring reproducible PCR results. Low retention tips are particularly valuable when working with viscous master mixes.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Cell Culture and Cell Biology</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
+                    <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Clinical Diagnostics</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Blood Chemistry Analysis:</strong> Clinical laboratories process millions of patient samples annually. Serum and plasma assays for glucose, cholesterol, liver enzymes, and electrolytes require precise liquid handling to generate accurate diagnostic results. Micrylis tips meet medical device manufacturing standards and are compatible with clinical analyzers from major manufacturers.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Immunoassays:</strong> ELISA, chemiluminescence, and multiplex bead assays are foundation techniques in clinical diagnostics. These assays involve serial dilutions, reagent additions, and sample transfers across microplate formats. Consistent pipetting is essential for standard curve reliability and accurate quantification of antibodies, hormones, tumor markers, and infectious disease antigens.</p>
+                    <p><strong>Hematology:</strong> Blood cell counting, coagulation studies, and hemoglobin electrophoresis all require accurate pipetting of whole blood, plasma, or specialized reagents. Non-pyrogenic certification prevents false-positive results in tests sensitive to endotoxin contamination.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Pharmaceutical Research and Development</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Formulation Development:</strong> Pharmaceutical formulation requires precise measurement of active pharmaceutical ingredients (APIs), excipients, buffers, and stabilizers. Low retention tips minimize loss of expensive compounds during serial dilution and dose preparation studies. Chemical resistance ensures compatibility with organic solvents used in drug solubilization.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Proper Handling and Usage Guidelines</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Water Quality Testing:</strong> Environmental monitoring laboratories analyze water samples for bacterial contamination, heavy metals, pesticides, and nutrient levels. Micrylis tips facilitate accurate preparation of standard curves and sample dilutions required for spectrophotometric and chromatographic analysis.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Soil Microbiology:</strong> Isolation and enumeration of soil bacteria, fungi, and archaea involves serial dilution plating and selective media preparation. Sterile tips prevent cross-contamination between environmental samples and control cultures.</p>
+                    <p><strong>Plant Genomics:</strong> DNA extraction from plant tissues (rich in polysaccharides and phenolic compounds) and subsequent PCR analysis for GMO detection or trait mapping require precise liquid handling. Filter tips protect valuable samples from contamination during multi-step protocols.</p>
+                  </section>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'rd' && (
+              <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+                <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '3rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>R&D workstreams</h2>
+                <div style={{ padding: '4rem', background: 'white', borderRadius: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.03)', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  <p style={{ marginBottom: '2rem' }}>Our ongoing R&D efforts focus on realizing the vision of sustainable liquid handling. Key workstreams include:</p>
+
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Prototype Testing</strong>
+                      Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.
+                    </li>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Manufacturing Scale-Up</strong>
+                      Moving from lab-scale molding to pilot production involves building high-precision molds and process controls. We are establishing clean production facilities and planning for future automation. Quality control is a priority: in-line cameras and calibration rigs will be used to verify tip geometry and performance on every batch.
+                    </li>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Eco-Certification & Analysis</strong>
+                      We perform life-cycle analyses (LCA) to quantify CO₂ and waste reductions versus conventional tips. We aim to earn eco-labels (e.g. independent certifications of environmental impact) to validate our sustainability claims. This parallels how industry leaders engage in green initiatives; for instance, some have invested in closed-loop recycling and renewable-energy manufacturing, and Micrylis will pursue similar green practices.
+                    </li>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Expansion and Collaboration</strong>
+                      We are exploring partnerships with academic labs and environmental agencies to pilot our tips in real-world studies. Plans include developing multichannel tips and integration with automated pipetting systems. In the near future we will break ground on a larger production facility, expand our team of scientists and engineers, and scale from thousands to millions of tips per month.
+                    </li>
+                  </ul>
+
+                  <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>
+                    Overall, our R&D strategy mirrors the innovation-led culture of labware incumbents (who tout decades of pipette expertise) but is singularly focused on sustainability. We will continually refine our products and processes, with a goal to rapidly scale up as soon as prototypes are validated.
+                  </p>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+    </div>
+  );
+};
 
 const PioneersPage = () => (
-  <div style={{ background: '#F8FAFC', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+  <div style={{ background: '#F4F7FA', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
     {/* Background Decorative Elements */}
-    <div style={{ position: 'absolute', top: 0, right: 0, width: '40%', height: '40%', background: 'radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
-    <div style={{ position: 'absolute', bottom: 0, left: 0, width: '40%', height: '40%', background: 'radial-gradient(circle at 0% 100%, rgba(30, 58, 138, 0.03) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
+    <div style={{ position: 'absolute', top: 0, right: 0, width: '45%', height: '45%', background: 'radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
+    <div style={{ position: 'absolute', bottom: 0, left: 0, width: '45%', height: '45%', background: 'radial-gradient(circle at 0% 100%, rgba(30, 58, 138, 0.05) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
 
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '4.5rem', paddingBottom: '5rem', position: 'relative', zIndex: 1 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center', marginBottom: '4rem' }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '10rem', paddingBottom: '7rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '6rem', alignItems: 'center', marginBottom: '6rem' }}>
         <div>
-          <h1 style={{ fontSize: '3.8rem', marginBottom: '1rem', color: 'var(--primary)', letterSpacing: '-0.03em', fontWeight: 800 }}>
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            style={{ fontSize: '4.5rem', marginBottom: '1.5rem', color: 'var(--primary)', letterSpacing: '-0.04em', fontWeight: 900 }}
+          >
             Meet the <span className="gradient-text">Pioneers</span>
-          </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem' }}>
-            Micrylis is powered by a multidisciplinary assembly of scientists, engineers, and visionaries. Our team bridges the gap between biological research and industrial-grade precision.
-          </p>
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <div style={{ background: 'white', padding: '1rem 1.5rem', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}>
-              <div style={{ fontWeight: 800, color: 'var(--primary)', fontSize: '1.4rem' }}>14+</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--secondary)', textTransform: 'uppercase' }}>Patents Pending</div>
-            </div>
-            <div style={{ background: 'white', padding: '1rem 1.5rem', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}>
-              <div style={{ fontWeight: 800, color: 'var(--primary)', fontSize: '1.4rem' }}>India</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--secondary)', textTransform: 'uppercase' }}>Birth of Innovation</div>
-            </div>
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            style={{ color: 'var(--text-muted)', fontSize: '1.25rem', lineHeight: '1.7', marginBottom: '3rem', fontWeight: 500 }}
+          >
+            Micrylis is powered by a multidisciplinary collective of scientific minds, engineering leads, and biotech visionaries dedicated to industrial-grade precision.
+          </motion.p>
+          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+            <motion.div
+              whileHover={{ y: -5 }}
+              style={{ background: 'white', padding: '1.5rem 2.5rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}
+            >
+              <div style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '2rem', letterSpacing: '-0.02em' }}>14+</div>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Patents Pending</div>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -5 }}
+              style={{ background: 'white', padding: '1.5rem 2.5rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}
+            >
+              <div style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '2rem', letterSpacing: '-0.02em' }}>Impact</div>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Scientific First</div>
+            </motion.div>
           </div>
         </div>
-        <div className="glass" style={{ padding: '2rem', borderRadius: '24px', position: 'relative', background: 'rgba(255,255,255,0.8)' }}>
-          <h3 style={{ fontSize: '1.2rem', color: 'var(--primary)', marginBottom: '1rem', fontWeight: 700 }}>Our Research Focus</h3>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-            <li style={{ display: 'flex', gap: '0.8rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-              <Zap size={16} color="var(--secondary)" /> Bio-Polymer Chemical Resilience
-            </li>
-            <li style={{ display: 'flex', gap: '0.8rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-              <Activity size={16} color="var(--secondary)" /> Volumetric Precision Standards
-            </li>
-            <li style={{ display: 'flex', gap: '0.8rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-              <Target size={16} color="var(--secondary)" /> Sustainable Lab Consumables
-            </li>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          style={{ padding: '3.5rem', borderRadius: '48px', background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(10px)', border: '1px solid white', boxShadow: '0 25px 50px rgba(0,0,0,0.05)' }}
+        >
+          <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 800 }}>Core Research Ethos</h3>
+          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {[
+              { icon: <Zap size={20} color="var(--secondary)" />, text: "Bio-Polymer Chemical Resilience" },
+              { icon: <Activity size={20} color="var(--secondary)" />, text: "Volumetric Precision Standards" },
+              { icon: <Target size={20} color="var(--secondary)" />, text: "Sustainable Circular Logistics" }
+            ].map((item, idx) => (
+              <li key={idx} style={{ display: 'flex', gap: '1.2rem', fontSize: '1.1rem', color: 'var(--primary)', fontWeight: 600, alignItems: 'center' }}>
+                <div style={{ background: 'var(--accent)', padding: '0.6rem', borderRadius: '12px', display: 'flex' }}>{item.icon}</div>
+                {item.text}
+              </li>
+            ))}
           </ul>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="team-grid" style={{ marginTop: '0' }}>
+      <div className="team-grid">
         {teamMembers.map((member, i) => (
           <motion.div
             key={i}
             className="team-card"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: i * 0.1,
-              duration: 0.5,
+              duration: 0.6,
               ease: [0.16, 1, 0.3, 1]
             }}
-            whileHover={{ y: -10 }}
+            whileHover={{ y: -15 }}
+            style={{
+              background: 'white',
+              borderRadius: '40px',
+              padding: '3rem 2rem',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.03)',
+              border: '1px solid rgba(0,0,0,0.02)',
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%'
+            }}
           >
-            <div style={{ position: 'relative', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ position: 'relative', marginBottom: '2.5rem', display: 'flex', justifyContent: 'center' }}>
               <div style={{
                 position: 'absolute',
                 top: '50%',
@@ -186,24 +409,35 @@ const PioneersPage = () => (
                 width: '180px',
                 height: '180px',
                 background: 'linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%)',
-                borderRadius: '50px',
-                opacity: 0.08,
+                borderRadius: '60px',
+                opacity: 0.12,
                 zIndex: 0,
-                filter: 'blur(10px)'
+                filter: 'blur(15px)'
               }}></div>
-              <img src={member.image} alt={member.name} className="member-img" style={{ position: 'relative', zIndex: 1, marginBottom: '0', height: '180px', width: '180px' }} />
+              <img src={member.image} alt={member.name} style={{ position: 'relative', zIndex: 1, height: '180px', width: '180px', borderRadius: '60px', objectFit: 'cover' }} />
             </div>
-            <h3 className="member-name" style={{ fontSize: '1.6rem', textAlign: 'center' }}>{member.name}</h3>
-            <p className="member-role" style={{ textAlign: 'center', marginBottom: '1.2rem', minHeight: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 1rem' }}>{member.role}</p>
-            <p className="member-bio" style={{ fontSize: '0.9rem', textAlign: 'center' }}>{member.bio}</p>
-            <div style={{ marginTop: 'auto', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #F1F5F9' }}>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon" style={{ background: '#F1F5F9', padding: '0.6rem', borderRadius: '12px', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Linkedin size={20} />
-                </a>
-              </div>
-              <button className="details-btn" style={{ fontSize: '0.75rem', fontWeight: 800 }}>
-                RESEARCH PROFILE <ChevronRight size={14} />
+            <h3 style={{ fontSize: '1.8rem', textAlign: 'center', color: 'var(--primary)', fontWeight: 800, marginBottom: '0.5rem' }}>{member.name}</h3>
+            <p style={{ textAlign: 'center', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1.5rem', minHeight: '1rem' }}>{member.role}</p>
+            <p style={{ fontSize: '1rem', textAlign: 'center', color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '2rem', flexGrow: 1 }}>{member.bio}</p>
+            <div style={{ paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #F1F5F9' }}>
+              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" style={{ background: '#F8FAFC', width: '48px', height: '48px', borderRadius: '16px', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }}>
+                <Linkedin size={24} />
+              </a>
+              <button
+                className="btn-outline"
+                style={{
+                  fontSize: '0.85rem',
+                  fontWeight: 800,
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--primary)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                PROFILE <ChevronRight size={16} />
               </button>
             </div>
           </motion.div>
@@ -218,6 +452,7 @@ function App() {
   const [page, setPage] = useState('home');
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isApplicationsDetailOpen, setIsApplicationsDetailOpen] = useState(false);
 
   useEffect(() => {
     const handleHash = () => {
@@ -236,19 +471,65 @@ function App() {
     window.scrollTo(0, 0);
   }, [page]);
 
+  useEffect(() => {
+    if (page === 'home' && window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        // Small delay to ensure render is complete
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [page, window.location.hash]);
+
   return (
     <div className="App">
-      <nav className="glass" style={{ position: 'fixed', top: '1.5rem', left: '50%', transform: 'translateX(-50%)', width: '90%', maxWidth: '1100px', zIndex: 1000, padding: '0.8rem 2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <nav className="glass" style={{
+        position: 'fixed',
+        top: '1.5rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '90%',
+        maxWidth: '1200px',
+        zIndex: 1000,
+        padding: '0.8rem 2rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        border: '1px solid rgba(255, 255, 255, 0.4)',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.05)'
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }} onClick={() => window.location.hash = ''}>
-          <div style={{ width: '32px', height: '32px', background: 'var(--primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Zap size={20} color="white" />
+          <div style={{
+            width: '42px',
+            height: '42px',
+            background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 8px 16px rgba(30,58,138,0.2)'
+          }}>
+            <Zap size={24} color="white" />
           </div>
-          <span style={{ fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.03em', color: 'var(--primary)' }}>MICRYLIS</span>
+          <span className="gradient-text" style={{ fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-0.04em' }}>MICRYLIS</span>
         </div>
         <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-          <a href="/#hero" onClick={() => { setPage('home'); setIsMobileMenuOpen(false); }} style={{ color: page === 'home' ? 'var(--secondary)' : 'inherit' }}>HOME</a>
-          <a href="/#solutions" onClick={() => { setPage('home'); setIsMobileMenuOpen(false); }}>SOLUTIONS</a>
-          <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'about' ? 'var(--secondary)' : 'inherit' }}>ABOUT US</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); setPage('home'); window.location.hash = ''; setIsMobileMenuOpen(false); }} style={{ color: page === 'home' ? 'var(--secondary)' : 'inherit' }}>HOME</a>
+          <a href="#solutions" onClick={() => setIsMobileMenuOpen(false)}>SOLUTIONS</a>
+          <div className="dropdown">
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'about' ? 'var(--secondary)' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>ABOUT US</a>
+            <div className="dropdown-content">
+              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setIsMobileMenuOpen(false); }}>
+                <Target size={16} /> Overview
+              </a>
+              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setIsMobileMenuOpen(false); window.location.hash = 'about'; }}>
+                <Zap size={16} /> Sustainability
+              </a>
+            </div>
+          </div>
           <div className="dropdown">
             <a href="#calculators" style={{ color: page === 'calculators' ? 'var(--secondary)' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               CALCULATORS
@@ -274,7 +555,7 @@ function App() {
               </a>
             </div>
           </div>
-          <a href="#pioneers" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'pioneers' ? 'var(--secondary)' : 'inherit' }}>PIONEERS</a>
+          <a href="#pioneers" onClick={() => { setIsMobileMenuOpen(false); window.location.hash = 'pioneers'; }} style={{ color: page === 'pioneers' ? 'var(--secondary)' : 'inherit' }}>PIONEERS</a>
           <button
             className="btn-primary mobile-contact-btn"
             onClick={() => { setIsContactOpen(true); setIsMobileMenuOpen(false); }}
@@ -289,7 +570,7 @@ function App() {
         <button
           className="btn-primary desktop-contact-btn"
           onClick={() => setIsContactOpen(true)}
-          style={{ padding: '0.5rem 1.2rem', borderRadius: '8px', fontSize: '0.8rem', border: 'none', cursor: 'pointer' }}
+          style={{ padding: '0.6rem 1.5rem', borderRadius: '12px', fontSize: '0.9rem', border: 'none', cursor: 'pointer', fontWeight: 700 }}
         >
           CONTACT US
         </button>
@@ -298,126 +579,153 @@ function App() {
       {page === 'calculators' ? (
         <Calculators />
       ) : page === 'about' ? (
-        <AboutPage />
+        <AboutPage setIsApplicationsDetailOpen={setIsApplicationsDetailOpen} />
       ) : page === 'pioneers' ? (
         <PioneersPage />
       ) : (
         <>
-          <section id="hero" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+          <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '6rem', paddingBottom: '4rem' }}>
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center' }}>
                 <motion.div
                   className="hero-content"
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  style={{ textAlign: 'left', margin: 0, maxWidth: 'none' }}
+                  style={{ textAlign: 'left', margin: 0, maxWidth: 'none', position: 'relative', zIndex: 10 }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.8rem', marginBottom: '1rem', letterSpacing: '0.2em' }}>
-                    <div style={{ width: '30px', height: '1px', background: 'var(--secondary)' }}></div>
-                    MICRYLIS PRECISION PIPETTES
-                  </div>
-                  <h1 className="hero-title" style={{ color: 'var(--primary)', fontSize: '4.5rem', marginBottom: '2rem', textAlign: 'left' }}>
-                    Building the Future of <br />
-                    <span className="gradient-text">Precision Labware</span>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 800, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.3em', textTransform: 'uppercase' }}
+                  >
+                    Micrylis Biotech
+                  </motion.div>
+                  <h1 className="hero-title" style={{ color: 'var(--primary)', fontSize: 'clamp(3rem, 7vw, 5rem)', marginBottom: '1.5rem', textAlign: 'left', lineHeight: 1, fontWeight: 900, letterSpacing: '-0.04em' }}>
+                    Redefining precision for a <br />
+                    <span className="gradient-text">sustainable future.</span>
                   </h1>
-                  <p className="hero-subtitle" style={{ textAlign: 'left', margin: '0 0 3rem 0', maxWidth: '650px', fontSize: '1.2rem' }}>
-                    Developing next generation laboratory pipettes using medical-grade Bio Based Polypropylene. Precision engineering meets sustainable innovation, designed and manufactured in India.
+                  <p className="hero-subtitle" style={{ textAlign: 'left', margin: '0 0 2.5rem 0', maxWidth: '600px', fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', lineHeight: '1.6', color: 'var(--text-muted)', fontWeight: 500 }}>
+                    We bridge the gap between rigorous scientific performance and environmental responsibility with our next-generation laboratory consumables.
                   </p>
-                  <div style={{ display: 'flex', gap: '1.2rem', marginBottom: '4rem' }}>
-                    <button className="btn btn-primary" onClick={() => window.location.hash = 'calculators'}>
-                      Try Bio-Calculators <Calculator size={18} />
+
+                  <div style={{ display: 'flex', gap: '1.2rem', marginBottom: '3.5rem', flexWrap: 'wrap' }}>
+                    <button
+                      onClick={() => { setPage('about'); window.location.hash = 'about'; }}
+                      className="btn-primary"
+                      style={{
+                        padding: '1rem 2.2rem',
+                        borderRadius: '14px',
+                        fontSize: '1rem',
+                        fontWeight: 700,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.6rem',
+                        boxShadow: '0 15px 30px rgba(30, 58, 138, 0.2)',
+                        border: 'none',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Explore More <ChevronRight size={18} />
                     </button>
-                    <button className="btn btn-outline" style={{ padding: '0.8rem 2rem' }} onClick={() => window.location.hash = 'about'}>About Us</button>
+                    <button
+                      className="btn-outline"
+                      onClick={() => { setPage('calculators'); window.location.hash = 'calculators'; }}
+                      style={{
+                        padding: '1rem 2.2rem',
+                        borderRadius: '14px',
+                        fontSize: '1rem',
+                        fontWeight: 700,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.6rem',
+                        background: 'white',
+                        border: '2px solid rgba(30, 58, 138, 0.1)',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Bio-Calculators <Calculator size={18} />
+                    </button>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '2.5rem' }}>
-                    {[
-                      { label: 'Precision', value: '99.9%' },
-                      { label: 'Accuracy', value: 'ISO Standard' },
-                      { label: 'Eco-Impact', value: '-40% Carbon' }
-                    ].map((s, i) => (
-                      <div key={i}>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--primary)' }}>{s.value}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{s.label}</div>
+                  <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '2rem', flexWrap: 'wrap' }}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--secondary)' }}>
+                        <Check size={18} />
+                        <span style={{ fontSize: '1.1rem', fontWeight: 900, color: 'var(--primary)' }}>Precision biology, purpose built.</span>
                       </div>
-                    ))}
+                    </motion.div>
                   </div>
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.2 }}
+                  initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ duration: 1, delay: 0.2, type: 'spring', stiffness: 50 }}
                   style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
                 >
-                  <div className="hero-image-wrapper" style={{ position: 'relative', width: '100%', maxWidth: '480px' }}>
-                    {/* Decorative Background Glow */}
-                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)', zIndex: 0 }}></div>
+                  <div className="hero-image-wrapper" style={{ position: 'relative', width: '100%', maxWidth: '520px' }}>
+                    {/* Dynamic Gradient Background */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: '120%',
+                      height: '120%',
+                      background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(30, 58, 138, 0.05) 50%, transparent 70%)',
+                      zIndex: 0,
+                      borderRadius: '50%'
+                    }}></div>
 
                     <motion.img
                       src="/model-without-bg.png"
                       alt="Micrylis Pipette Model"
-                      style={{ width: '100%', height: 'auto', position: 'relative', zIndex: 1, filter: 'drop-shadow(0 25px 60px rgba(0,0,0,0.1))' }}
-                      animate={{ y: [0, -15, 0] }}
-                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        position: 'relative',
+                        zIndex: 2,
+                        filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.15))'
+                      }}
+                      animate={{ y: [0, -20, 0], rotate: [0, -2, 0] }}
+                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                     />
 
-                    {/* Floating Tech Badge */}
-                    <motion.div
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 1, duration: 0.8 }}
-                      style={{
-                        position: 'absolute',
-                        top: '10%',
-                        right: '-5%',
-                        background: 'rgba(255, 255, 255, 0.9)',
-                        backdropFilter: 'blur(10px)',
-                        padding: '1.2rem',
-                        borderRadius: '20px',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-                        border: '1px solid rgba(255,255,255,0.3)',
-                        zIndex: 10
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                        <div style={{ padding: '0.5rem', background: '#EFF6FF', borderRadius: '10px' }}>
-                          <Beaker size={20} color="#3B82F6" />
-                        </div>
-                        <div>
-                          <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Composition</div>
-                          <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--primary)' }}>Bio-PP Blend</div>
-                        </div>
-                      </div>
-                    </motion.div>
+                    {/* Interactive Floating Badges */}
 
-                    {/* Precision Badge */}
+
                     <motion.div
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 1.2, duration: 0.8 }}
+                      animate={{ y: [0, -15, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                       style={{
                         position: 'absolute',
-                        bottom: '15%',
-                        left: '-10%',
-                        background: 'rgba(255, 255, 255, 0.9)',
-                        backdropFilter: 'blur(10px)',
+                        bottom: '10%',
+                        left: '-5%',
+                        background: 'rgba(255, 255, 255, 0.95)',
+                        backdropFilter: 'blur(20px)',
                         padding: '1.2rem',
-                        borderRadius: '20px',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-                        border: '1px solid rgba(255,255,255,0.3)',
-                        zIndex: 10
+                        borderRadius: '24px',
+                        boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
+                        border: '1px solid rgba(255,255,255,0.5)',
+                        zIndex: 10,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.8rem'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                        <div style={{ padding: '0.5rem', background: '#F0FDF4', borderRadius: '10px' }}>
-                          <Target size={20} color="#10B981" />
-                        </div>
-                        <div>
-                          <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>Standard</div>
-                          <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--primary)' }}>ISO 9001:2015</div>
-                        </div>
+                      <div style={{ padding: '0.6rem', background: '#DCFCE7', borderRadius: '12px', color: '#16A34A' }}>
+                        <Zap size={24} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performance</div>
+                        <div style={{ fontSize: '1rem', fontWeight: 900, color: 'var(--primary)' }}>Ultra-Smooth</div>
                       </div>
                     </motion.div>
                   </div>
@@ -426,26 +734,29 @@ function App() {
             </div>
             <ThreeScene />
             <div className="scroll-indicator">
-              <span>EXPLORE</span>
-              <div className="scroll-line"></div>
+              <motion.div
+                className="scroll-line"
+                animate={{ height: [40, 80, 40] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              ></motion.div>
             </div>
           </section>
 
-          <section id="demo" style={{ background: '#F8FAFC', padding: '8rem 0' }}>
+          <section id="demo" style={{ background: '#F8FAFC', padding: '5rem 0' }}>
             <div className="container">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                style={{ textAlign: 'center', marginBottom: '4rem' }}
+                style={{ textAlign: 'center', marginBottom: '3rem' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.2em' }}>
                   <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
                   SEE IT IN ACTION
                   <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
                 </div>
-                <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>
+                <h2 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', lineHeight: 1.1 }}>
                   How Our <span className="gradient-text">Model Works</span>
                 </h2>
                 <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
@@ -515,10 +826,10 @@ function App() {
                 </div>
               </motion.div>
 
-              <section id="features-highlights" style={{ padding: '6rem 0' }}>
+              <section id="features-highlights" style={{ padding: '4rem 0' }}>
                 <div className="container">
                   <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
-                    <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '1rem' }}>Engineered for <span className="gradient-text">Absolute Accuracy</span></h2>
+                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.8rem' }}>Engineered for <span className="gradient-text">Absolute Accuracy</span></h2>
                     <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Setting new benchmarks in liquid handling technology.</p>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem' }}>
@@ -586,112 +897,381 @@ function App() {
           </section>
 
           {/* Redesigned Material Innovation Section */}
-          <section id="solutions" style={{ padding: '8rem 0', background: '#F8FAFC', position: 'relative' }}>
+          <section id="solutions" style={{ padding: '6rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)', position: 'relative' }}>
             <div className="container">
-              <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '5rem', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
                   <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                     style={{ position: 'relative' }}
                   >
-                    <div style={{ position: 'absolute', top: '-20px', left: '-20px', width: '100%', height: '100%', border: '2px solid var(--secondary)', borderRadius: '32px', opacity: 0.1, zIndex: 0 }}></div>
+                    <div style={{
+                      position: 'absolute',
+                      top: '-30px',
+                      left: '-30px',
+                      width: '100%',
+                      height: '100%',
+                      border: '2px solid var(--secondary)',
+                      borderRadius: '40px',
+                      opacity: 0.1,
+                      zIndex: 0
+                    }}></div>
                     <img
-                      src="/pip.jpeg"
+                      src="/assets/solutions_lab.png"
                       alt="Micrylis Innovation"
-                      style={{ width: '100%', maxWidth: '450px', borderRadius: '24px', position: 'relative', zIndex: 1, boxShadow: '0 30px 60px rgba(0,0,0,0.12)' }}
+                      style={{
+                        width: '100%',
+                        maxWidth: '480px',
+                        borderRadius: '32px',
+                        position: 'relative',
+                        zIndex: 1,
+                        boxShadow: '0 40px 80px rgba(0,0,0,0.12)',
+                        border: '8px solid white'
+                      }}
                     />
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '2rem',
+                      right: '-2rem',
+                      background: 'var(--primary)',
+                      color: 'white',
+                      padding: '1.5rem',
+                      borderRadius: '24px',
+                      boxShadow: '0 20px 40px rgba(30, 58, 138, 0.3)',
+                      zIndex: 2,
+                      maxWidth: '200px'
+                    }}>
+                      <div style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '0.2rem' }}>100%</div>
+                      <div style={{ fontSize: '0.8rem', fontWeight: 700, opacity: 0.9, textTransform: 'uppercase' }}>Sustainable Material</div>
+                    </div>
                   </motion.div>
                 </div>
                 <div>
-                  <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.85rem', marginBottom: '1rem', letterSpacing: '0.1em' }}>REVOLUTIONARY MATERIALS</div>
-                  <h2 style={{ fontSize: '3.2rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 800, lineHeight: 1.1 }}>Precision meets <span className="gradient-text">Sustainability</span></h2>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                    By leveraging medical-grade Bio-PP blends, we deliver labware that maintains extreme chemical stability while reducing laboratory carbon footprints by up to 40%.
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                    {[
-                      { title: "Non-Leachable", icon: <Layers size={20} />, desc: "Zero chemical interference." },
-                      { title: "Hydrophobic", icon: <Beaker size={20} />, desc: "Low-retention technology." }
-                    ].map((item, i) => (
-                      <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                        <div style={{ color: 'var(--secondary)' }}>{item.icon}</div>
-                        <div>
-                          <div style={{ fontWeight: 700, color: 'var(--primary)', fontSize: '1rem' }}>{item.title}</div>
-                          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.desc}</div>
+                  <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Sustainability</div>
+                  <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+                    Engineering a <span className="gradient-text">Greener Lab</span>
+                  </h2>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.8 }}>
+                    <ul style={{ listStyle: 'none', padding: 0 }}>
+                      <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
+                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Zap size={14} color="var(--secondary)" />
                         </div>
-                      </div>
-                    ))}
+                        <span>Reducing environmental impact through breakthrough Bio-PP blends and circular design.</span>
+                      </li>
+                      <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
+                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Zap size={14} color="var(--secondary)" />
+                        </div>
+                        <span>Promoting responsible lifecycle management for high-precision scientific plastics.</span>
+                      </li>
+                      <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
+                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Zap size={14} color="var(--secondary)" />
+                        </div>
+                        <span>Aligning laboratory performance with global net-zero sustainability commitments.</span>
+                      </li>
+                    </ul>
                   </div>
+
+                  <button
+                    onClick={() => { setPage('about'); window.location.hash = 'about'; }}
+                    className="btn-primary"
+                    style={{
+                      padding: '0.8rem 2rem',
+                      borderRadius: '12px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.6rem',
+                      border: 'none'
+                    }}
+                  >
+                    Read More <ChevronRight size={18} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Applications Section */}
+          <section id="applications" style={{ padding: '5rem 0', background: '#FFFFFF' }}>
+            <div className="container">
+              <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Applications</div>
+                <h2 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+                  Versatility Meets <span className="gradient-text">Precision</span>
+                </h2>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.15rem', lineHeight: 1.7, fontWeight: 500 }}>
+                  Micrylis sustainable pipette tips are engineered for absolute accuracy across a wide spectrum of scientific disciplines.
+                </p>
+              </div>
+
+              <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
+                <p style={{ marginBottom: '1.5rem' }}>Micrylis sustainable pipette tips are designed for multidisciplinary scientific applications, including but not limited to:</p>
+
+                <h3 style={{ color: 'var(--primary)', fontWeight: 800, marginBottom: '0.5rem' }}>Biomedical Sciences</h3>
+                <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
+                  <li><strong>Genomics & Proteomics:</strong> Precise handling of DNA, RNA, proteins, and reagents in PCR, qPCR, sequencing prep, and mass spectrometry workflows.</li>
+                  <li><strong>Cell Biology:</strong> Transfers involving culture media, buffers, transfection reagents with minimal shear or contamination risk.</li>
+                  <li><strong>Clinical Diagnostics:</strong> Reagent and sample handling for immunoassays, blood chemistry, and pathogen detection.</li>
+                </ul>
+
+                <h3 style={{ color: 'var(--primary)', fontWeight: 800, marginBottom: '0.5rem' }}>Environmental Science & Engineering</h3>
+                <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem' }}>
+                  <li><strong>Water Quality Monitoring:</strong> High-throughput aliquoting for contaminant analysis.</li>
+                  <li><strong>Soil & Air Matrix Studies:</strong> Reliable sampling for chemical, biological, or particulate assays.</li>
+                </ul>
+              </div>
+
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  onClick={() => window.location.hash = 'about'}
+                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
+                >
+                  Read More <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Research & Development Section */}
+          <section id="rd" style={{ padding: '5rem 0', background: 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)' }}>
+            <div className="container">
+              <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Research & Development</div>
+                <h2 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+                  Pioneering <span className="gradient-text">Lab Innovation</span>
+                </h2>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.15rem', lineHeight: 1.7, fontWeight: 500 }}>
+                  Our R&D strategy drives continuous breakthrough in product design, material science, and global quality standards.
+                </p>
+              </div>
+
+              <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
+                <p style={{ marginBottom: '1.5rem' }}>Our R&D strategy emphasizes continuous innovation across:</p>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '1.5rem' }}>
+                    <strong style={{ color: 'var(--primary)' }}>Product Optimization</strong>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                      <li>Fine-tuning tip geometry for enhanced hydrophobicity and reduced liquid retention.</li>
+                      <li>Expanding compatibility across pipette brands and automated liquid-handling platforms.</li>
+                    </ul>
+                  </li>
+                  <li style={{ marginBottom: '1.5rem' }}>
+                    <strong style={{ color: 'var(--primary)' }}>Material Science Advancement</strong>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                      <li>Identification and integration of sustainable feedstocks and manufacturing processes.</li>
+                      <li>Life cycle impact assessments to benchmark against conventional consumables.</li>
+                    </ul>
+                  </li>
+                  <li style={{ marginBottom: '1.5rem' }}>
+                    <strong style={{ color: 'var(--primary)' }}>Scale-Up & Quality Assurance</strong>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                      <li>Establishing scalable, quality-centric manufacturing that adheres to global standards (e.g., ISO frameworks).</li>
+                      <li>Rigorous internal testing and external validation to ensure consistent performance at scale.</li>
+                    </ul>
+                  </li>
+                  <li style={{ marginBottom: '1.5rem' }}>
+                    <strong style={{ color: 'var(--primary)' }}>Thought Leadership</strong>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                      <li>Publish studies and participate in sustainability dialogues within scientific consortia and forums.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  onClick={() => window.location.hash = 'about'}
+                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
+                >
+                  Read More <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+          </section>
+          <section id="why-micrylis" style={{ padding: '10rem 0', background: '#FFFFFF' }}>
+            <div className="container">
+              <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Value Proposition</div>
+                <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+                  WHY CHOOSE <span className="gradient-text">MICRYLIS</span>
+                </h2>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.7, fontWeight: 500 }}>
+                  Micrylis Biotech offers compelling value for laboratories and scientific institutions.
+                </p>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Precision Meets Sustainability</h3>
+                  <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                    <li>Scientifically validated performance that aligns with stringent research standards.</li>
+                    <li>Engineered to deliver accuracy, precision, and reproducibility.</li>
+                    <li>Product quality designed for diverse research and diagnostic workflows.</li>
+                  </ul>
+
+                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Global & Local Relevance</h3>
+                  <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                    <li>Designed for global workflows with servicing, compatibility, and scientific applicability in mind.</li>
+                    <li>With special emphasis on the Indian scientific ecosystem, Micrylis offers solutions that resonate with emerging research infrastructure and sustainability priorities.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Product Excellence</h3>
+                  <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                    Comprehensive Testing: Every production lot undergoes rigorous quality control including dimensional verification, purity testing (RNase, DNase, endotoxin), and performance validation.
+                  </p>
+
+                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Environmental Advantage</h3>
+                  <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                    <li>Materials and design optimized to minimize waste through sustainable production and packaging approaches.</li>
+                    <li>Supports lab sustainability initiatives and aligns with environmental stewardship.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+                <button
+                  onClick={() => window.location.hash = 'about'}
+                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
+                >
+                  Read More <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Resources and Support Section */}
+          <section id="resources" style={{ padding: '10rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)' }}>
+            <div className="container">
+              <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Resources & Support</div>
+                <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>Comprehensive <span className="gradient-text">Expert Guidance</span></h2>
+              </div>
+
+              <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+                <p style={{ marginBottom: '2rem', fontSize: '1.15rem', color: 'var(--text-muted)', textAlign: 'center' }}>Micrylis provides comprehensive resources to ensure customers can fully leverage our products:</p>
+                <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                  {[
+                    { title: "Documentation", desc: "Detailed product datasheets and user manuals will be available online and in print." },
+                    { title: "Training Guides", desc: "We will offer best-practice guides on pipetting technique, tip handling, and waste management -drawing on established lab standards." },
+                    { title: "Quality Assurance", desc: "Customers can be confident that every lot meets the claimed specifications." },
+                    { title: "Customer Support", desc: "A dedicated team will handle technical inquiries and provide troubleshooting advice." }
+                  ].map((item, i) => (
+                    <li key={i} style={{ background: 'white', padding: '2rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
+                      <h4 style={{ color: 'var(--primary)', fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.8rem' }}>{item.title}</h4>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.6' }}>{item.desc}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section style={{ padding: '5rem 0', background: '#FFFFFF' }}>
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+                <div>
+                  <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Core Ethos</div>
+                  <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>Precision Intelligence Meets <span className="gradient-text">Eco-Innovation</span></h2>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '2.5rem', lineHeight: 1.8 }}>
+                    Our pipette tips represent a pivotal shift in biotechnology—where high-performance analytical tools are built with a planetary conscience.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
+                      <div style={{ color: 'var(--secondary)' }}><Zap size={24} /></div>
+                      <span style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '1.1rem' }}>Universal fit across all major scientific platforms</span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
+                      <div style={{ color: 'var(--secondary)' }}><Beaker size={24} /></div>
+                      <span style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '1.1rem' }}>Chemically inert, low-retention medical grade polymers</span>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+                  <motion.div
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <img src="/model-without-bg.png" alt="Pipette Tip" style={{ width: '100%', maxWidth: '500px', height: 'auto', filter: 'drop-shadow(0 40px 80px rgba(0,0,0,0.15))' }} />
+                  </motion.div>
                 </div>
               </div>
             </div>
           </section>
 
           {/* New Interactive CTA Section */}
-          {/* Core Mission Section */}
-          <section id="features" style={{ padding: '8rem 0', background: '#FFFFFF' }}>
-            <div className="container">
-              <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.85rem', marginBottom: '1rem', letterSpacing: '0.1em' }}>OUR CORE MISSION</div>
-                <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 800 }}>Defining the future of <span className="gradient-text">Labware</span></h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.7 }}>
-                  Micrylis Biotech is dedicated to redefining precision labware through advanced material science, precision engineering, and sustainable manufacturing.
-                </p>
-              </div>
-
-              <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-                {[
-                  { icon: <Microscope size={32} />, title: "Precision Performance", desc: "Consistent volumetric accuracy and repeatability across multiple dispensing cycles." },
-                  { icon: <Dna size={32} />, title: "Medical-Grade Quality", desc: "Low extractables and leachables for sensitive biological and diagnostic workflows." },
-                  { icon: <Beaker size={32} />, title: "Sustainable Manufacturing", desc: "Fully recyclable components with reduced carbon footprint via localized production." }
-                ].map((feature, i) => (
-                  <motion.div
-                    key={i}
-                    style={{ padding: '3rem 2rem', textAlign: 'center', background: '#F8FAFC', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.02)' }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.2 }}
-                    whileHover={{ y: -5, background: 'white', boxShadow: '0 20px 40px rgba(0,0,0,0.04)' }}
-                  >
-                    <div style={{ color: 'var(--secondary)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>{feature.icon}</div>
-                    <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem', color: 'var(--primary)', fontWeight: 700 }}>{feature.title}</h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>{feature.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* New Interactive CTA Section */}
-          <section style={{ padding: '8rem 0', background: '#F8FAFC' }}>
+          <section style={{ padding: '4rem 0 6rem', background: '#FFFFFF' }}>
             <div className="container">
               <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 style={{
                   background: 'linear-gradient(135deg, var(--primary) 0%, #172554 100%)',
-                  borderRadius: '48px',
-                  padding: '6rem 3rem',
+                  borderRadius: '60px',
+                  padding: '5rem 2rem',
                   textAlign: 'center',
                   color: 'white',
                   position: 'relative',
                   overflow: 'hidden',
-                  boxShadow: '0 40px 100px rgba(30, 58, 138, 0.3)'
+                  boxShadow: '0 50px 100px rgba(30, 58, 138, 0.25)'
                 }}
-                whileHover={{ y: -5 }}
               >
-                {/* Decorative Elements */}
-                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)' }}></div>
-                <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%)' }}></div>
+                {/* Decorative Background Elements */}
+                <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)', borderRadius: '50%' }}></div>
+                <div style={{ position: 'absolute', bottom: '-15%', left: '-5%', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)', borderRadius: '50%' }}></div>
 
-                <h2 style={{ fontSize: '3.8rem', marginBottom: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>Ready to upgrade your lab?</h2>
-                <p style={{ fontSize: '1.25rem', opacity: 0.9, maxWidth: '650px', margin: '0 auto 3rem', lineHeight: 1.6 }}>
-                  Join the forefront of biotechnology innovation. Experience the precision and sustainability of Micrylis labware.
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="cta-title"
+                  style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.04em', color: 'white' }}
+                >
+                  Ready to evolve your lab?
+                </motion.h2>
+                <p className="cta-subtitle" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', opacity: 0.9, maxWidth: '700px', margin: '0 auto 3rem', lineHeight: 1.6, fontWeight: 500 }}>
+                  Join the vanguard of sustainable biotechnology. Experience the pinnacle of precision with Micrylis.
                 </p>
-                <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-                  <button className="btn btn-primary" style={{ background: 'white', color: 'var(--primary)', padding: '1.2rem 3.5rem', fontWeight: 700, borderRadius: '14px' }} onClick={() => setIsContactOpen(true)}>GET A QUOTE</button>
-                  <button className="btn btn-outline" style={{ borderColor: 'rgba(255,255,255,0.3)', color: 'white', padding: '1.2rem 3.5rem', fontWeight: 700, borderRadius: '14px', backdropFilter: 'blur(10px)' }} onClick={() => window.location.hash = 'about'}>LEARN MORE</button>
+                <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', position: 'relative', zIndex: 1, flexWrap: 'wrap' }}>
+                  <button
+                    className="btn"
+                    style={{
+                      background: 'white',
+                      color: 'var(--primary)',
+                      padding: '1.2rem 4rem',
+                      fontWeight: 800,
+                      borderRadius: '16px',
+                      fontSize: '1.1rem',
+                      boxShadow: '0 15px 30px rgba(0,0,0,0.2)'
+                    }}
+                    onClick={() => setIsContactOpen(true)}
+                  >
+                    GET A QUOTE
+                  </button>
+                  <button
+                    className="btn"
+                    style={{
+                      background: 'rgba(255,255,255,0.1)',
+                      color: 'white',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      padding: '1.2rem 4rem',
+                      fontWeight: 800,
+                      borderRadius: '16px',
+                      fontSize: '1.1rem',
+                      backdropFilter: 'blur(10px)'
+                    }}
+                    onClick={() => window.location.hash = 'about'}
+                  >
+                    LEARN MORE
+                  </button>
                 </div>
               </motion.div>
             </div>
@@ -701,24 +1281,24 @@ function App() {
 
       <footer>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '4rem', marginBottom: '4rem' }}>
+          <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
             <div style={{ maxWidth: '300px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ width: '32px', height: '32px', background: 'var(--primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Zap size={20} color="white" />
                 </div>
-                <span style={{ fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.03em', color: 'var(--primary)' }}>MICRYLIS</span>
+                <span style={{ fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.03em', color: 'var(--primary)' }}>MICRYLIS BIOTECH</span>
               </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                ISO 9001:2015 Certified. Bridging the gap between researchers' needs and innovative biotechnology solutions.
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                IIT Gandhinagar Research Park,<br />
+                Palaj, Gandhinagar, Gujarat 382355<br />
+                India
               </p>
             </div>
             <div>
               <h4 style={{ color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '1rem' }}>SOLUTIONS</h4>
               <ul style={{ listStyle: 'none', color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <li>Purification Kits</li>
-                <li>NGS Sequencing</li>
-                <li>PCR Master Mixes</li>
+                <li>Our Product</li>
               </ul>
             </div>
             <div>
@@ -737,9 +1317,9 @@ function App() {
               </div>
             </div>
           </div>
-          <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          <div className="footer-bottom" style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: 'var(--text-muted)', gap: '1.5rem', flexWrap: 'wrap' }}>
             <p>© 2026 Micrylis Biotech. Precision biology, purpose built.</p>
-            <p>Designed & Developed by <span style={{ color: 'var(--primary)' }}>Anshul Jangid</span></p>
+            <p>Designed & Developed by <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Anshul Jangid</span></p>
           </div>
         </div>
       </footer>
@@ -777,6 +1357,69 @@ function App() {
             </form>
             <button
               onClick={() => setIsContactOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                color: 'var(--text-muted)'
+              }}
+            >
+              ×
+            </button>
+          </motion.div>
+        </div>
+      )}
+
+      {isApplicationsDetailOpen && (
+        <div className="modal-overlay" onClick={() => setIsApplicationsDetailOpen(false)}>
+          <motion.div
+            className="modal-content"
+            onClick={e => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            style={{ maxWidth: '900px', maxHeight: '90vh', overflowY: 'auto', padding: '4rem' }}
+          >
+            <h2 style={{ color: 'var(--primary)', marginBottom: '2rem', fontSize: '2.5rem', fontWeight: 900 }}>Research Applications & Usage</h2>
+
+            <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+              <section>
+                <h3 style={{ color: 'var(--secondary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Dna /> Molecular Biology</h3>
+                <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
+                <p><strong>Polymerase Chain Reaction (PCR):</strong> PCR requires accurate pipetting of template DNA, primers, nucleotides, and polymerase enzyme in precise ratios. Volume inaccuracies as small as 2% can significantly impact amplification efficiency. Micrylis tips maintain ±1.0% accuracy across their full volume range, ensuring reproducible PCR results. Low retention tips are particularly valuable when working with viscous master mixes.</p>
+              </section>
+
+              <section>
+                <h3 style={{ color: 'var(--secondary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Activity /> Cell Culture and Cell Biology</h3>
+                <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
+                <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
+              </section>
+
+              <section>
+                <h3 style={{ color: 'var(--secondary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Beaker /> Clinical Diagnostics</h3>
+                <p style={{ marginBottom: '1rem' }}><strong>Blood Chemistry Analysis:</strong> Clinical laboratories process millions of patient samples annually. Serum and plasma assays for glucose, cholesterol, liver enzymes, and electrolytes require precise liquid handling to generate accurate diagnostic results. Micrylis tips meet medical device manufacturing standards and are compatible with clinical analyzers from major manufacturers.</p>
+                <p style={{ marginBottom: '1rem' }}><strong>Immunoassays:</strong> ELISA, chemiluminescence, and multiplex bead assays are foundation techniques in clinical diagnostics. These assays involve serial dilutions, reagent additions, and sample transfers across microplate formats. Consistent pipetting is essential for standard curve reliability and accurate quantification of antibodies, hormones, tumor markers, and infectious disease antigens.</p>
+                <p><strong>Hematology:</strong> Blood cell counting, coagulation studies, and hemoglobin electrophoresis all require accurate pipetting of whole blood, plasma, or specialized reagents. Non-pyrogenic certification prevents false-positive results in tests sensitive to endotoxin contamination.</p>
+              </section>
+
+              <section>
+                <h3 style={{ color: 'var(--secondary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FileText /> Pharmaceutical Research and Development</h3>
+                <p style={{ marginBottom: '1rem' }}><strong>Formulation Development:</strong> Pharmaceutical formulation requires precise measurement of active pharmaceutical ingredients (APIs), excipients, buffers, and stabilizers. Low retention tips minimize loss of expensive compounds during serial dilution and dose preparation studies. Chemical resistance ensures compatibility with organic solvents used in drug solubilization.</p>
+              </section>
+
+              <section>
+                <h3 style={{ color: 'var(--secondary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Target /> Proper Handling and Usage Guidelines</h3>
+                <p style={{ marginBottom: '1rem' }}><strong>Water Quality Testing:</strong> Environmental monitoring laboratories analyze water samples for bacterial contamination, heavy metals, pesticides, and nutrient levels. Micrylis tips facilitate accurate preparation of standard curves and sample dilutions required for spectrophotometric and chromatographic analysis.</p>
+                <p style={{ marginBottom: '1rem' }}><strong>Soil Microbiology:</strong> Isolation and enumeration of soil bacteria, fungi, and archaea involves serial dilution plating and selective media preparation. Sterile tips prevent cross-contamination between environmental samples and control cultures.</p>
+                <p><strong>Plant Genomics:</strong> DNA extraction from plant tissues (rich in polysaccharides and phenolic compounds) and subsequent PCR analysis for GMO detection or trait mapping require precise liquid handling. Filter tips protect valuable samples from contamination during multi-step protocols.</p>
+              </section>
+            </div>
+
+            <button
+              onClick={() => setIsApplicationsDetailOpen(false)}
               style={{
                 position: 'absolute',
                 top: '1.5rem',
