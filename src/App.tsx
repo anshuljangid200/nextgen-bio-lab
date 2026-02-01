@@ -1009,24 +1009,25 @@ function App() {
                     Engineering a <span className="gradient-text">Greener Lab</span>
                   </h2>
                   <div style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.8 }}>
+                    <p style={{ marginBottom: '1.5rem', fontWeight: 500 }}>At the core of Micrylis Biotech is an unwavering commitment to sustainability:</p>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                       <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
-                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px' }}>
                           <Zap size={14} color="var(--secondary)" />
                         </div>
-                        <span>Reducing environmental impact through breakthrough Bio-PP blends and circular design.</span>
+                        <span>Reducing environmental impact of laboratory consumables through design and production innovation.</span>
                       </li>
                       <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
-                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px' }}>
                           <Zap size={14} color="var(--secondary)" />
                         </div>
-                        <span>Promoting responsible lifecycle management for high-precision scientific plastics.</span>
+                        <span>Promoting responsible use and disposal of scientific plastics.</span>
                       </li>
                       <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
-                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px' }}>
                           <Zap size={14} color="var(--secondary)" />
                         </div>
-                        <span>Aligning laboratory performance with global net-zero sustainability commitments.</span>
+                        <span>Aligning with broader environmental goals to transition science toward more sustainable practice.</span>
                       </li>
                     </ul>
                   </div>
