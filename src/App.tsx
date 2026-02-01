@@ -138,21 +138,31 @@ const AboutPage = () => {
               <div className="about-sections-group">
                 <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
                   <div>
-                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em' }}>Mission & Vision</h2>
+                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: '1.1' }}>Building a Sustainable Scientific Future Together</h2>
                     <div style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.15rem' }}>
                       <p style={{ marginBottom: '1.5rem' }}>
-                        Micrylis Biotech is a mission-driven scientific technology company committed to advancing laboratory practice through sustainable, high-precision pipette consumables. Micrylis stands at the forefront of sustainable laboratory innovation, pioneering the next generation of precision liquid handling consumables. Founded on the principle that scientific excellence and environmental responsibility are not mutually exclusive, we are transforming the laboratory plastics industry through breakthrough material science and circular economy principles.
+                        Micrylis was founded on the belief that scientific excellence and environmental stewardship are complementary, not competing, values. Our sustainable pipette tips prove that laboratories need not choose between research quality and planetary health. With equivalent performance, competitive pricing, and comprehensive end-of-life management, the barriers to sustainable laboratory practice are falling.
                       </p>
                       <p style={{ marginBottom: '1.5rem' }}>
-                        Our mission is clear: to eliminate the environmental burden of single-use laboratory plastics while maintaining the uncompromising quality standards demanded by modern scientific research. Every year, research laboratories worldwide generate approximately 5.5 million metric tons of plastic waste, with pipette tips and their packaging constituting up to 80% of laboratory plastic waste streams. This staggering figure represents not just an environmental crisis, but a call to action for innovation.
+                        We invite you to join us in redefining precision for a sustainable future. The transition to sustainable laboratory practices is not just an environmental imperative—it is a scientific and ethical responsibility. Every research discovery, every diagnostic test, and every quality control analysis depends on tools that should not compromise the planet we are working to understand and protect.
                       </p>
-                      <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Our Vision</h3>
+
+                      <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Scientific Design & Quality</h3>
+                      <p style={{ marginBottom: '1rem' }}>
+                        Our pipette tips represent the intersection of analytical precision and ecological innovation. Micrylis tips are engineered to:
+                      </p>
+                      <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
+                        <li>Achieve consistent liquid handling performance with minimal coefficient of variation.</li>
+                        <li>Ensure tight fit and minimal leakage across major micropipette platforms.</li>
+                        <li>Maintain chemical inertness, low retention, and smooth internal geometry for accurate sample transfer.</li>
+                      </ul>
                       <p style={{ marginBottom: '1.5rem' }}>
-                        Our vision harmonizes rigorous scientific performance with environmental responsibility: to reduce the ecological footprint of everyday laboratory operations without compromising data integrity, reproducibility, and precision. We operate with a global outlook, placing emphasis on serving the Indian scientific community as well as internationally, academic institutions, research laboratories, diagnostics centers, and industries across life sciences, biotechnology, environmental engineering, and pharmaceutical R&D.
+                        Traditional industry leaders emphasize stringent quality control, precision molding, and materials engineered for repeatability and clarity in pipetting tasks. Pipette consumables from global suppliers are broadly validated for compatibility with high-accuracy requirements in research and diagnostics.
                       </p>
-                      <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Commitment</h3>
+
+                      <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Manufacturing Focus</h3>
                       <p>
-                        <strong>Community Engagement:</strong> We support local communities through educational partnerships with schools, sponsorship of environmental cleanup initiatives, and donation of products to underserved research institutions. Micrylis is committed to building a diverse workforce that reflects the communities we serve. We have established recruitment partnerships with organizations supporting women and underrepresented minorities in STEM fields.
+                        While proprietary methods remain confidential, our core ethos embraces sustainable manufacturing practices, including reduced waste generation, energy optimized processes, and minimized packaging burden.
                       </p>
                     </div>
                   </div>
@@ -161,7 +171,7 @@ const AboutPage = () => {
                       whileHover={{ scale: 1.02 }}
                       style={{ padding: '1rem', borderRadius: '48px', background: 'white', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
                     >
-                      <img src="/assets/about_hero.jpg" alt="Lab Research" style={{ width: '100%', borderRadius: '40px' }} />
+                      <img src="/assets/about_overview.jpg" alt="Lab Research" style={{ width: '100%', borderRadius: '40px' }} />
                     </motion.div>
                   </div>
                 </div>
@@ -192,43 +202,55 @@ const AboutPage = () => {
             {activeTab === 'sustainability' && (
               <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
                 <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Sustainable Lifecycle</h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                  <p style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '1rem' }}>
-                    Sustainability is not a marketing message for Micrylis - it is the core of our business model and the reason we exist. We believe that the transition to a circular, carbon-neutral economy is both an environmental imperative and an economic opportunity. Our comprehensive approach addresses every aspect of the product lifecycle:
-                  </p>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                    <p style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '1rem' }}>
+                      Sustainability is not a marketing message for Micrylis - it is the core of our business model and the reason we exist. We believe that the transition to a circular, carbon-neutral economy is both an environmental imperative and an economic opportunity. Our comprehensive approach addresses every aspect of the product lifecycle:
+                    </p>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
-                    <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse—agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
+                      <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse—agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Carbon-Neutral Manufacturing</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Renewable Energy:</strong> Our manufacturing facilities are powered by 100% renewable electricity sourced from wind and solar farms.</p>
-                    <p><strong>Carbon Offset Programs:</strong> For unavoidable emissions (employee commuting, business travel), we invest in verified carbon offset projects including reforestation initiatives and renewable energy development in emerging economies. We prioritize projects that provide co-benefits such as biodiversity conservation and community development.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Carbon-Neutral Manufacturing</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Renewable Energy:</strong> Our manufacturing facilities are powered by 100% renewable electricity sourced from wind and solar farms.</p>
+                      <p><strong>Carbon Offset Programs:</strong> For unavoidable emissions (employee commuting, business travel), we invest in verified carbon offset projects including reforestation initiatives and renewable energy development in emerging economies. We prioritize projects that provide co-benefits such as biodiversity conservation and community development.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Water Stewardship</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Closed-Loop Water Systems:</strong> Advanced water recycling technology allows us to recirculate 95% of process water. Cooling water is continuously filtered and reused, while wash water undergoes membrane filtration and UV treatment before reintroduction to the process.</p>
-                    <p style={{ marginBottom: '1rem' }}><strong>Water Quality Monitoring:</strong> Real-time monitoring ensures that any discharge meets or exceeds local water quality standards. Annual third-party audits verify compliance with environmental regulations.</p>
-                    <p><strong>Rainwater Harvesting:</strong> Facility rooftops are equipped with rainwater collection systems that capture precipitation for use in landscaping and non-process applications, reducing demand on municipal water supplies.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Water Stewardship</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Closed-Loop Water Systems:</strong> Advanced water recycling technology allows us to recirculate 95% of process water. Cooling water is continuously filtered and reused, while wash water undergoes membrane filtration and UV treatment before reintroduction to the process.</p>
+                      <p style={{ marginBottom: '1rem' }}><strong>Water Quality Monitoring:</strong> Real-time monitoring ensures that any discharge meets or exceeds local water quality standards. Annual third-party audits verify compliance with environmental regulations.</p>
+                      <p><strong>Rainwater Harvesting:</strong> Facility rooftops are equipped with rainwater collection systems that capture precipitation for use in landscaping and non-process applications, reducing demand on municipal water supplies.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Zero Waste Manufacturing</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Material Recovery:</strong> Production scrap (runners, rejected parts) is collected and reprocessed back into feedstock for non-critical components, achieving 98% material utilization efficiency.</p>
-                    <p style={{ marginBottom: '1rem' }}><strong>Packaging Minimization:</strong> We have systematically reduced packaging materials by 85% through innovations such as biodegradable racks, reload systems, and elimination of inner plastic bags.</p>
-                    <p><strong>Supplier Take-Back:</strong> We work with packaging suppliers who accept returns of excess or damaged packaging materials for recycling, ensuring nothing goes to landfill.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Zero Waste Manufacturing</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Material Recovery:</strong> Production scrap (runners, rejected parts) is collected and reprocessed back into feedstock for non-critical components, achieving 98% material utilization efficiency.</p>
+                      <p style={{ marginBottom: '1rem' }}><strong>Packaging Minimization:</strong> We have systematically reduced packaging materials by 85% through innovations such as biodegradable racks, reload systems, and elimination of inner plastic bags.</p>
+                      <p><strong>Supplier Take-Back:</strong> We work with packaging suppliers who accept returns of excess or damaged packaging materials for recycling, ensuring nothing goes to landfill.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Continuous Improvement and Transparency</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Annual Sustainability Report:</strong> We publish a comprehensive annual report documenting our environmental performance including carbon emissions, water usage, waste diversion, and progress toward sustainability goals. This report is independently verified and publicly available.</p>
-                    <p style={{ marginBottom: '1rem' }}><strong>Science-Based Targets:</strong> Our emissions reduction targets are aligned with the Paris Agreement's goal of limiting global temperature rise to 1.5°C. We have committed to achieving net-zero emissions across our value chain by 2050.</p>
-                    <p><strong>Stakeholder Engagement:</strong> We actively solicit feedback from customers, suppliers, employees, and environmental organizations to identify opportunities for improvement.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Continuous Improvement and Transparency</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Annual Sustainability Report:</strong> We publish a comprehensive annual report documenting our environmental performance including carbon emissions, water usage, waste diversion, and progress toward sustainability goals. This report is independently verified and publicly available.</p>
+                      <p style={{ marginBottom: '1rem' }}><strong>Science-Based Targets:</strong> Our emissions reduction targets are aligned with the Paris Agreement's goal of limiting global temperature rise to 1.5°C. We have committed to achieving net-zero emissions across our value chain by 2050.</p>
+                      <p><strong>Stakeholder Engagement:</strong> We actively solicit feedback from customers, suppliers, employees, and environmental organizations to identify opportunities for improvement.</p>
+                    </section>
+                  </div>
+                  <div style={{ position: 'sticky', top: '100px' }}>
+                    <motion.img
+                      src="/assets/about_sustainability.png"
+                      alt="Sustainable Lifecycle"
+                      style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -240,69 +262,101 @@ const AboutPage = () => {
                   Micrylis sustainable pipette tips are designed for multidisciplinary scientific applications, including but not limited to:
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Molecular Biology</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
-                    <p><strong>Polymerase Chain Reaction (PCR):</strong> PCR requires accurate pipetting of template DNA, primers, nucleotides, and polymerase enzyme in precise ratios. Volume inaccuracies as small as 2% can significantly impact amplification efficiency. Micrylis tips maintain ±1.0% accuracy across their full volume range, ensuring reproducible PCR results. Low retention tips are particularly valuable when working with viscous master mixes.</p>
-                  </section>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.6fr', gap: '3rem', alignItems: 'start' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Molecular Biology</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
+                      <p><strong>Polymerase Chain Reaction (PCR):</strong> PCR requires accurate pipetting of template DNA, primers, nucleotides, and polymerase enzyme in precise ratios. Volume inaccuracies as small as 2% can significantly impact amplification efficiency. Micrylis tips maintain ±1.0% accuracy across their full volume range, ensuring reproducible PCR results. Low retention tips are particularly valuable when working with viscous master mixes.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Cell Culture and Cell Biology</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
-                    <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Cell Culture and Cell Biology</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
+                      <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Clinical Diagnostics</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Blood Chemistry Analysis:</strong> Clinical laboratories process millions of patient samples annually. Serum and plasma assays for glucose, cholesterol, liver enzymes, and electrolytes require precise liquid handling to generate accurate diagnostic results. Micrylis tips meet medical device manufacturing standards and are compatible with clinical analyzers from major manufacturers.</p>
-                    <p style={{ marginBottom: '1rem' }}><strong>Immunoassays:</strong> ELISA, chemiluminescence, and multiplex bead assays are foundation techniques in clinical diagnostics. These assays involve serial dilutions, reagent additions, and sample transfers across microplate formats. Consistent pipetting is essential for standard curve reliability and accurate quantification of antibodies, hormones, tumor markers, and infectious disease antigens.</p>
-                    <p><strong>Hematology:</strong> Blood cell counting, coagulation studies, and hemoglobin electrophoresis all require accurate pipetting of whole blood, plasma, or specialized reagents. Non-pyrogenic certification prevents false-positive results in tests sensitive to endotoxin contamination.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Clinical Diagnostics</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Blood Chemistry Analysis:</strong> Clinical laboratories process millions of patient samples annually. Serum and plasma assays for glucose, cholesterol, liver enzymes, and electrolytes require precise liquid handling to generate accurate diagnostic results. Micrylis tips meet medical device manufacturing standards and are compatible with clinical analyzers from major manufacturers.</p>
+                      <p style={{ marginBottom: '1rem' }}><strong>Immunoassays:</strong> ELISA, chemiluminescence, and multiplex bead assays are foundation techniques in clinical diagnostics. These assays involve serial dilutions, reagent additions, and sample transfers across microplate formats. Consistent pipetting is essential for standard curve reliability and accurate quantification of antibodies, hormones, tumor markers, and infectious disease antigens.</p>
+                      <p><strong>Hematology:</strong> Blood cell counting, coagulation studies, and hemoglobin electrophoresis all require accurate pipetting of whole blood, plasma, or specialized reagents. Non-pyrogenic certification prevents false-positive results in tests sensitive to endotoxin contamination.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Pharmaceutical Research and Development</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Formulation Development:</strong> Pharmaceutical formulation requires precise measurement of active pharmaceutical ingredients (APIs), excipients, buffers, and stabilizers. Low retention tips minimize loss of expensive compounds during serial dilution and dose preparation studies. Chemical resistance ensures compatibility with organic solvents used in drug solubilization.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Pharmaceutical Research and Development</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Formulation Development:</strong> Pharmaceutical formulation requires precise measurement of active pharmaceutical ingredients (APIs), excipients, buffers, and stabilizers. Low retention tips minimize loss of expensive compounds during serial dilution and dose preparation studies. Chemical resistance ensures compatibility with organic solvents used in drug solubilization.</p>
+                    </section>
 
-                  <section>
-                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Proper Handling and Usage Guidelines</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Water Quality Testing:</strong> Environmental monitoring laboratories analyze water samples for bacterial contamination, heavy metals, pesticides, and nutrient levels. Micrylis tips facilitate accurate preparation of standard curves and sample dilutions required for spectrophotometric and chromatographic analysis.</p>
-                    <p style={{ marginBottom: '1rem' }}><strong>Soil Microbiology:</strong> Isolation and enumeration of soil bacteria, fungi, and archaea involves serial dilution plating and selective media preparation. Sterile tips prevent cross-contamination between environmental samples and control cultures.</p>
-                    <p><strong>Plant Genomics:</strong> DNA extraction from plant tissues (rich in polysaccharides and phenolic compounds) and subsequent PCR analysis for GMO detection or trait mapping require precise liquid handling. Filter tips protect valuable samples from contamination during multi-step protocols.</p>
-                  </section>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Proper Handling and Usage Guidelines</h3>
+                      <p style={{ marginBottom: '1rem' }}><strong>Water Quality Testing:</strong> Environmental monitoring laboratories analyze water samples for bacterial contamination, heavy metals, pesticides, and nutrient levels. Micrylis tips facilitate accurate preparation of standard curves and sample dilutions required for spectrophotometric and chromatographic analysis.</p>
+                      <p style={{ marginBottom: '1rem' }}><strong>Soil Microbiology:</strong> Isolation and enumeration of soil bacteria, fungi, and archaea involves serial dilution plating and selective media preparation. Sterile tips prevent cross-contamination between environmental samples and control cultures.</p>
+                      <p><strong>Plant Genomics:</strong> DNA extraction from plant tissues (rich in polysaccharides and phenolic compounds) and subsequent PCR analysis for GMO detection or trait mapping require precise liquid handling. Filter tips protect valuable samples from contamination during multi-step protocols.</p>
+                    </section>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', position: 'sticky', top: '100px' }}>
+                    <motion.img
+                      src="/assets/about_applications_2.jpg"
+                      alt="Research Applications"
+                      style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                    />
+                    <motion.img
+                      src="/assets/about_applications_1.png"
+                      alt="Clinical Precision"
+                      style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                    />
+                  </div>
                 </div>
               </div>
             )}
 
             {activeTab === 'rd' && (
-              <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '3rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>R&D workstreams</h2>
-                <div style={{ padding: '4rem', background: 'white', borderRadius: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.03)', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                  <p style={{ marginBottom: '2rem' }}>Our ongoing R&D efforts focus on realizing the vision of sustainable liquid handling. Key workstreams include:</p>
+              <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '4rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>R&D Workstreams</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.8fr', gap: '4rem', alignItems: 'start' }}>
+                  <div style={{ padding: '3rem', background: 'white', borderRadius: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.03)', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                    <p style={{ marginBottom: '2rem' }}>Our ongoing R&D efforts focus on realizing the vision of sustainable liquid handling. Key workstreams include:</p>
 
-                  <ul style={{ listStyle: 'none', padding: 0 }}>
-                    <li style={{ marginBottom: '1.5rem' }}>
-                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Prototype Testing</strong>
-                      Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.
-                    </li>
-                    <li style={{ marginBottom: '1.5rem' }}>
-                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Manufacturing Scale-Up</strong>
-                      Moving from lab-scale molding to pilot production involves building high-precision molds and process controls. We are establishing clean production facilities and planning for future automation. Quality control is a priority: in-line cameras and calibration rigs will be used to verify tip geometry and performance on every batch.
-                    </li>
-                    <li style={{ marginBottom: '1.5rem' }}>
-                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Eco-Certification & Analysis</strong>
-                      We perform life-cycle analyses (LCA) to quantify CO₂ and waste reductions versus conventional tips. We aim to earn eco-labels (e.g. independent certifications of environmental impact) to validate our sustainability claims. This parallels how industry leaders engage in green initiatives; for instance, some have invested in closed-loop recycling and renewable-energy manufacturing, and Micrylis will pursue similar green practices.
-                    </li>
-                    <li style={{ marginBottom: '1.5rem' }}>
-                      <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Expansion and Collaboration</strong>
-                      We are exploring partnerships with academic labs and environmental agencies to pilot our tips in real-world studies. Plans include developing multichannel tips and integration with automated pipetting systems. In the near future we will break ground on a larger production facility, expand our team of scientists and engineers, and scale from thousands to millions of tips per month.
-                    </li>
-                  </ul>
+                    <ul style={{ listStyle: 'none', padding: 0 }}>
+                      <li style={{ marginBottom: '1.5rem' }}>
+                        <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Prototype Testing</strong>
+                        Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.
+                      </li>
+                      <li style={{ marginBottom: '1.5rem' }}>
+                        <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Manufacturing Scale-Up</strong>
+                        Moving from lab-scale molding to pilot production involves building high-precision molds and process controls. We are establishing clean production facilities and planning for future automation. Quality control is a priority: in-line cameras and calibration rigs will be used to verify tip geometry and performance on every batch.
+                      </li>
+                      <li style={{ marginBottom: '1.5rem' }}>
+                        <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Eco-Certification & Analysis</strong>
+                        We perform life-cycle analyses (LCA) to quantify CO₂ and waste reductions versus conventional tips. We aim to earn eco-labels (e.g. independent certifications of environmental impact) to validate our sustainability claims. This parallels how industry leaders engage in green initiatives; for instance, some have invested in closed-loop recycling and renewable-energy manufacturing, and Micrylis will pursue similar green practices.
+                      </li>
+                      <li style={{ marginBottom: '1.5rem' }}>
+                        <strong style={{ display: 'block', fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>Expansion and Collaboration</strong>
+                        We are exploring partnerships with academic labs and environmental agencies to pilot our tips in real-world studies. Plans include developing multichannel tips and integration with automated pipetting systems. In the near future we will break ground on a larger production facility, expand our team of scientists and engineers, and scale from thousands to millions of tips per month.
+                      </li>
+                    </ul>
 
-                  <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>
-                    Overall, our R&D strategy mirrors the innovation-led culture of labware incumbents (who tout decades of pipette expertise) but is singularly focused on sustainability. We will continually refine our products and processes, with a goal to rapidly scale up as soon as prototypes are validated.
-                  </p>
+                    <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>
+                      Overall, our R&D strategy mirrors the innovation-led culture of labware incumbents (who tout decades of pipette expertise) but is singularly focused on sustainability. We will continually refine our products and processes, with a goal to rapidly scale up as soon as prototypes are validated.
+                    </p>
+                  </div>
+                  <div style={{ position: 'sticky', top: '100px' }}>
+                    <motion.img
+                      src="/assets/about_rd.png"
+                      alt="R&D Innovation"
+                      style={{ width: '100%', borderRadius: '48px', boxShadow: '0 20px 60px rgba(0,0,0,0.1)' }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -920,7 +974,7 @@ function App() {
                       zIndex: 0
                     }}></div>
                     <img
-                      src="/assets/solutions_lab.png"
+                      src="/assets/home_sustainability.jpg"
                       alt="Micrylis Innovation"
                       style={{
                         width: '100%',
@@ -951,7 +1005,7 @@ function App() {
                 </div>
                 <div>
                   <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Sustainability</div>
-                  <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+                  <h2 style={{ fontSize: 'clamp(3rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
                     Engineering a <span className="gradient-text">Greener Lab</span>
                   </h2>
                   <div style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.8 }}>
@@ -1003,7 +1057,7 @@ function App() {
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Applications</div>
-                <h2 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+                <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
                   Versatility Meets <span className="gradient-text">Precision</span>
                 </h2>
                 <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.15rem', lineHeight: 1.7, fontWeight: 500 }}>
@@ -1026,6 +1080,9 @@ function App() {
                   <li><strong>Water Quality Monitoring:</strong> High-throughput aliquoting for contaminant analysis.</li>
                   <li><strong>Soil & Air Matrix Studies:</strong> Reliable sampling for chemical, biological, or particulate assays.</li>
                 </ul>
+                <div style={{ marginTop: '3rem', position: 'relative' }}>
+                  <img src="/assets/home_applications.jpg" alt="Applications Overview" style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }} />
+                </div>
               </div>
 
               <div style={{ textAlign: 'center' }}>
@@ -1039,67 +1096,12 @@ function App() {
             </div>
           </section>
 
-          {/* Research & Development Section */}
-          <section id="rd" style={{ padding: '5rem 0', background: 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)' }}>
-            <div className="container">
-              <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Research & Development</div>
-                <h2 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
-                  Pioneering <span className="gradient-text">Lab Innovation</span>
-                </h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.15rem', lineHeight: 1.7, fontWeight: 500 }}>
-                  Our R&D strategy drives continuous breakthrough in product design, material science, and global quality standards.
-                </p>
-              </div>
-
-              <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
-                <p style={{ marginBottom: '1.5rem' }}>Our R&D strategy emphasizes continuous innovation across:</p>
-                <ul style={{ listStyle: 'none', padding: 0 }}>
-                  <li style={{ marginBottom: '1.5rem' }}>
-                    <strong style={{ color: 'var(--primary)' }}>Product Optimization</strong>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-                      <li>Fine-tuning tip geometry for enhanced hydrophobicity and reduced liquid retention.</li>
-                      <li>Expanding compatibility across pipette brands and automated liquid-handling platforms.</li>
-                    </ul>
-                  </li>
-                  <li style={{ marginBottom: '1.5rem' }}>
-                    <strong style={{ color: 'var(--primary)' }}>Material Science Advancement</strong>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-                      <li>Identification and integration of sustainable feedstocks and manufacturing processes.</li>
-                      <li>Life cycle impact assessments to benchmark against conventional consumables.</li>
-                    </ul>
-                  </li>
-                  <li style={{ marginBottom: '1.5rem' }}>
-                    <strong style={{ color: 'var(--primary)' }}>Scale-Up & Quality Assurance</strong>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-                      <li>Establishing scalable, quality-centric manufacturing that adheres to global standards (e.g., ISO frameworks).</li>
-                      <li>Rigorous internal testing and external validation to ensure consistent performance at scale.</li>
-                    </ul>
-                  </li>
-                  <li style={{ marginBottom: '1.5rem' }}>
-                    <strong style={{ color: 'var(--primary)' }}>Thought Leadership</strong>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-                      <li>Publish studies and participate in sustainability dialogues within scientific consortia and forums.</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-
-              <div style={{ textAlign: 'center' }}>
-                <button
-                  onClick={() => window.location.hash = 'about'}
-                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
-                >
-                  Read More <ChevronRight size={20} />
-                </button>
-              </div>
-            </div>
-          </section>
+          {/* Why Micrylis Section (Moved Up) */}
           <section id="why-micrylis" style={{ padding: '10rem 0', background: '#FFFFFF' }}>
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Value Proposition</div>
-                <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+                <h2 style={{ fontSize: 'clamp(3.5rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
                   WHY CHOOSE <span className="gradient-text">MICRYLIS</span>
                 </h2>
                 <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.7, fontWeight: 500 }}>
@@ -1107,36 +1109,103 @@ function App() {
                 </p>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Precision Meets Sustainability</h3>
-                  <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-                    <li>Scientifically validated performance that aligns with stringent research standards.</li>
-                    <li>Engineered to deliver accuracy, precision, and reproducibility.</li>
-                    <li>Product quality designed for diverse research and diagnostic workflows.</li>
-                  </ul>
-
-                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Global & Local Relevance</h3>
-                  <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-                    <li>Designed for global workflows with servicing, compatibility, and scientific applicability in mind.</li>
-                    <li>With special emphasis on the Indian scientific ecosystem, Micrylis offers solutions that resonate with emerging research infrastructure and sustainability priorities.</li>
-                  </ul>
+              <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.5fr', gap: '4rem', alignItems: 'center' }}>
+                <div style={{ position: 'relative' }}>
+                  <img src="/assets/home_why_choose.jpg" alt="Why Choose Micrylis" style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
                 </div>
-                <div>
-                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Product Excellence</h3>
-                  <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-                    Comprehensive Testing: Every production lot undergoes rigorous quality control including dimensional verification, purity testing (RNase, DNase, endotoxin), and performance validation.
-                  </p>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Precision Meets Sustainability</h3>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                      <li>Scientifically validated performance that aligns with stringent research standards.</li>
+                      <li>Engineered to deliver accuracy, precision, and reproducibility.</li>
+                      <li>Product quality designed for diverse research and diagnostic workflows.</li>
+                    </ul>
 
-                  <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Environmental Advantage</h3>
-                  <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-                    <li>Materials and design optimized to minimize waste through sustainable production and packaging approaches.</li>
-                    <li>Supports lab sustainability initiatives and aligns with environmental stewardship.</li>
-                  </ul>
+                    <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Global & Local Relevance</h3>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                      <li>Designed for global workflows with servicing, compatibility, and scientific applicability in mind.</li>
+                      <li>With special emphasis on the Indian scientific ecosystem, Micrylis offers solutions that resonate with emerging research infrastructure and sustainability priorities.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Product Excellence</h3>
+                    <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                      Comprehensive Testing: Every production lot undergoes rigorous quality control including dimensional verification, purity testing (RNase, DNase, endotoxin), and performance validation.
+                    </p>
+
+                    <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 800 }}>Environmental Advantage</h3>
+                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.7' }}>
+                      <li>Materials and design optimized to minimize waste through sustainable production and packaging approaches.</li>
+                      <li>Supports lab sustainability initiatives and aligns with environmental stewardship.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+                <button
+                  onClick={() => window.location.hash = 'about'}
+                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
+                >
+                  Read More <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Research & Development Section (Moved Down) */}
+          <section id="rd" style={{ padding: '5rem 0', background: 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)' }}>
+            <div className="container">
+              <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+                <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Research & Development</div>
+                <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+                  Pioneering <span className="gradient-text">Lab Innovation</span>
+                </h2>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.15rem', lineHeight: 1.7, fontWeight: 500 }}>
+                  Our R&D strategy drives continuous breakthrough in product design, material science, and global quality standards.
+                </p>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.8fr', gap: '4rem', alignItems: 'center' }}>
+                <div style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
+                  <p style={{ marginBottom: '1.5rem' }}>Our R&D strategy emphasizes continuous innovation across:</p>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ color: 'var(--primary)' }}>Product Optimization</strong>
+                      <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                        <li>Fine-tuning tip geometry for enhanced hydrophobicity and reduced liquid retention.</li>
+                        <li>Expanding compatibility across pipette brands and automated liquid-handling platforms.</li>
+                      </ul>
+                    </li>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ color: 'var(--primary)' }}>Material Science Advancement</strong>
+                      <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                        <li>Identification and integration of sustainable feedstocks and manufacturing processes.</li>
+                        <li>Life cycle impact assessments to benchmark against conventional consumables.</li>
+                      </ul>
+                    </li>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ color: 'var(--primary)' }}>Scale-Up & Quality Assurance</strong>
+                      <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                        <li>Establishing scalable, quality-centric manufacturing that adheres to global standards (e.g., ISO frameworks).</li>
+                        <li>Rigorous internal testing and external validation to ensure consistent performance at scale.</li>
+                      </ul>
+                    </li>
+                    <li style={{ marginBottom: '1.5rem' }}>
+                      <strong style={{ color: 'var(--primary)' }}>Thought Leadership</strong>
+                      <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                        <li>Publish studies and participate in sustainability dialogues within scientific consortia and forums.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <img src="/assets/home_rd.jpg" alt="R&D Lab" style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }} />
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'center' }}>
                 <button
                   onClick={() => window.location.hash = 'about'}
                   style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
@@ -1152,24 +1221,29 @@ function App() {
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Resources & Support</div>
-                <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>Comprehensive <span className="gradient-text">Expert Guidance</span></h2>
+                <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>Comprehensive <span className="gradient-text">Expert Guidance</span></h2>
               </div>
 
-              <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                <p style={{ marginBottom: '2rem', fontSize: '1.15rem', color: 'var(--text-muted)', textAlign: 'center' }}>Micrylis provides comprehensive resources to ensure customers can fully leverage our products:</p>
-                <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+              <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+                <div>
+                  <p style={{ marginBottom: '2rem', fontSize: '1.15rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                    Micrylis provides comprehensive resources to ensure customers can fully leverage our products. From detailed technical documentation to hands-on training materials, we empower scientists to achieve optimal results.
+                  </p>
+                  <img src="/assets/home_resources.jpg" alt="Scientific Support" style={{ width: '100%', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', marginBottom: '1rem' }} />
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
                   {[
                     { title: "Documentation", desc: "Detailed product datasheets and user manuals will be available online and in print." },
                     { title: "Training Guides", desc: "We will offer best-practice guides on pipetting technique, tip handling, and waste management -drawing on established lab standards." },
                     { title: "Quality Assurance", desc: "Customers can be confident that every lot meets the claimed specifications." },
                     { title: "Customer Support", desc: "A dedicated team will handle technical inquiries and provide troubleshooting advice." }
                   ].map((item, i) => (
-                    <li key={i} style={{ background: 'white', padding: '2rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
+                    <div key={i} style={{ background: 'white', padding: '2rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
                       <h4 style={{ color: 'var(--primary)', fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.8rem' }}>{item.title}</h4>
                       <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.6' }}>{item.desc}</p>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </section>
