@@ -65,77 +65,39 @@ const teamMembers = [
   }
 ];
 
-const AboutPage = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-
-  const tabs = [
-    { id: 'overview', label: 'Overview', icon: <Target size={20} /> },
-    { id: 'sustainability', label: 'Sustainability', icon: <Zap size={20} /> },
-    { id: 'applications', label: 'Applications', icon: <Beaker size={20} /> },
-    { id: 'rd', label: 'R&D', icon: <Activity size={20} /> }
-  ];
+const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) => {
 
   return (
     <div style={{ background: '#F4F7FA', minHeight: '100vh' }}>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '10rem', paddingBottom: '5rem' }}>
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            style={{ fontSize: '4.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.04em' }}
-          >
-            About <span className="gradient-text">Micrylis</span>
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7', fontWeight: 500 }}
-          >
-            Micrylis Biotech is a mission-driven scientific technology company committed to advancing laboratory practice through sustainable, high-precision pipette consumables.
-          </motion.p>
-        </div>
 
-        {/* Inner Navigation */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', marginBottom: '5rem', flexWrap: 'wrap' }}>
-          {tabs.map(tab => (
-            <motion.button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.8rem',
-                padding: '1rem 1.8rem',
-                borderRadius: '16px',
-                border: 'none',
-                background: activeTab === tab.id ? 'var(--primary)' : 'white',
-                color: activeTab === tab.id ? 'white' : 'var(--text-muted)',
-                cursor: 'pointer',
-                fontWeight: 700,
-                fontSize: '1rem',
-                boxShadow: activeTab === tab.id ? '0 15px 30px rgba(30,58,138,0.15)' : '0 4px 10px rgba(0,0,0,0.03)',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <span style={{ color: activeTab === tab.id ? 'white' : 'var(--secondary)' }}>{tab.icon}</span>
-              {tab.label}
-            </motion.button>
-          ))}
-        </div>
+
 
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
+            key={activeSection}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
           >
-            {activeTab === 'overview' && (
+            {activeSection === 'overview' && (
               <div className="about-sections-group">
+                {/* Individual Section Header */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                  <div style={{
+                    padding: '0.8rem 2.5rem',
+                    background: 'var(--primary)',
+                    color: 'white',
+                    borderRadius: '100px',
+                    fontWeight: 800,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 10px 25px rgba(30,58,138,0.2)'
+                  }}>
+                    Overview
+                  </div>
+                </div>
+
                 <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
                   <div>
                     <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: '1.1' }}>Building a Sustainable Scientific Future Together</h2>
@@ -199,15 +161,42 @@ const AboutPage = () => {
               </div>
             )}
 
-            {activeTab === 'sustainability' && (
+            {activeSection === 'sustainability' && (
               <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-                <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Sustainable Lifecycle</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.8fr', gap: '3rem', alignItems: 'start' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                    <p style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '1rem' }}>
-                      Sustainability is not a marketing message for Micrylis - it is the core of our business model and the reason we exist. We believe that the transition to a circular, carbon-neutral economy is both an environmental imperative and an economic opportunity. Our comprehensive approach addresses every aspect of the product lifecycle:
-                    </p>
+                {/* Individual Section Header */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                  <div style={{
+                    padding: '0.8rem 2.5rem',
+                    background: 'var(--primary)',
+                    color: 'white',
+                    borderRadius: '100px',
+                    fontWeight: 800,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 10px 25px rgba(30,58,138,0.2)'
+                  }}>
+                    Sustainability
+                  </div>
+                </div>
 
+                <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Sustainable Lifecycle</h2>
+
+                <div style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  <p style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '3rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem' }}>
+                    Sustainability is not a marketing message for Micrylis - it is the core of our business model and the reason we exist. We believe that the transition to a circular, carbon-neutral economy is both an environmental imperative and an economic opportunity. Our comprehensive approach addresses every aspect of the product lifecycle:
+                  </p>
+
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                    <motion.img
+                      src="/assets/about_sustainability.png"
+                      alt="Sustainable Lifecycle"
+                      style={{ maxWidth: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     <section>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
@@ -241,84 +230,95 @@ const AboutPage = () => {
                       <p><strong>Stakeholder Engagement:</strong> We actively solicit feedback from customers, suppliers, employees, and environmental organizations to identify opportunities for improvement.</p>
                     </section>
                   </div>
-                  <div style={{ position: 'sticky', top: '100px' }}>
-                    <motion.img
-                      src="/assets/about_sustainability.png"
-                      alt="Sustainable Lifecycle"
-                      style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 }}
-                    />
-                  </div>
                 </div>
               </div>
             )}
 
-            {activeTab === 'applications' && (
+            {activeSection === 'applications' && (
               <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                {/* Individual Section Header */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                  <div style={{
+                    padding: '0.8rem 2.5rem',
+                    background: 'var(--primary)',
+                    color: 'white',
+                    borderRadius: '100px',
+                    fontWeight: 800,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 10px 25px rgba(30,58,138,0.2)'
+                  }}>
+                    Applications
+                  </div>
+                </div>
+
                 <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '1rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Multidisciplinary Applications</h2>
                 <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem', fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto 3rem' }}>
                   Micrylis sustainable pipette tips are designed for multidisciplinary scientific applications, including but not limited to:
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.6fr', gap: '3rem', alignItems: 'start' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Molecular Biology</h3>
-                      <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
-                      <p><strong>Polymerase Chain Reaction (PCR):</strong> PCR requires accurate pipetting of template DNA, primers, nucleotides, and polymerase enzyme in precise ratios. Volume inaccuracies as small as 2% can significantly impact amplification efficiency. Micrylis tips maintain ±1.0% accuracy across their full volume range, ensuring reproducible PCR results. Low retention tips are particularly valuable when working with viscous master mixes.</p>
-                    </section>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                  <motion.img
+                    src="/assets/home_applications.jpg"
+                    alt="Research Applications"
+                    style={{ maxWidth: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  />
+                </div>
 
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Cell Culture and Cell Biology</h3>
-                      <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
-                      <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
-                    </section>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Molecular Biology</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
+                    <p><strong>Polymerase Chain Reaction (PCR):</strong> PCR requires accurate pipetting of template DNA, primers, nucleotides, and polymerase enzyme in precise ratios. Volume inaccuracies as small as 2% can significantly impact amplification efficiency. Micrylis tips maintain ±1.0% accuracy across their full volume range, ensuring reproducible PCR results. Low retention tips are particularly valuable when working with viscous master mixes.</p>
+                  </section>
 
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Clinical Diagnostics</h3>
-                      <p style={{ marginBottom: '1rem' }}><strong>Blood Chemistry Analysis:</strong> Clinical laboratories process millions of patient samples annually. Serum and plasma assays for glucose, cholesterol, liver enzymes, and electrolytes require precise liquid handling to generate accurate diagnostic results. Micrylis tips meet medical device manufacturing standards and are compatible with clinical analyzers from major manufacturers.</p>
-                      <p style={{ marginBottom: '1rem' }}><strong>Immunoassays:</strong> ELISA, chemiluminescence, and multiplex bead assays are foundation techniques in clinical diagnostics. These assays involve serial dilutions, reagent additions, and sample transfers across microplate formats. Consistent pipetting is essential for standard curve reliability and accurate quantification of antibodies, hormones, tumor markers, and infectious disease antigens.</p>
-                      <p><strong>Hematology:</strong> Blood cell counting, coagulation studies, and hemoglobin electrophoresis all require accurate pipetting of whole blood, plasma, or specialized reagents. Non-pyrogenic certification prevents false-positive results in tests sensitive to endotoxin contamination.</p>
-                    </section>
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Cell Culture and Cell Biology</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
+                    <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
+                  </section>
 
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Pharmaceutical Research and Development</h3>
-                      <p style={{ marginBottom: '1rem' }}><strong>Formulation Development:</strong> Pharmaceutical formulation requires precise measurement of active pharmaceutical ingredients (APIs), excipients, buffers, and stabilizers. Low retention tips minimize loss of expensive compounds during serial dilution and dose preparation studies. Chemical resistance ensures compatibility with organic solvents used in drug solubilization.</p>
-                    </section>
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Clinical Diagnostics</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Blood Chemistry Analysis:</strong> Clinical laboratories process millions of patient samples annually. Serum and plasma assays for glucose, cholesterol, liver enzymes, and electrolytes require precise liquid handling to generate accurate diagnostic results. Micrylis tips meet medical device manufacturing standards and are compatible with clinical analyzers from major manufacturers.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Immunoassays:</strong> ELISA, chemiluminescence, and multiplex bead assays are foundation techniques in clinical diagnostics. These assays involve serial dilutions, reagent additions, and sample transfers across microplate formats. Consistent pipetting is essential for standard curve reliability and accurate quantification of antibodies, hormones, tumor markers, and infectious disease antigens.</p>
+                    <p><strong>Hematology:</strong> Blood cell counting, coagulation studies, and hemoglobin electrophoresis all require accurate pipetting of whole blood, plasma, or specialized reagents. Non-pyrogenic certification prevents false-positive results in tests sensitive to endotoxin contamination.</p>
+                  </section>
 
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Proper Handling and Usage Guidelines</h3>
-                      <p style={{ marginBottom: '1rem' }}><strong>Water Quality Testing:</strong> Environmental monitoring laboratories analyze water samples for bacterial contamination, heavy metals, pesticides, and nutrient levels. Micrylis tips facilitate accurate preparation of standard curves and sample dilutions required for spectrophotometric and chromatographic analysis.</p>
-                      <p style={{ marginBottom: '1rem' }}><strong>Soil Microbiology:</strong> Isolation and enumeration of soil bacteria, fungi, and archaea involves serial dilution plating and selective media preparation. Sterile tips prevent cross-contamination between environmental samples and control cultures.</p>
-                      <p><strong>Plant Genomics:</strong> DNA extraction from plant tissues (rich in polysaccharides and phenolic compounds) and subsequent PCR analysis for GMO detection or trait mapping require precise liquid handling. Filter tips protect valuable samples from contamination during multi-step protocols.</p>
-                    </section>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', position: 'sticky', top: '100px' }}>
-                    <motion.img
-                      src="/assets/about_applications_2.jpg"
-                      alt="Research Applications"
-                      style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 }}
-                    />
-                    <motion.img
-                      src="/assets/about_applications_1.png"
-                      alt="Clinical Precision"
-                      style={{ width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
-                    />
-                  </div>
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Pharmaceutical Research and Development</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Formulation Development:</strong> Pharmaceutical formulation requires precise measurement of active pharmaceutical ingredients (APIs), excipients, buffers, and stabilizers. Low retention tips minimize loss of expensive compounds during serial dilution and dose preparation studies. Chemical resistance ensures compatibility with organic solvents used in drug solubilization.</p>
+                  </section>
+
+                  <section>
+                    <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Proper Handling and Usage Guidelines</h3>
+                    <p style={{ marginBottom: '1rem' }}><strong>Water Quality Testing:</strong> Environmental monitoring laboratories analyze water samples for bacterial contamination, heavy metals, pesticides, and nutrient levels. Micrylis tips facilitate accurate preparation of standard curves and sample dilutions required for spectrophotometric and chromatographic analysis.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Soil Microbiology:</strong> Isolation and enumeration of soil bacteria, fungi, and archaea involves serial dilution plating and selective media preparation. Sterile tips prevent cross-contamination between environmental samples and control cultures.</p>
+                    <p><strong>Plant Genomics:</strong> DNA extraction from plant tissues (rich in polysaccharides and phenolic compounds) and subsequent PCR analysis for GMO detection or trait mapping require precise liquid handling. Filter tips protect valuable samples from contamination during multi-step protocols.</p>
+                  </section>
                 </div>
               </div>
             )}
 
-            {activeTab === 'rd' && (
+            {activeSection === 'rd' && (
               <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                {/* Individual Section Header */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                  <div style={{
+                    padding: '0.8rem 2.5rem',
+                    background: 'var(--primary)',
+                    color: 'white',
+                    borderRadius: '100px',
+                    fontWeight: 800,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 10px 25px rgba(30,58,138,0.2)'
+                  }}>
+                    R&D
+                  </div>
+                </div>
+
                 <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '4rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>R&D Workstreams</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 0.8fr', gap: '4rem', alignItems: 'start' }}>
                   <div style={{ padding: '3rem', background: 'white', borderRadius: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.03)', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -362,8 +362,8 @@ const AboutPage = () => {
             )}
           </motion.div>
         </AnimatePresence>
-      </motion.div>
-    </div>
+      </motion.div >
+    </div >
   );
 };
 
@@ -504,6 +504,7 @@ const PioneersPage = () => (
 
 function App() {
   const [page, setPage] = useState('home');
+  const [aboutSection, setAboutSection] = useState('overview');
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isApplicationsDetailOpen, setIsApplicationsDetailOpen] = useState(false);
@@ -576,11 +577,17 @@ function App() {
           <div className="dropdown">
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'about' ? 'var(--secondary)' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>ABOUT US</a>
             <div className="dropdown-content">
-              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setIsMobileMenuOpen(false); }}>
+              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; setIsMobileMenuOpen(false); }}>
                 <Target size={16} /> Overview
               </a>
-              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setIsMobileMenuOpen(false); window.location.hash = 'about'; }}>
+              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setAboutSection('sustainability'); window.location.hash = 'about'; setIsMobileMenuOpen(false); }}>
                 <Zap size={16} /> Sustainability
+              </a>
+              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setAboutSection('applications'); window.location.hash = 'about'; setIsMobileMenuOpen(false); }}>
+                <Beaker size={16} /> Applications
+              </a>
+              <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setAboutSection('rd'); window.location.hash = 'about'; setIsMobileMenuOpen(false); }}>
+                <Activity size={16} /> R&D
               </a>
             </div>
           </div>
@@ -633,7 +640,7 @@ function App() {
       {page === 'calculators' ? (
         <Calculators />
       ) : page === 'about' ? (
-        <AboutPage />
+        <AboutPage activeSection={aboutSection} />
       ) : page === 'pioneers' ? (
         <PioneersPage />
       ) : (
@@ -1033,7 +1040,7 @@ function App() {
                   </div>
 
                   <button
-                    onClick={() => { setPage('about'); window.location.hash = 'about'; }}
+                    onClick={() => { setPage('about'); setAboutSection('sustainability'); window.location.hash = 'about'; }}
                     className="btn-primary"
                     style={{
                       padding: '0.8rem 2rem',
@@ -1088,7 +1095,7 @@ function App() {
 
               <div style={{ textAlign: 'center' }}>
                 <button
-                  onClick={() => window.location.hash = 'about'}
+                  onClick={() => { setPage('about'); setAboutSection('applications'); window.location.hash = 'about'; }}
                   style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
                 >
                   Read More <ChevronRight size={20} />
@@ -1146,7 +1153,7 @@ function App() {
 
               <div style={{ textAlign: 'center', marginTop: '4rem' }}>
                 <button
-                  onClick={() => window.location.hash = 'about'}
+                  onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
                   style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
                 >
                   Read More <ChevronRight size={20} />
@@ -1208,7 +1215,7 @@ function App() {
 
               <div style={{ textAlign: 'center' }}>
                 <button
-                  onClick={() => window.location.hash = 'about'}
+                  onClick={() => { setPage('about'); setAboutSection('rd'); window.location.hash = 'about'; }}
                   style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
                 >
                   Read More <ChevronRight size={20} />
@@ -1343,7 +1350,7 @@ function App() {
                       fontSize: '1.1rem',
                       backdropFilter: 'blur(10px)'
                     }}
-                    onClick={() => window.location.hash = 'about'}
+                    onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
                   >
                     LEARN MORE
                   </button>
@@ -1379,7 +1386,7 @@ function App() {
             <div>
               <h4 style={{ color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '1rem' }}>COMPANY</h4>
               <ul style={{ listStyle: 'none', color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <li style={{ cursor: 'pointer' }} onClick={() => window.location.hash = 'about'}>About Us</li>
+                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}>About Us</li>
                 <li style={{ cursor: 'pointer' }} onClick={() => window.location.hash = 'pioneers'}>Our Team</li>
                 <li>Certifications</li>
               </ul>
