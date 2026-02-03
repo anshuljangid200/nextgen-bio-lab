@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Linkedin, Microscope, ChevronRight, Zap, Beaker, Dna, Calculator, Activity, FileText, Target, Users, X, Menu, RotateCcw, Check } from 'lucide-react';
+import { Mail, Linkedin, ChevronRight, Beaker, Dna, Calculator, Activity, FileText, Target, Users, X, Menu, RotateCcw, Check } from 'lucide-react';
 import { ThreeScene } from './components/ThreeScene';
 import { Calculators } from './Calculators';
 import { ChatBot } from './components/ChatBot';
