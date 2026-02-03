@@ -617,6 +617,7 @@ footer {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-bottom: auto !important;
   }
 }
 
@@ -657,5 +658,40 @@ footer {
     text-align: center;
     justify-items: center;
   }
-}/ *   M o d a l s   * /   . m o d a l - o v e r l a y   {   p o s i t i o n :   f i x e d ;   t o p :   0 ;   l e f t :   0 ;   w i d t h :   1 0 0 % ;   h e i g h t :   1 0 0 % ;   b a c k g r o u n d :   r g b a ( 0 ,   0 ,   0 ,   0 . 6 ) ;   b a c k d r o p - f i l t e r :   b l u r ( 8 p x ) ;   d i s p l a y :   f l e x ;   a l i g n - i t e m s :   c e n t e r ;   j u s t i f y - c o n t e n t :   c e n t e r ;   z - i n d e x :   1 0 0 0 ;   p a d d i n g :   1 r e m ;   }   . m o d a l - c o n t e n t   {   b a c k g r o u n d :   w h i t e ;   b o r d e r - r a d i u s :   3 2 p x ;   p a d d i n g :   3 r e m ;   w i d t h :   1 0 0 % ;   m a x - w i d t h :   6 0 0 p x ;   p o s i t i o n :   r e l a t i v e ;   b o x - s h a d o w :   0   4 0 p x   8 0 p x   r g b a ( 0 ,   0 ,   0 ,   0 . 2 ) ;   b o r d e r :   1 p x   s o l i d   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 5 ) ;   o v e r f l o w - y :   a u t o ;   m a x - h e i g h t :   9 0 v h ;   }   @ m e d i a   ( m a x - w i d t h :   6 4 0 p x )   {   . m o d a l - c o n t e n t   {   p a d d i n g :   1 . 5 r e m   ! i m p o r t a n t ;   b o r d e r - r a d i u s :   2 4 p x ;   }   }  
- 
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 32px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    padding: 1.5rem !important;
+    border-radius: 24px;
+  }
+}
