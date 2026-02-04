@@ -10,7 +10,7 @@ const teamMembers = [
   {
     name: "Karan Panchal",
     role: "Founder",
-    image: "/assets/karan.png",
+    image: "/assets/karan_v2.jpg",
     bio: "Visionary leader bridging biotechnology and strategic management. Focused on FESEM imaging and advanced material science research.",
     linkedin: "#",
   },
@@ -24,7 +24,7 @@ const teamMembers = [
   {
     name: "Manthan Viradiya",
     role: "Co-Founder",
-    image: "/assets/logo.png",
+    image: "/assets/manthan_new.jpg",
     bio: "Architecting the intersection of Artificial Intelligence And Data Science. Certified Cyber Cadet with a mission to secure the future of biometric data.",
     linkedin: "#",
   },
@@ -59,7 +59,7 @@ const teamMembers = [
   {
     name: "Anshul Jangid",
     role: "Lead Systems Architect",
-    image: "https://github.com/anshuljangid.png",
+    image: "/assets/anshul_new.jpg",
     bio: "Chief Technology Architect and Lead Developer. Responsible for building the entire Micrylis Biotech digital ecosystem and managing the end-to-end technology infrastructure.",
     linkedin: "https://www.linkedin.com/in/anshul-jangid-78a406256/",
   }
@@ -377,13 +377,13 @@ const PioneersPage = () => (
     <div style={{ position: 'absolute', top: 0, right: 0, width: '45%', height: '45%', background: 'radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
     <div style={{ position: 'absolute', bottom: 0, left: 0, width: '45%', height: '45%', background: 'radial-gradient(circle at 0% 100%, rgba(30, 58, 138, 0.05) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
 
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '10rem', paddingBottom: '7rem', position: 'relative', zIndex: 1 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '6rem', alignItems: 'center', marginBottom: '6rem' }}>
-        <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: 'clamp(6rem, 15vw, 10rem)', paddingBottom: '7rem', position: 'relative', zIndex: 1 }}>
+      <div className="grid-responsive-2" style={{ gap: 'clamp(2rem, 5vw, 6rem)', alignItems: 'center', marginBottom: '6rem' }}>
+        <div className="pioneers-hero-text">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            style={{ fontSize: '4.5rem', marginBottom: '1.5rem', color: 'var(--primary)', letterSpacing: '-0.04em', fontWeight: 900 }}
+            style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', letterSpacing: '-0.04em', fontWeight: 900 }}
           >
             Meet the <span className="gradient-text">Pioneers</span>
           </motion.h1>
@@ -391,24 +391,24 @@ const PioneersPage = () => (
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
-            style={{ color: 'var(--text-muted)', fontSize: '1.25rem', lineHeight: '1.7', marginBottom: '3rem', fontWeight: 500 }}
+            style={{ color: 'var(--text-muted)', fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', lineHeight: '1.7', marginBottom: '2.5rem', fontWeight: 500, maxWidth: '700px' }}
           >
             Micrylis is powered by a multidisciplinary collective of scientific minds, engineering leads, and biotech visionaries dedicated to industrial-grade precision.
           </motion.p>
-          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+          <div className="pioneers-hero-stats">
             <motion.div
               whileHover={{ y: -5 }}
-              style={{ background: 'white', padding: '1.5rem 2.5rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}
+              className="stat-card-mini"
             >
-              <div style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '2rem', letterSpacing: '-0.02em' }}>Novel</div>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>IP Protected</div>
+              <div className="stat-value">Novel</div>
+              <div className="stat-label">IP Protected</div>
             </motion.div>
             <motion.div
               whileHover={{ y: -5 }}
-              style={{ background: 'white', padding: '1.5rem 2.5rem', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)' }}
+              className="stat-card-mini"
             >
-              <div style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '2rem', letterSpacing: '-0.02em' }}>Impact</div>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Scientific First</div>
+              <div className="stat-value">Impact</div>
+              <div className="stat-label">Scientific First</div>
             </motion.div>
           </div>
         </div>
@@ -416,7 +416,7 @@ const PioneersPage = () => (
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          style={{ padding: '3.5rem', borderRadius: '48px', background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(10px)', border: '1px solid white', boxShadow: '0 25px 50px rgba(0,0,0,0.05)' }}
+          style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)', borderRadius: '48px', background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(10px)', border: '1px solid white', boxShadow: '0 25px 50px rgba(0,0,0,0.05)' }}
         >
           <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 800 }}>Core Research Ethos</h3>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -438,7 +438,7 @@ const PioneersPage = () => (
         {teamMembers.map((member, i) => (
           <motion.div
             key={i}
-            className="team-card"
+            className="team-card-modern"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -447,16 +447,6 @@ const PioneersPage = () => (
               ease: [0.16, 1, 0.3, 1]
             }}
             whileHover={{ y: -15 }}
-            style={{
-              background: 'white',
-              borderRadius: '40px',
-              padding: '3rem 2rem',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.03)',
-              border: '1px solid rgba(0,0,0,0.02)',
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100%'
-            }}
           >
             <div style={{ position: 'relative', marginBottom: '2.5rem', display: 'flex', justifyContent: 'center' }}>
               <div style={{
@@ -501,8 +491,8 @@ const PioneersPage = () => (
           </motion.div>
         ))}
       </div>
-    </motion.div >
-  </div >
+    </motion.div>
+  </div>
 );
 
 
@@ -527,8 +517,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Immediate scroll to top
     window.scrollTo(0, 0);
-  }, [page]);
+    // Secondary delayed scroll to handle cases where layout shifts or browser restores scroll
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
+    return () => clearTimeout(timer);
+  }, [page, aboutSection]);
 
   useEffect(() => {
     if (page === 'home' && window.location.hash) {
@@ -1340,45 +1336,40 @@ function App() {
 
       <footer>
         <div className="container">
-          <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
-            <div style={{ maxWidth: '300px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+          <div className="footer-grid">
+            <div className="footer-brand-section">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
                 <img
                   src="/assets/company_new_logo.png"
                   alt="Micrylis Logo"
                   style={{
-                    width: '48px',
-                    height: '48px',
+                    width: '64px',
+                    height: '64px',
                     objectFit: 'contain'
                   }}
                 />
-                <span style={{ fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.03em', color: 'var(--primary)' }}>MICRYLIS BIOTECH</span>
+                <span className="footer-logo-text">MICRYLIS BIOTECH</span>
               </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                IIT Gandhinagar Research Park,<br />
-                Palaj, Gandhinagar, Gujarat 382355<br />
-                India
-              </p>
             </div>
-            <div>
-              <h4 style={{ color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '1rem' }}>SOLUTIONS</h4>
-              <ul style={{ listStyle: 'none', color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <li>Our Product</li>
+            <div className="footer-links-column">
+              <h4 className="footer-heading">SOLUTIONS</h4>
+              <ul className="footer-links-list">
+                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('home'); setTimeout(() => { document.getElementById('applications')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }} className="footer-link">Our Product</li>
               </ul>
             </div>
-            <div>
-              <h4 style={{ color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '1rem' }}>COMPANY</h4>
-              <ul style={{ listStyle: 'none', color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}>About Us</li>
-                <li style={{ cursor: 'pointer' }} onClick={() => window.location.hash = 'pioneers'}>Our Team</li>
-                <li>Certifications</li>
+            <div className="footer-links-column">
+              <h4 className="footer-heading">COMPANY</h4>
+              <ul className="footer-links-list">
+                <li onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }} className="footer-link">About Us</li>
+                <li onClick={() => { setPage('pioneers'); window.location.hash = 'pioneers'; }} className="footer-link">Our Team</li>
+                <li className="footer-link">Certifications</li>
               </ul>
             </div>
-            <div>
-              <h4 style={{ color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '1rem' }}>CONNECT</h4>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <a href="#"><Linkedin size={20} color="var(--secondary)" /></a>
-                <a href="mailto:contact@micrylisbiotech.com"><Mail size={20} color="var(--secondary)" /></a>
+            <div className="footer-links-column">
+              <h4 className="footer-heading">CONNECT</h4>
+              <div className="footer-social-box">
+                <a href="https://www.linkedin.com/in/anshul-jangid-78a406256/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> LinkedIn</a>
+                <a href="mailto:anshuljangid200@gmail.com" className="social-pill"><Mail size={18} /> Email</a>
               </div>
             </div>
           </div>

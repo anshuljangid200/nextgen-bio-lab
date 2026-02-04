@@ -148,12 +148,10 @@ export const Calculators = () => {
             {/* Background Atmosphere */}
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '500px', background: 'radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', zIndex: 0 }}></div>
 
-            <div className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem', position: 'relative', zIndex: 1 }}>
+            <div className="container" style={{ paddingTop: 'clamp(8rem, 15vw, 12rem)', paddingBottom: '6rem', position: 'relative', zIndex: 1 }}>
                 {/* Header Section */}
                 <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', background: '#Dbeafe', color: '#1E40AF', padding: '0.5rem 1.2rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700, marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                        <Terminal size={14} /> Analytical Laboratory Portal
-                    </div>
+
                     <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.2rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
                         Precision <span className="gradient-text">Bio-Calculators</span>
                     </h1>
@@ -369,29 +367,34 @@ export const Calculators = () => {
                 .nav-pills-container {
                     display: flex;
                     gap: 0.8rem;
-                    justify-content: flex-start;
-                    flex-wrap: nowrap;
-                    overflow-x: auto;
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                    max-width: 100%;
+                    flex-direction: column;
+                    width: 100%;
+                    max-width: 500px;
                     margin: 0 auto;
-                    padding: 1rem;
+                    padding: 1.5rem;
                     background: rgba(255, 255, 255, 0.5);
                     backdrop-filter: blur(10px);
                     border-radius: 30px;
                     border: 1px solid rgba(255, 255, 255, 0.5);
                     box-shadow: 0 10px 30px rgba(0,0,0,0.02);
                 }
-                .nav-pills-container::-webkit-scrollbar { display: none; }
                 
                 .nav-pills-container button {
-                    flex-shrink: 0;
-                    white-space: nowrap;
+                    width: 100%;
+                    justify-content: flex-start;
+                    padding: 1rem 1.5rem;
                 }
 
                 @media (min-width: 1024px) {
-                    .nav-pills-container { justify-content: center; flex-wrap: wrap; }
+                    .nav-pills-container { 
+                        flex-direction: row;
+                        justify-content: center; 
+                        flex-wrap: wrap; 
+                        max-width: 1000px;
+                    }
+                    .nav-pills-container button {
+                        width: auto;
+                    }
                 }
 
                 .pill-hover:hover { background: #F1F5F9 !important; transform: translateY(-2px); }
