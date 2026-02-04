@@ -69,7 +69,9 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
 
   return (
     <div style={{ background: '#F4F7FA', minHeight: '100vh' }}>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingTop: '10rem', paddingBottom: '5rem' }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container about-page-content" style={{ paddingTop: '10rem', paddingBottom: '5rem' }}>
+
+
 
 
 
@@ -84,7 +86,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
             {activeSection === 'overview' && (
               <div className="about-sections-group">
                 {/* Individual Section Header */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                <div className="mobile-section-header" style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
                   <div style={{
                     padding: '0.8rem 2.5rem',
                     background: 'var(--primary)',
@@ -164,7 +166,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
             {activeSection === 'sustainability' && (
               <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
                 {/* Individual Section Header */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                <div className="mobile-section-header" style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
                   <div style={{
                     padding: '0.8rem 2.5rem',
                     background: 'var(--primary)',
@@ -237,7 +239,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
             {activeSection === 'applications' && (
               <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                 {/* Individual Section Header */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                <div className="mobile-section-header" style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
                   <div style={{
                     padding: '0.8rem 2.5rem',
                     background: 'var(--primary)',
@@ -305,7 +307,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
             {activeSection === 'rd' && (
               <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                 {/* Individual Section Header */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                <div className="mobile-section-header" style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
                   <div style={{
                     padding: '0.8rem 2.5rem',
                     background: 'var(--primary)',

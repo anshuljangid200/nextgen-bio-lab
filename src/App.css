@@ -766,6 +766,16 @@ footer {
     margin-top: 0 !important;
   }
 
+  /* About page mobile spacing - prevent navbar overlap */
+  .about-page-content {
+    padding-top: 14rem !important;
+  }
+
+  /* Add extra space for section headers on mobile */
+  .mobile-section-header {
+    margin-top: 6rem !important;
+  }
+
   /* Buttons container in hero */
   .hero-content>div:nth-of-type(1) {
     flex-direction: column !important;
