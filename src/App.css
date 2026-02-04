@@ -33,11 +33,13 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+html {
   font-family: var(--font-main);
-  background-color: var(--bg-dark);
+  background-color: transparent;
   color: var(--text-main);
   overflow-x: hidden;
+  width: 100%;
   line-height: 1.6;
 }
 
@@ -219,6 +221,19 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+.grid-responsive-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+@media (max-width: 968px) {
+  .grid-responsive-2 {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -734,15 +749,36 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center !important;
+    gap: 0.5rem !important;
+    padding-top: 0 !important;
   }
 
   .hero-content p,
-  .hero-content h1,
-  .hero-content div {
+  .hero-content h1 {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    margin-bottom: auto !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  /* Reset Micrylis Biotech brand text margin on mobile */
+  .hero-content>div:first-child {
+    margin-top: 0 !important;
+  }
+
+  /* Buttons container in hero */
+  .hero-content>div:nth-of-type(1) {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Bottom stats container in hero */
+  .hero-content>div:nth-of-type(2) {
+    justify-content: center !important;
+    gap: 1rem !important;
+    padding-top: 0.5rem !important;
   }
 }
 
@@ -756,19 +792,83 @@ footer {
     gap: 2.5rem !important;
   }
 
+  .hero-content>div:nth-child(1) {
+    margin-bottom: 0.5rem !important;
+  }
+
   .hero-title {
-    font-size: 2.5rem !important;
-    margin-bottom: 1rem !important;
+    font-size: 2rem !important;
+    margin-bottom: 0.8rem !important;
+    line-height: 1.2 !important;
   }
 
   .hero-subtitle {
     font-size: 1rem !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 0.8rem !important;
   }
 
   .nav-links {
     padding: 1.5rem !important;
     gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-spacer {
+    display: none !important;
+  }
+
+  section {
+    padding: 3.5rem 0 !important;
+  }
+
+  #hero {
+    padding-top: 7.5rem !important;
+    min-height: auto !important;
+    padding-bottom: 0.5rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  /* Ensure the container inside hero doesn't center its items vertically */
+  #hero .container>div {
+    align-items: flex-start !important;
+  }
+
+  nav {
+    top: 0.5rem !important;
+    padding: 0.5rem 1.2rem !important;
+  }
+
+  nav img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  nav span {
+    font-size: 1.1rem !important;
+  }
+
+  #why-micrylis,
+  #resources {
+    padding: 4rem 0 !important;
+  }
+
+  .vision-img-container {
+    margin-top: 2rem !important;
+  }
+
+  .hero-content div[style*="marginBottom"] {
+    row-gap: 1rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .container {
+    padding: 0 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
   }
 }
 
