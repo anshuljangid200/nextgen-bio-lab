@@ -154,28 +154,15 @@ export const Calculators = () => {
                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', background: '#Dbeafe', color: '#1E40AF', padding: '0.5rem 1.2rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700, marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         <Terminal size={14} /> Analytical Laboratory Portal
                     </div>
-                    <h1 style={{ fontSize: '4rem', marginBottom: '1.2rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-0.04em' }}>
+                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.2rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
                         Precision <span className="gradient-text">Bio-Calculators</span>
                     </h1>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(1rem, 1.2vw, 1.1rem)', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: '1.7' }}>
                         High-performance computational tools engineered for genomic research, protein chemistry, and metabolic assessment.
                     </p>
 
                     {/* Horizontal Pill Navigation - NEW LAYOUT */}
-                    <div style={{
-                        display: 'flex',
-                        gap: '0.8rem',
-                        justifyContent: 'center',
-                        flexWrap: 'wrap',
-                        maxWidth: '1000px',
-                        margin: '0 auto',
-                        padding: '1rem',
-                        background: 'rgba(255, 255, 255, 0.5)',
-                        backdropFilter: 'blur(10px)',
-                        borderRadius: '30px',
-                        border: '1px solid rgba(255, 255, 255, 0.5)',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
-                    }}>
+                    <div className="nav-pills-container">
                         {tabConfig.map(tab => (
                             <button
                                 key={tab.id}
@@ -209,42 +196,24 @@ export const Calculators = () => {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
-                            initial={{ opacity: 0, scale: 0.98 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.98 }}
-                            transition={{ duration: 0.3 }}
-                            className="glass"
-                            style={{
-                                padding: '4rem 3.5rem',
-                                borderRadius: '40px',
-                                background: 'white',
-                                position: 'relative',
-                                boxShadow: '0 40px 100px rgba(0,0,0,0.05)',
-                                border: '1px solid rgba(0,0,0,0.01)'
-                            }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            className="calculator-card"
                         >
                             {/* Module Header Inside Card */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3.5rem', borderBottom: '1px solid #F1F5F9', paddingBottom: '2rem' }}>
-                                <div>
-                                    <h2 style={{ fontSize: '2.4rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
+                            <div className="module-header">
+                                <div className="module-title-group">
+                                    <h2 className="module-title">
                                         {tabConfig.find(t => t.id === activeTab)?.label}
                                     </h2>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)' }}>
-                                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--secondary)' }}></div>
+                                    <div className="module-desc">
+                                        <div className="status-dot"></div>
                                         {tabConfig.find(t => t.id === activeTab)?.desc}
                                     </div>
                                 </div>
-                                <div style={{
-                                    width: '70px',
-                                    height: '70px',
-                                    borderRadius: '24px',
-                                    background: '#EFF6FF',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: 'var(--secondary)',
-                                    boxShadow: 'inset 0 2px 10px rgba(59, 130, 246, 0.1)'
-                                }}>
+                                <div className="module-icon-box">
                                     {tabConfig.find(t => t.id === activeTab)?.icon}
                                 </div>
                             </div>
@@ -255,9 +224,9 @@ export const Calculators = () => {
                                     <div>
                                         <div className="input-group-modern" style={{ marginBottom: '2.5rem' }}>
                                             <label>Enter Chemical Formula</label>
-                                            <div style={{ display: 'flex', gap: '1rem' }}>
-                                                <input type="text" placeholder="e.g. C6H12O6" value={formula} onChange={(e) => setFormula(e.target.value)} style={{ flex: 1 }} />
-                                                <button className="btn btn-primary" onClick={calculateMW} style={{ padding: '0 3rem' }}>Run Algorithm</button>
+                                            <div className="formula-input-wrapper">
+                                                <input type="text" placeholder="e.g. C6H12O6" value={formula} onChange={(e) => setFormula(e.target.value)} />
+                                                <button className="btn btn-primary" onClick={calculateMW}>Run Algorithm</button>
                                             </div>
                                         </div>
                                         {mwResult !== null && (
@@ -271,7 +240,7 @@ export const Calculators = () => {
 
                                 {activeTab === 'coverage' && (
                                     <div style={{ display: 'grid', gap: '2.5rem' }}>
-                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
+                                        <div className="grid-responsive-2">
                                             <div className="input-group-modern"><label>Read Length (bp)</label><input type="number" value={readLength} onChange={e => handleNumInput(e.target.value, setReadLength)} /></div>
                                             <div className="input-group-modern"><label>Read Count (M)</label><input type="number" value={numReads} onChange={e => handleNumInput(e.target.value, setNumReads)} /></div>
                                         </div>
@@ -285,7 +254,7 @@ export const Calculators = () => {
 
                                 {activeTab === 'hwe' && (
                                     <div style={{ display: 'grid', gap: '2.5rem' }}>
-                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+                                        <div className="grid-responsive-3">
                                             <div className="input-group-modern"><label>AA (Dom)</label><input type="number" value={hweObserved.AA} onChange={e => handleNumInput(e.target.value, (v) => setHweObserved({ ...hweObserved, AA: v }))} /></div>
                                             <div className="input-group-modern"><label>Aa (Het)</label><input type="number" value={hweObserved.Aa} onChange={e => handleNumInput(e.target.value, (v) => setHweObserved({ ...hweObserved, Aa: v }))} /></div>
                                             <div className="input-group-modern"><label>aa (Rec)</label><input type="number" value={hweObserved.aa} onChange={e => handleNumInput(e.target.value, (v) => setHweObserved({ ...hweObserved, aa: v }))} /></div>
@@ -293,11 +262,17 @@ export const Calculators = () => {
                                         <button className="btn btn-primary" onClick={calculateHWE} style={{ padding: '1.2rem' }}>Run Population Analysis</button>
                                         {hweResult && (
                                             <div className="result-card">
-                                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                                                    <div><div className="result-label">ALLELE FREQUENCY P</div><div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)' }}>{hweResult.p.toFixed(4)}</div></div>
-                                                    <div><div className="result-label">ALLELE FREQUENCY Q</div><div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)' }}>{hweResult.q.toFixed(4)}</div></div>
+                                                <div className="grid-responsive-2" style={{ gap: '2rem' }}>
+                                                    <div className="metric-box">
+                                                        <div className="result-label">ALLELE FREQUENCY P</div>
+                                                        <div className="metric-value">{hweResult.p.toFixed(4)}</div>
+                                                    </div>
+                                                    <div className="metric-box">
+                                                        <div className="result-label">ALLELE FREQUENCY Q</div>
+                                                        <div className="metric-value">{hweResult.q.toFixed(4)}</div>
+                                                    </div>
                                                 </div>
-                                                <div style={{ marginTop: '2rem', padding: '1rem', background: '#F1F5F9', borderRadius: '12px', color: 'var(--secondary)', fontWeight: 800, fontSize: '1rem' }}>{hweResult.pValue}</div>
+                                                <div className="hwe-status">{hweResult.pValue}</div>
                                             </div>
                                         )}
                                     </div>
@@ -305,7 +280,7 @@ export const Calculators = () => {
 
                                 {activeTab === 'hemo' && (
                                     <div style={{ display: 'grid', gap: '2.5rem' }}>
-                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+                                        <div className="grid-responsive-2">
                                             {hemoCounts.map((c, i) => (
                                                 <div key={i} className="input-group-modern"><label>Quadrant {i + 1}</label><input type="number" value={c} onChange={e => handleNumInput(e.target.value, (v) => { const n = [...hemoCounts]; n[i] = v; setHemoCounts(n); })} /></div>
                                             ))}
@@ -348,9 +323,15 @@ export const Calculators = () => {
                                         <button className="btn btn-primary" onClick={calculateBiodiversity} style={{ padding: '1.2rem' }}>Analyze Ecological Diversity</button>
                                         {bioResults && (
                                             <div className="result-card">
-                                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                                                    <div><div className="result-label">SHANNON (H)</div><div style={{ fontSize: '2.2rem', fontWeight: 900, color: 'var(--primary)' }}>{bioResults.shannon.toFixed(3)}</div></div>
-                                                    <div><div className="result-label">SIMPSON (1-D)</div><div style={{ fontSize: '2.2rem', fontWeight: 900, color: 'var(--primary)' }}>{bioResults.simpson.toFixed(3)}</div></div>
+                                                <div className="grid-responsive-2" style={{ gap: '2rem' }}>
+                                                    <div className="metric-box">
+                                                        <div className="result-label">SHANNON (H)</div>
+                                                        <div className="metric-value">{bioResults.shannon.toFixed(3)}</div>
+                                                    </div>
+                                                    <div className="metric-box">
+                                                        <div className="result-label">SIMPSON (1-D)</div>
+                                                        <div className="metric-value">{bioResults.simpson.toFixed(3)}</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         )}
@@ -385,15 +366,149 @@ export const Calculators = () => {
             </div>
 
             <style>{`
+                .nav-pills-container {
+                    display: flex;
+                    gap: 0.8rem;
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
+                    overflow-x: auto;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                    max-width: 100%;
+                    margin: 0 auto;
+                    padding: 1rem;
+                    background: rgba(255, 255, 255, 0.5);
+                    backdrop-filter: blur(10px);
+                    border-radius: 30px;
+                    border: 1px solid rgba(255, 255, 255, 0.5);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+                }
+                .nav-pills-container::-webkit-scrollbar { display: none; }
+                
+                .nav-pills-container button {
+                    flex-shrink: 0;
+                    white-space: nowrap;
+                }
+
+                @media (min-width: 1024px) {
+                    .nav-pills-container { justify-content: center; flex-wrap: wrap; }
+                }
+
                 .pill-hover:hover { background: #F1F5F9 !important; transform: translateY(-2px); }
+                
+                .calculator-card {
+                    padding: 4rem 3.5rem;
+                    border-radius: 40px;
+                    background: white;
+                    position: relative;
+                    box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+                    border: 1px solid rgba(0,0,0,0.01);
+                }
+
+                .module-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 3.5rem;
+                    border-bottom: 1px solid #F1F5F9;
+                    padding-bottom: 2rem;
+                    gap: 1.5rem;
+                }
+
+                .module-title {
+                    font-size: clamp(1.8rem, 4vw, 2.4rem);
+                    fontWeight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                    letter-spacing: -0.02em;
+                }
+
+                .module-desc {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--text-muted);
+                    font-size: clamp(0.9rem, 1.1vw, 1rem);
+                }
+
+                .status-dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: var(--secondary);
+                    flex-shrink: 0;
+                }
+
+                .module-icon-box {
+                    width: clamp(50px, 8vw, 70px);
+                    height: clamp(50px, 8vw, 70px);
+                    border-radius: 20px;
+                    background: #EFF6FF;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--secondary);
+                    box-shadow: inset 0 2px 10px rgba(59, 130, 246, 0.1);
+                    flex-shrink: 0;
+                }
+
+                .formula-input-wrapper {
+                    display: flex;
+                    gap: 1rem;
+                }
+
+                .formula-input-wrapper input { flex: 1; }
+
+                .grid-responsive-2 {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2.5rem;
+                }
+
+                .grid-responsive-3 {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 1.5rem;
+                }
+
+                .metric-box {
+                    text-align: center;
+                }
+
+                .metric-value {
+                    font-size: clamp(1.8rem, 3vw, 2.2rem);
+                    font-weight: 900;
+                    color: var(--primary);
+                }
+
+                .hwe-status {
+                    marginTop: 2rem;
+                    padding: 1rem;
+                    background: #F1F5F9;
+                    border-radius: 12px;
+                    color: var(--secondary);
+                    fontWeight: 800;
+                    fontSize: 1rem;
+                }
+
+                @media (max-width: 768px) {
+                    .calculator-card { padding: 2rem 1.5rem; }
+                    .module-header { flex-direction: column; align-items: flex-start; text-align: left; }
+                    .module-icon-box { order: -1; }
+                    .formula-input-wrapper { flex-direction: column; }
+                    .formula-input-wrapper button { padding: 1.2rem; }
+                    .grid-responsive-2, .grid-responsive-3 { grid-template-columns: 1fr; gap: 1.5rem; }
+                    .result-value { font-size: clamp(3rem, 10vw, 4.5rem); }
+                }
+
                 .input-group-modern { display: flex; flex-direction: column; gap: 0.8rem; }
                 .input-group-modern label { font-size: 0.85rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; }
-                .input-group-modern input, .input-group-modern textarea { padding: 1.2rem; border-radius: 16px; border: 2px solid #F1F5F9; font-size: 1rem; outline: none; transition: all 0.2s; background: #F8FAFC; }
+                .input-group-modern input, .input-group-modern textarea { padding: 1.2rem; border-radius: 16px; border: 2px solid #F1F5F9; font-size: 1rem; outline: none; transition: all 0.2s; background: #F8FAFC; width: 100%; }
                 .input-group-modern input:focus, .input-group-modern textarea:focus { border-color: var(--secondary); background: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.05); }
                 .result-card { padding: 3rem 2.5rem; background: #F8FAFC; border-radius: 32px; border: 1px solid #E2E8F0; text-align: center; margin-top: 3.5rem; }
                 .result-label { font-size: 0.85rem; font-weight: 800; color: var(--text-muted); margin-bottom: 1.2rem; letter-spacing: 0.1em; }
                 .result-value { font-size: 4.5rem; font-weight: 900; color: var(--primary); letter-spacing: -0.04em; }
-                .result-value span { font-size: 1.4rem; font-weight: 700; color: var(--secondary); margin-left: 0.5rem; }
+                .result-value span { font-size: clamp(1rem, 1.4vw, 1.4rem); font-weight: 700; color: var(--secondary); margin-left: 0.5rem; }
                 .success { border-color: #BBF7D0; }
                 .warning { border-color: #FECACA; }
                 .btn-modern-back:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--secondary); }

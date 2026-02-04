@@ -98,9 +98,17 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
-                  <div>
-                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: '1.1' }}>Building a Sustainable Scientific Future Together</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems: 'center', marginBottom: '5rem' }}>
+                  <div style={{ position: 'relative', width: '100%', maxWidth: '750px' }}>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      style={{ padding: '1rem', borderRadius: '48px', background: 'white', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
+                    >
+                      <img src="/assets/about_overview.jpg" alt="Lab Research" style={{ width: '100%', borderRadius: '40px' }} />
+                    </motion.div>
+                  </div>
+                  <div style={{ maxWidth: '900px' }}>
+                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: '1.1', textAlign: 'center' }}>Building a Sustainable Scientific Future Together</h2>
                     <div style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.15rem' }}>
                       <p style={{ marginBottom: '1.5rem' }}>
                         Micrylis was founded on the belief that scientific excellence and environmental stewardship are complementary, not competing, values. Our sustainable pipette tips prove that laboratories need not choose between research quality and planetary health. With equivalent performance, competitive pricing, and comprehensive end-of-life management, the barriers to sustainable laboratory practice are falling.
@@ -127,14 +135,6 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                         While proprietary methods remain confidential, our core ethos embraces sustainable manufacturing practices, including reduced waste generation, energy optimized processes, and minimized packaging burden.
                       </p>
                     </div>
-                  </div>
-                  <div style={{ position: 'relative' }}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      style={{ padding: '1rem', borderRadius: '48px', background: 'white', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
-                    >
-                      <img src="/assets/about_overview.jpg" alt="Lab Research" style={{ width: '100%', borderRadius: '40px' }} />
-                    </motion.div>
                   </div>
                 </div>
 
@@ -260,7 +260,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                   <motion.img
                     src="/assets/home_sustainability.jpg"
                     alt="Research Applications"
-                    style={{ maxWidth: '800px', width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
+                    style={{ maxWidth: '600px', width: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2 }}
@@ -315,50 +315,52 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                     fontSize: '1.1rem',
                     boxShadow: '0 10px 25px rgba(30,58,138,0.2)'
                   }}>
-                    R&D
+                    Research and Development
                   </div>
                 </div>
 
-                <h2 style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '4rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>R&D Workstreams</h2>
+                <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 900, textAlign: 'center', letterSpacing: '-0.02em' }}>Research and Development</h2>
                 <div style={{ maxWidth: '900px', margin: '0 auto', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                  <p style={{ marginBottom: '2.5rem' }}>Our ongoing R&D efforts focus on realizing the vision of sustainable liquid handling. Key workstreams include:</p>
+                  <p style={{ marginBottom: '1.5rem' }}>Our ongoing Research and Development efforts focus on realizing the vision of sustainable liquid handling. Key workstreams include:</p>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Prototype Testing</h3>
-                      <p>Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.</p>
-                    </section>
-
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Manufacturing Scale-Up</h3>
-                      <p>Moving from lab-scale molding to pilot production involves building high-precision molds and process controls. We are establishing clean production facilities and planning for future automation. Quality control is a priority: in-line cameras and calibration rigs will be used to verify tip geometry and performance on every batch.</p>
-                    </section>
-
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Eco-Certification & Analysis</h3>
-                      <p>We perform life-cycle analyses (LCA) to quantify CO₂ and waste reductions versus conventional tips. We aim to earn eco-labels (e.g. independent certifications of environmental impact) to validate our sustainability claims. This parallels how industry leaders engage in green initiatives; for instance, some have invested in closed-loop recycling and renewable-energy manufacturing, and Micrylis will pursue similar green practices.</p>
-                    </section>
-
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Expansion and Collaboration</h3>
-                      <p>We are exploring partnerships with academic labs and environmental agencies to pilot our tips in real-world studies. Plans include developing multichannel tips and integration with automated pipetting systems. In the near future we will break ground on a larger production facility, expand our team of scientists and engineers, and scale from thousands to millions of tips per month.</p>
-                    </section>
-                  </div>
-
-                  <p style={{ marginTop: '3rem', fontStyle: 'italic', borderLeft: '4px solid var(--secondary)', paddingLeft: '1.5rem' }}>
-                    Overall, our R&D strategy mirrors the innovation-led culture of labware incumbents but is singularly focused on sustainability. We will continually refine our products and processes, with a goal to rapidly scale up as soon as prototypes are validated.
-                  </p>
-
-                  <div style={{ marginTop: '5rem', textAlign: 'center' }}>
+                  <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
                     <motion.img
                       src="/assets/about_rd.png"
-                      alt="R&D Innovation"
-                      style={{ maxWidth: '100%', borderRadius: '48px', boxShadow: '0 20px 60px rgba(0,0,0,0.1)' }}
+                      alt="Research and Development Innovation"
+                      style={{ maxWidth: '100%', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     />
                   </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>a. Prototype Testing</h3>
+                      <p>Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.</p>
+                    </section>
+
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>b. Manufacturing Scale-Up</h3>
+                      <p>Moving from lab-scale molding to pilot production involves building high-precision molds and process controls. We are establishing clean production facilities and planning for future automation. Quality control is a priority: in-line cameras and calibration rigs will be used to verify tip geometry and performance on every batch.</p>
+                    </section>
+
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>c. Eco-Certification & Analysis</h3>
+                      <p>We perform life-cycle analyses (LCA) to quantify CO₂ and waste reductions versus conventional tips. We aim to earn eco-labels (e.g. independent certifications of environmental impact) to validate our sustainability claims. This parallels how industry leaders engage in green initiatives; for instance, some have invested in closed-loop recycling and renewable-energy manufacturing, and Micrylis will pursue similar green practices.</p>
+                    </section>
+
+                    <section>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>d. Expansion and Collaboration</h3>
+                      <p>We are exploring partnerships with academic labs and environmental agencies to pilot our tips in real-world studies. Plans include developing multichannel tips and integration with automated pipetting systems. In the near future we will break ground on a larger production facility, expand our team of scientists and engineers, and scale from thousands to millions of tips per month.</p>
+                    </section>
+                  </div>
+
+                  <p style={{ marginTop: '2.5rem', fontStyle: 'italic', borderLeft: '4px solid var(--secondary)', paddingLeft: '1.5rem' }}>
+                    Overall, our Research and Development strategy mirrors the innovation-led culture of labware incumbents but is singularly focused on sustainability. We will continually refine our products and processes, with a goal to rapidly scale up as soon as prototypes are validated.
+                  </p>
+
+
                 </div>
               </div>
             )}
@@ -586,7 +588,7 @@ function App() {
                 <Beaker size={16} /> Applications
               </a>
               <a href="#about" className="dropdown-item" onClick={() => { setPage('about'); setAboutSection('rd'); window.location.hash = 'about'; setIsMobileMenuOpen(false); }}>
-                <Activity size={16} /> R&D
+                <Activity size={16} /> Research and Development
               </a>
             </div>
           </div>
@@ -707,7 +709,7 @@ function App() {
 
                   <div style={{ display: 'flex', gap: '1.2rem', marginBottom: '3.5rem', flexWrap: 'wrap' }}>
                     <button
-                      onClick={() => { setPage('about'); window.location.hash = 'about'; }}
+                      onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
                       className="btn-primary"
                       style={{
                         padding: '1rem 2.2rem',
