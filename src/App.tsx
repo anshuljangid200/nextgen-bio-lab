@@ -811,48 +811,21 @@ function App() {
               >
                 <div style={{
                   position: 'relative',
-                  paddingBottom: '56.25%',
-                  background: 'linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%)',
+                  width: '100%',
+                  aspectRatio: '16 / 9',
+                  background: 'black',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    textAlign: 'center',
-                    color: 'white'
-                  }}>
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      style={{
-                        width: '80px',
-                        height: '80px',
-                        borderRadius: '50%',
-                        background: 'rgba(255, 255, 255, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 1.5rem',
-                        cursor: 'pointer',
-                        backdropFilter: 'blur(10px)'
-                      }}
-                    >
-                      <div style={{
-                        width: '0',
-                        height: '0',
-                        borderLeft: '20px solid white',
-                        borderTop: '12px solid transparent',
-                        borderBottom: '12px solid transparent',
-                        marginLeft: '5px'
-                      }}></div>
-                    </motion.div>
-                    <h3 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', fontWeight: 700 }}>Demo Video Coming Soon</h3>
-                    <p style={{ fontSize: '1rem', opacity: 0.9 }}>Watch how our model revolutionizes biotechnology research</p>
-                  </div>
+                  <video
+                    controls
+                    style={{ width: '100%', height: '100%', borderRadius: '0' }}
+                    poster="/assets/solutions_lab.png"
+                  >
+                    <source src="/assets/demo_video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </motion.div>
 
