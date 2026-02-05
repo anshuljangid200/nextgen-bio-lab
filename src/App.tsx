@@ -1444,14 +1444,12 @@ function App() {
               <h4 className="footer-heading">CONNECT</h4>
               <div className="footer-social-box">
                 <a href="https://www.linkedin.com/in/micrylis-biotech-a4a4063aa/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> LinkedIn</a>
-                <a href="https://www.linkedin.com/in/anshul-jangid-78a406256/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> Developer</a>
-                <a href="mailto:anshuljangid200@gmail.com" className="social-pill"><Mail size={18} /> Email</a>
+                <a href="mailto:contact@micrylisbiotech.com" className="social-pill"><Mail size={18} /> Email</a>
               </div>
             </div>
           </div>
           <div className="footer-bottom" style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: 'var(--text-muted)', gap: '1.5rem', flexWrap: 'wrap' }}>
             <p>© 2026 Micrylis Biotech. Precision biology, purpose built.</p>
-            <p>Designed & Developed by <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Anshul Jangid</span></p>
           </div>
         </div>
       </footer>
