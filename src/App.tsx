@@ -101,7 +101,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems: 'center', marginBottom: '5rem' }}>
-                  <div style={{ position: 'relative', width: '100%', maxWidth: '750px' }}>
+                  <div style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       style={{ padding: '1rem', borderRadius: '48px', background: 'white', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
@@ -1443,7 +1443,8 @@ function App() {
             <div className="footer-links-column">
               <h4 className="footer-heading">CONNECT</h4>
               <div className="footer-social-box">
-                <a href="https://www.linkedin.com/in/anshul-jangid-78a406256/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> LinkedIn</a>
+                <a href="https://www.linkedin.com/in/micrylis-biotech-a4a4063aa/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> LinkedIn</a>
+                <a href="https://www.linkedin.com/in/anshul-jangid-78a406256/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> Developer</a>
                 <a href="mailto:anshuljangid200@gmail.com" className="social-pill"><Mail size={18} /> Email</a>
               </div>
             </div>
