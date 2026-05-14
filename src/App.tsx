@@ -28,7 +28,7 @@ const teamMembers = [
     bio: "Architecting the intersection of Artificial Intelligence And Data Science. Certified Cyber Cadet with a mission to secure the future of biometric data.",
     linkedin: "#",
   },
-  {
+  /*{
     name: "Samrat",
     role: "Microbiology Scholar",
     image: "/assets/samrat.png",
@@ -62,7 +62,7 @@ const teamMembers = [
     image: "/assets/anshul_new.jpg",
     bio: "Chief Technology Architect and Lead Developer. Responsible for building the entire Micrylis Biotech digital ecosystem and managing the end-to-end technology infrastructure.",
     linkedin: "https://www.linkedin.com/in/anshul-jangid-78a406256/",
-  }
+  }*/
 ];
 
 const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) => {
@@ -1429,14 +1429,14 @@ function App() {
             <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
               <h4 className="footer-heading no-line">SOLUTIONS</h4>
               <ul className="footer-links-list">
-                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('solutions'); window.location.hash = 'solutions'; }} className="footer-link">Our Product</li>
+                <li style={{ cursor: 'pointer' }} onClick={() => {setPage('solutions'); window.location.hash = 'solutions'; window.scrollTo({ top: 0, behavior: 'smooth'});}} className="footer-link" > Our Product </li>
               </ul>
             </div>
             <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
               <h4 className="footer-heading no-line">COMPANY</h4>
               <ul className="footer-links-list">
-                <li onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }} className="footer-link">About Us</li>
-                <li onClick={() => { setPage('pioneers'); window.location.hash = 'pioneers'; }} className="footer-link">Our Team</li>
+                <li onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="footer-link"> About Us</li>
+                <li onClick={() => { setPage('pioneers'); window.location.hash = 'pioneers'; window.scrollTo({ top: 0,behavior: 'smooth'});}} className="footer-link"> Our Team</li>
                 <li className="footer-link">Certifications</li>
               </ul>
             </div>
