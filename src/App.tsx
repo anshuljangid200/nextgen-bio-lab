@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Linkedin, ChevronRight, Beaker, Dna, Calculator, Activity, FileText, Target, Users, X, Menu, RotateCcw, Check } from 'lucide-react';
+import { Mail, Linkedin, Instagram, ChevronRight, Beaker, Dna, Calculator, Activity, FileText, Target, Users, X, Menu, RotateCcw, Check } from 'lucide-react';
 import { ThreeScene } from './components/ThreeScene';
 import { Calculators } from './Calculators';
-import { ChatBot } from './components/ChatBot';
+//import { ChatBot } from './components/ChatBot';
 import './App.css';
 
 const teamMembers = [
@@ -17,7 +17,7 @@ const teamMembers = [
   {
     name: "Foram Mokani",
     role: "Co-Founder",
-    image: "/assets/logo.png",
+    image: "/assets/foram.jpeg",
     bio: "Pioneering research in Molecular Biology and Bioprocessing. Expertise in neurodegenerative pathways and innovative algal-based health solutions.",
     linkedin: "https://www.linkedin.com/in/foram-mokani-493831242/",
   },
@@ -187,7 +187,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                     Sustainability is not a marketing message for Micrylis - it is the core of our business model and the reason we exist. We believe that the transition to a circular, carbon-neutral economy is both an environmental imperative and an economic opportunity. Our comprehensive approach addresses every aspect of the product lifecycle:
                   </p>
 
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0' }}>
                     <motion.img
                       src="/assets/about_sustainability.png"
                       alt="Sustainable Lifecycle"
@@ -198,34 +198,34 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                     />
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     <section>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
                       <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse—agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
                     </section>
 
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Carbon-Neutral Manufacturing</h3>
+                    <section style={{ marginBottom: '-100px' }}>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, }}>b. Carbon-Neutral Manufacturing</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Renewable Energy:</strong> Our manufacturing facilities are powered by 100% renewable electricity sourced from wind and solar farms.</p>
                       <p><strong>Carbon Offset Programs:</strong> For unavoidable emissions (employee commuting, business travel), we invest in verified carbon offset projects including reforestation initiatives and renewable energy development in emerging economies. We prioritize projects that provide co-benefits such as biodiversity conservation and community development.</p>
                     </section>
 
-                    <section>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>c. Water Stewardship</h3>
+                    <section style={{ marginBottom: '-100px' }}>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, }}>c. Water Stewardship</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Closed-Loop Water Systems:</strong> Advanced water recycling technology allows us to recirculate 95% of process water. Cooling water is continuously filtered and reused, while wash water undergoes membrane filtration and UV treatment before reintroduction to the process.</p>
                       <p style={{ marginBottom: '1rem' }}><strong>Water Quality Monitoring:</strong> Real-time monitoring ensures that any discharge meets or exceeds local water quality standards. Annual third-party audits verify compliance with environmental regulations.</p>
                       <p><strong>Rainwater Harvesting:</strong> Facility rooftops are equipped with rainwater collection systems that capture precipitation for use in landscaping and non-process applications, reducing demand on municipal water supplies.</p>
                     </section>
 
-                    <section>
+                    <section style={{ marginBottom: '-100px' }}>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>d. Zero Waste Manufacturing</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Material Recovery:</strong> Production scrap (runners, rejected parts) is collected and reprocessed back into feedstock for non-critical components, achieving 98% material utilization efficiency.</p>
                       <p style={{ marginBottom: '1rem' }}><strong>Packaging Minimization:</strong> We have systematically reduced packaging materials by 85% through innovations such as biodegradable racks, reload systems, and elimination of inner plastic bags.</p>
                       <p><strong>Supplier Take-Back:</strong> We work with packaging suppliers who accept returns of excess or damaged packaging materials for recycling, ensuring nothing goes to landfill.</p>
                     </section>
 
-                    <section>
+                    <section style={{ marginBottom: '-100px' }}>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>e. Continuous Improvement and Transparency</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Annual Sustainability Report:</strong> We publish a comprehensive annual report documenting our environmental performance including carbon emissions, water usage, waste diversion, and progress toward sustainability goals. This report is independently verified and publicly available.</p>
                       <p style={{ marginBottom: '1rem' }}><strong>Science-Based Targets:</strong> Our emissions reduction targets are aligned with the Paris Agreement's goal of limiting global temperature rise to 1.5°C. We have committed to achieving net-zero emissions across our value chain by 2050.</p>
@@ -756,10 +756,10 @@ const ProductSection = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
           {products.map((product) => (
-            <div key={product.id} className="product-row" style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1.2fr', 
-              gap: '2rem', 
+            <div key={product.id} className="product-row" style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1.2fr',
+              gap: '2rem',
               alignItems: 'center',
               padding: '1.5rem',
               borderRadius: '32px',
@@ -767,7 +767,7 @@ const ProductSection = () => {
               border: '1px solid rgba(0,0,0,0.03)',
               transition: 'all 0.3s ease'
             }}>
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
                 style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.08)', background: 'white' }}
               >
@@ -779,7 +779,7 @@ const ProductSection = () => {
                 <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
                   {product.shortDesc}
                 </p>
-                
+
                 <AnimatePresence>
                   {expandedProduct === product.id && (
                     <motion.div
@@ -792,7 +792,7 @@ const ProductSection = () => {
                       <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '1.5rem', marginTop: '1rem' }}>
                         <h4 style={{ color: 'var(--primary)', marginBottom: '0.8rem', fontWeight: 700 }}>About this product</h4>
                         <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>{product.details.about}</p>
-                        
+
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                           <div>
                             <h4 style={{ color: 'var(--primary)', marginBottom: '0.8rem', fontWeight: 700 }}>Key Features</h4>
@@ -821,9 +821,9 @@ const ProductSection = () => {
                   )}
                 </AnimatePresence>
 
-                <button 
+                <button
                   onClick={() => setExpandedProduct(expandedProduct === product.id ? null : product.id)}
-                  style={{ 
+                  style={{
                     marginTop: '1.5rem',
                     background: 'none',
                     border: 'none',
@@ -837,7 +837,7 @@ const ProductSection = () => {
                     padding: 0
                   }}
                 >
-                  {expandedProduct === product.id ? 'Show Less' : 'Read More'} 
+                  {expandedProduct === product.id ? 'Show Less' : 'Read More'}
                   <motion.div animate={{ rotate: expandedProduct === product.id ? 180 : 0 }}>
                     <ChevronRight size={18} />
                   </motion.div>
@@ -927,7 +927,7 @@ function App() {
         </div>
         <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <a href="#" onClick={(e) => { e.preventDefault(); setPage('home'); window.location.hash = ''; setIsMobileMenuOpen(false); }} style={{ color: page === 'home' ? 'var(--secondary)' : 'inherit' }}>HOME</a>
-          <a href="#products" onClick={(e) => { e.preventDefault(); setPage('products'); window.location.hash = 'products'; setIsMobileMenuOpen(false); }} style={{ color: page === 'products' ? 'var(--secondary)' : 'inherit' }}>PRODUCTS</a>
+          <a href="#solutions" onClick={() => { setPage('solutions'); window.location.hash = 'solutions'; setIsMobileMenuOpen(false); }} style={{ color: page === 'solutions' ? 'var(--secondary)' : 'inherit' }}>SOLUTIONS</a>
           <div className="dropdown">
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'about' ? 'var(--secondary)' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>ABOUT US</a>
             <div className="dropdown-content">
@@ -1133,7 +1133,7 @@ function App() {
             </div>
           </section>
 
-          <section id="demo" style={{ background: '#F8FAFC', padding: '5rem 0' }}>
+          <section id="demo" style={{ background: '#F8FAFC', padding: '3rem 0' }}>
             <div className="container">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -1368,9 +1368,9 @@ function App() {
           </section>
 
           {/* Applications Section */}
-          <section id="applications" style={{ padding: '5rem 0', background: '#FFFFFF' }}>
+          <section id="applications" style={{ padding: '3rem 0', background: '#FFFFFF' }}>
             <div className="container">
-              <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+              <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Applications</div>
                 <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
                   Versatility Meets <span className="gradient-text">Precision</span>
@@ -1412,7 +1412,7 @@ function App() {
           </section>
 
           {/* Why Micrylis Section (Moved Up) */}
-          <section id="why-micrylis" style={{ padding: '10rem 0', background: '#FFFFFF' }}>
+          <section id="why-micrylis" style={{ padding: '3rem 0', background: '#FFFFFF' }}>
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Value Proposition</div>
@@ -1466,7 +1466,7 @@ function App() {
           </section>
 
           {/* Research & Development Section (Moved Down) */}
-          <section id="rd" style={{ padding: '5rem 0', background: 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)' }}>
+          <section id="rd" style={{ padding: '3rem 0', background: 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)' }}>
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Research & Development</div>
@@ -1508,7 +1508,7 @@ function App() {
           </section>
 
           {/* Resources and Support Section */}
-          <section id="resources" style={{ padding: '10rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)' }}>
+          <section id="resources" style={{ padding: '5rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)' }}>
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Resources & Support</div>
@@ -1541,7 +1541,7 @@ function App() {
             </div>
           </section>
 
-          <section id="sustainable-future" style={{ padding: '8rem 0', background: '#FFFFFF' }}>
+          <section id="sustainable-future" style={{ padding: '5rem 0', background: '#FFFFFF' }}>
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Vision</div>
@@ -1567,7 +1567,7 @@ function App() {
             </div>
           </section>
 
-          <section style={{ padding: '5rem 0', background: '#FFFFFF' }}>
+          <section style={{ padding: '3rem 0', background: '#FFFFFF' }}>
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
                 <div>
@@ -1672,7 +1672,7 @@ function App() {
         </>
       )}
 
-      <footer>
+      <footer style={{ marginTop: '4rem' }}>
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand-section">
@@ -1686,28 +1686,29 @@ function App() {
                     objectFit: 'contain'
                   }}
                 />
-                <span className="footer-logo-text">MICRYLIS BIOTECH</span>
+                <span className="footer-logo-text" > MICRYLIS BIOTECH </span>
               </div>
             </div>
-            <div className="footer-links-column">
-              <h4 className="footer-heading">SOLUTIONS</h4>
+            <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
+              <h4 className="footer-heading no-line">SOLUTIONS</h4>
               <ul className="footer-links-list">
-                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('products'); window.location.hash = 'products'; }} className="footer-link">Our Products</li>
+                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('home'); setTimeout(() => { document.getElementById('applications')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }} className="footer-link">Our Product</li>
               </ul>
             </div>
-            <div className="footer-links-column">
-              <h4 className="footer-heading">COMPANY</h4>
+            <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
+              <h4 className="footer-heading no-line">COMPANY</h4>
               <ul className="footer-links-list">
                 <li onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }} className="footer-link">About Us</li>
                 <li onClick={() => { setPage('pioneers'); window.location.hash = 'pioneers'; }} className="footer-link">Our Team</li>
                 <li className="footer-link">Certifications</li>
               </ul>
             </div>
-            <div className="footer-links-column">
-              <h4 className="footer-heading">CONNECT</h4>
+            <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
+              <h4 className="footer-heading no-line">CONNECT</h4>
               <div className="footer-social-box">
-                <a href="https://www.linkedin.com/in/micrylis-biotech-a4a4063aa/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> LinkedIn</a>
                 <a href="mailto:contact@micrylisbiotech.com" className="social-pill"><Mail size={18} /> Email</a>
+                <a href="https://www.linkedin.com/in/micrylis-biotech-a4a4063aa/" target="_blank" rel="noopener noreferrer" className="social-pill"><Linkedin size={18} /> LinkedIn</a>
+                <a href="https://www.instagram.com/micrylis" target="_blank" rel="noopener noreferrer" className="social-pill"><Instagram size={18} /> Instagram </a>
               </div>
             </div>
           </div>
@@ -1716,8 +1717,6 @@ function App() {
           </div>
         </div>
       </footer>
-
-      <ChatBot />
 
       {isContactOpen && (
         <div className="modal-overlay" onClick={() => setIsContactOpen(false)}>
