@@ -628,7 +628,7 @@ const ProductSection = () => {
     },
     {
       id: 2,
-      name: "MCT / Micro-Centrifuge Tube",
+      name: " Micro-Centrifuge Tube",
       shortDesc: "Precision-certified for centrifugation up to 25,000 x g. RNase-free, DNase-free, and non-cytotoxic for critical molecular workflows.",
       image: "/assets/2.jpg",
       details: {
@@ -697,7 +697,7 @@ const ProductSection = () => {
     },
     {
       id: 5,
-      name: "Petri Plate Cell Culture & Microbiology Dish",
+      name: "Petri Plate",
       shortDesc: "Crystal-clear plates available in 60 mm and 90 mm formats. UV-treated hydrophilic surface for uniform cell adhesion.",
       image: "/assets/5.jpg",
       details: {
@@ -719,7 +719,7 @@ const ProductSection = () => {
     },
     {
       id: 6,
-      name: "Beaker Eco-Polymer Laboratory Beaker",
+      name: "Beaker",
       shortDesc: "Heat-resistant beakers in 50 mL to 500 mL formats. Designed for rock-solid stability and stir bar compatibility.",
       image: "/assets/6.jpg",
       details: {
@@ -1267,7 +1267,7 @@ function App() {
           {/* Redesigned Material Innovation Section */}
           <section id="solutions" style={{ padding: '6rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)', position: 'relative' }}>
             <div className="container">
-              <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center',  justifyItems: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -1318,7 +1318,7 @@ function App() {
                   </motion.div>
                 </div>
                 <div>
-                  <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Sustainability</div>
+                  <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center' }}>Sustainability</div>
                   <h2 style={{ fontSize: 'clamp(3rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
                     Engineering a <span className="gradient-text">Greener Lab</span>
                   </h2>
@@ -1478,7 +1478,7 @@ function App() {
                 </p>
               </div>
 
-              <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)', textAlign: 'center' }}>
+              <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)', textAlign: 'left' }}>
                 <p style={{ marginBottom: '2rem' }}>Our R&D strategy emphasizes continuous innovation across several key areas to ensure we remain at the forefront of sustainable laboratory technology. We focus on fine-tuning tip geometry to enhance hydrophobicity and reduce liquid retention, while simultaneously expanding compatibility across diverse pipette brands and automated liquid-handling platforms.</p>
 
                 <p style={{ marginBottom: '2rem' }}>In the realm of material science, we are dedicated to identifying and integrating sustainable feedstocks and advanced manufacturing processes. Our team conducts comprehensive life cycle impact assessments to scientifically benchmark our products against conventional consumables, ensuring measurable environmental benefits.</p>
@@ -1567,7 +1567,7 @@ function App() {
             </div>
           </section>
 
-          <section style={{ padding: '3rem 0', background: '#FFFFFF' }}>
+          {/* <section style={{ padding: '3rem 0', background: '#FFFFFF' }}>
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
                 <div>
@@ -1597,7 +1597,7 @@ function App() {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* New Interactive CTA Section */}
           <section style={{ padding: '4rem 0 6rem', background: '#FFFFFF' }}>
@@ -1692,7 +1692,7 @@ function App() {
             <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
               <h4 className="footer-heading no-line">SOLUTIONS</h4>
               <ul className="footer-links-list">
-                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('solutions'); window.location.hash = 'solutions'; }} className="footer-link">Our Product</li>
+                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('products'); window.location.hash = 'products'; window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="footer-link">Our Product</li>
               </ul>
             </div>
             <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
