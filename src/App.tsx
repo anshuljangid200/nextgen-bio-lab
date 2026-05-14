@@ -69,7 +69,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
 
   return (
     <div style={{ background: '#F4F7FA', minHeight: '100vh' }}>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container about-page-content" style={{ paddingTop: '10rem', paddingBottom: '5rem' }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container about-page-content" style={{ paddingTop: '8rem', paddingBottom: '3rem' }}>
 
 
 
@@ -100,7 +100,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems: 'center', marginBottom: '5rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center', marginBottom: '5rem' }}>
                   <div style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
                     <motion.div
                       whileHover={{ scale: 1.02 }}
@@ -142,7 +142,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
 
                 <div style={{ marginBottom: '4rem' }}>
                   <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--primary)', marginBottom: '3rem', fontWeight: 900, letterSpacing: '-0.02em' }}>Our Core Values</h2>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
                     {[
                       { icon: <FileText size={36} />, title: "Precision Quality", desc: "Adhering to strict global ISO standards, ensuring every pipette meets rigorous volumetric accuracy." },
                       { icon: <Users size={36} />, title: "Scientific Partnership", desc: "We partner with elite scholars to understand the evolving needs of modern high-throughput labs." },
@@ -198,21 +198,21 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                     />
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                    <section style={{ marginBottom: '-100px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                    <section>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
                       <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse—agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
                     </section>
 
                     <section style={{ marginBottom: '-100px' }}>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800,}}>b. Carbon-Neutral Manufacturing</h3>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, }}>b. Carbon-Neutral Manufacturing</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Renewable Energy:</strong> Our manufacturing facilities are powered by 100% renewable electricity sourced from wind and solar farms.</p>
                       <p><strong>Carbon Offset Programs:</strong> For unavoidable emissions (employee commuting, business travel), we invest in verified carbon offset projects including reforestation initiatives and renewable energy development in emerging economies. We prioritize projects that provide co-benefits such as biodiversity conservation and community development.</p>
                     </section>
 
                     <section style={{ marginBottom: '-100px' }}>
-                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800,}}>c. Water Stewardship</h3>
+                      <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, }}>c. Water Stewardship</h3>
                       <p style={{ marginBottom: '1rem' }}><strong>Closed-Loop Water Systems:</strong> Advanced water recycling technology allows us to recirculate 95% of process water. Cooling water is continuously filtered and reused, while wash water undergoes membrane filtration and UV treatment before reintroduction to the process.</p>
                       <p style={{ marginBottom: '1rem' }}><strong>Water Quality Monitoring:</strong> Real-time monitoring ensures that any discharge meets or exceeds local water quality standards. Annual third-party audits verify compliance with environmental regulations.</p>
                       <p><strong>Rainwater Harvesting:</strong> Facility rooftops are equipped with rainwater collection systems that capture precipitation for use in landscaping and non-process applications, reducing demand on municipal water supplies.</p>
@@ -269,7 +269,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                   />
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>
                   <section>
                     <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Molecular Biology</h3>
                     <p style={{ marginBottom: '1rem' }}><strong>DNA and RNA Work:</strong> Precise transfer of nucleic acid samples is essential for applications including PCR amplification, gene cloning, sequencing library preparation, and real-time qPCR. Micrylis filter tips provide aerosol barrier protection to prevent cross-contamination while maintaining the sterility and purity required for these sensitive techniques. Our tips are certified RNase-free and DNase-free, ensuring sample integrity.</p>
@@ -336,7 +336,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                     />
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <section>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>a. Prototype Testing</h3>
                       <p>Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.</p>
@@ -498,96 +498,359 @@ const PioneersPage = () => (
 );
 
 
-const SolutionsPage = () => (
+const ProductsPage = () => (
   <div style={{ background: '#F8FAFC', minHeight: '100vh', paddingTop: 'clamp(6rem, 15vw, 10rem)', paddingBottom: '7rem' }}>
     <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        style={{ textAlign: 'center', marginBottom: '5rem' }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.2em' }}>
-          <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
-          OUR SOLUTIONS
-          <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
-        </div>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.04em', marginBottom: '1.5rem' }}>
-          Precision Intelligence <br /> meets <span className="gradient-text">Eco-Innovation</span>
-        </h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7', fontWeight: 500 }}>
-          Our pipette tips represent the intersection of analytical precision and ecological innovation.
-        </p>
-      </motion.div>
+      {/* Product Portfolio at the top */}
+      <ProductSection />
 
-      <div className="grid-responsive-2" style={{ alignItems: 'start' }}>
+      {/* Solutions content below */}
+      <div style={{ marginTop: '8rem' }}>
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          style={{ textAlign: 'center', marginBottom: '5rem' }}
         >
-          <div style={{ padding: '3rem', background: 'white', borderRadius: '40px', boxShadow: '0 20px 50px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)' }}>
-            <h2 style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 800 }}>Scientific Design & Quality</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.8' }}>
-              Micrylis tips are engineered to meet the highest standards of scientific accuracy and reproducibility.
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
-              {[
-                "Achieve consistent liquid handling performance with minimal coefficient of variation.",
-                "Ensure tight fit and minimal leakage across major micropipette platforms.",
-                "Maintain chemical inertness, low retention, and smooth internal geometry for accurate sample transfer."
-              ].map((item, i) => (
-                <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px', flexShrink: 0 }}>
-                    <Check size={14} color="var(--secondary)" />
-                  </div>
-                  <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.05rem', lineHeight: '1.5' }}>{item}</p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ padding: '2rem', background: '#F8FAFC', borderRadius: '24px', borderLeft: '4px solid var(--secondary)' }}>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7', fontStyle: 'italic' }}>
-                Traditional industry leaders emphasize stringent quality control, precision molding, and materials engineered for repeatability and clarity in pipetting tasks. Pipette consumables from global suppliers are broadly validated for compatibility with high-accuracy requirements in research and diagnostics.
-              </p>
-            </div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.2em' }}>
+            <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
+            OUR SOLUTIONS
+            <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
           </div>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.04em', marginBottom: '1.5rem' }}>
+            Precision Intelligence <br /> meets <span className="gradient-text">Eco-Innovation</span>
+          </h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7', fontWeight: 500 }}>
+            Our pipette tips represent the intersection of analytical precision and ecological innovation.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
-        >
-          <div style={{ padding: '2.5rem', background: 'white', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.02)', boxShadow: '0 15px 35px rgba(0,0,0,0.02)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-              <div style={{ padding: '0.8rem', background: 'var(--accent)', borderRadius: '14px' }}>
-                <Activity size={24} color="var(--secondary)" />
+        <div className="grid-responsive-2" style={{ alignItems: 'start' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div style={{ padding: '3rem', background: 'white', borderRadius: '40px', boxShadow: '0 20px 50px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)' }}>
+              <h2 style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 800 }}>Scientific Design & Quality</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.8' }}>
+                Micrylis tips are engineered to meet the highest standards of scientific accuracy and reproducibility.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                {[
+                  "Achieve consistent liquid handling performance with minimal coefficient of variation.",
+                  "Ensure tight fit and minimal leakage across major micropipette platforms.",
+                  "Maintain chemical inertness, low retention, and smooth internal geometry for accurate sample transfer."
+                ].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px', flexShrink: 0 }}>
+                      <Check size={14} color="var(--secondary)" />
+                    </div>
+                    <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.05rem', lineHeight: '1.5' }}>{item}</p>
+                  </div>
+                ))}
               </div>
-              <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800 }}>Manufacturing Focus</h3>
+
+              <div style={{ padding: '2rem', background: '#F8FAFC', borderRadius: '24px', borderLeft: '4px solid var(--secondary)' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7', fontStyle: 'italic' }}>
+                  Traditional industry leaders emphasize stringent quality control, precision molding, and materials engineered for repeatability and clarity in pipetting tasks. Pipette consumables from global suppliers are broadly validated for compatibility with high-accuracy requirements in research and diagnostics.
+                </p>
+              </div>
             </div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7' }}>
-              While proprietary methods remain confidential, our core ethos embraces sustainable manufacturing practices, including reduced waste generation, energy optimized processes, and minimized packaging burden.
-            </p>
-          </div>
+          </motion.div>
 
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            style={{ borderRadius: '32px', overflow: 'hidden', boxShadow: '0 25px 60px rgba(0,0,0,0.1)' }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
           >
-            <img
-              src="/assets/home_sustainability_new.png"
-              alt="Solutions Manufacturing"
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-            />
+            <div style={{ padding: '2.5rem', background: 'white', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.02)', boxShadow: '0 15px 35px rgba(0,0,0,0.02)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ padding: '0.8rem', background: 'var(--accent)', borderRadius: '14px' }}>
+                  <Activity size={24} color="var(--secondary)" />
+                </div>
+                <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800 }}>Manufacturing Focus</h3>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7' }}>
+                While proprietary methods remain confidential, our core ethos embraces sustainable manufacturing practices, including reduced waste generation, energy optimized processes, and minimized packaging burden.
+              </p>
+            </div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              style={{ borderRadius: '32px', overflow: 'hidden', boxShadow: '0 25px 60px rgba(0,0,0,0.1)' }}
+            >
+              <img
+                src="/assets/home_sustainability_new.png"
+                alt="Solutions Manufacturing"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   </div>
 );
+
+
+const ProductSection = () => {
+  const [expandedProduct, setExpandedProduct] = useState<number | null>(null);
+
+  const products = [
+    {
+      id: 1,
+      name: "Animal Cell Culture Flask T-25 & T-75",
+      shortDesc: "Purpose-built for adherent mammalian cell culture with tissue culture treated (TCT) surface for maximum attachment efficiency.",
+      image: "/assets/1.jpg",
+      details: {
+        about: "The Micrylis Biotech Animal Cell Culture Flask is purpose-built for the rigorous demands of adherent mammalian cell culture. Available in T-25 and T-75 formats, each flask features a tissue culture treated (TCT) polystyrene base that maximises cell attachment efficiency for a wide range of adherent cell lines. The CO2-permeable HDPE vent cap — fitted with a 0.2 µm hydrophobic PTFE membrane — maintains optimal gas exchange and pH balance in standard 5% CO2 incubators while providing a sterile barrier against contamination.",
+        features: [
+          "TCT Base Surface: Maximises cell attachment efficiency.",
+          "Angled Neck Design: Enables easy media aspiration without flask inversion.",
+          "Colour-Coded Caps: Blue (T-25) and Red (T-75) prevent size mix-ups.",
+          "CO2-Permeable Vent Cap: Maintains optimal pH in 5% CO2 incubators.",
+          "Translucent Body: Allows direct cell confluency inspection."
+        ],
+        specs: {
+          "Sizes": "T-25 (25 cm²) and T-75 (75 cm²)",
+          "Material": "Treated polystyrene; CO2-permeable HDPE vent cap",
+          "Surface Treatment": "Tissue culture treated (TCT) for adherent cell lines",
+          "Gas Exchange": "Vent cap with 0.2 µm hydrophobic PTFE membrane",
+          "Sterility": "EO-sterilised, individually bagged, mycoplasma-tested"
+        }
+      }
+    },
+    {
+      id: 2,
+      name: "MCT / Micro-Centrifuge Tube",
+      shortDesc: "Precision-certified for centrifugation up to 25,000 x g. RNase-free, DNase-free, and non-cytotoxic for critical molecular workflows.",
+      image: "/assets/2.jpg",
+      details: {
+        about: "The Micrylis Biotech Micro-Centrifuge Tube is engineered for researchers who cannot afford sample compromise. Made from virgin polypropylene with translucent walls and color-coded caps, each tube offers a clear view of your sample while enabling instant visual identification. The integral flat-top snap cap provides both a secure locking seal and a frosted writing surface.",
+        features: [
+          "Frosted writing surface: Direct marker labeling on cap and body.",
+          "Thin wall design: Rapid thermal equilibration for PCR workflows.",
+          "Locking snap cap: Prevents accidental opening at high speeds.",
+          "Wide volume range: 0.2 mL to 2.0 mL options.",
+          "Certified clean: RNase-free, DNase-free, non-cytotoxic."
+        ],
+        specs: {
+          "Volume range": "0.2 mL, 0.5 mL, 1.5 mL, 2.0 mL",
+          "Material": "Virgin polypropylene (PP)",
+          "Centrifugation": "Compatible up to 25,000 x g",
+          "Certification": "RNase-free, DNase-free, non-cytotoxic",
+          "Markings": "Embossed graduated scale; writing area on cap and body"
+        }
+      }
+    },
+    {
+      id: 3,
+      name: "Pipette Tip Box",
+      shortDesc: "Autoclavable, stackable tip box holding 96 tips in a structured grid for organized and sterile workflows.",
+      image: "/assets/3.jpg",
+      details: {
+        about: "The Micrylis Biotech Tip Box is built for zero wasted time at the bench. Made from durable polypropylene with a semi-transparent lid, it lets you check tip count at a glance. The hinged snap-lock design keeps tips secure during autoclaving, while the structural grid maintains perfect tip orientation.",
+        features: [
+          "See-through lid: Check tip count without opening.",
+          "Autoclave-ready: Withstands 121°C / 15 psi for 20 minutes.",
+          "Eco-reload system: Refillable with reload inserts to cut waste.",
+          "Stackable format: Saves bench and storage space.",
+          "Universal compatibility: Works with 10-1000 µL range."
+        ],
+        specs: {
+          "Capacity": "96 tips per box",
+          "Material": "Polypropylene (PP), semi-transparent lid",
+          "Sterilization": "Autoclavable at 121°C / 15 psi",
+          "Design": "Hinged lid with snap-lock; stackable",
+          "Compatibility": "Standard & filtered tips 10-1000 µL"
+        }
+      }
+    },
+    {
+      id: 4,
+      name: "Precision Pipette Tips",
+      shortDesc: "Universal-fit tips certified sterile and eco-friendly. Engineered for accuracy across 10 µL to 1000 µL volumes.",
+      image: "/assets/4.jpg",
+      details: {
+        about: "Micrylis Biotech Pipette Tips are precision-crafted for researchers who demand reliability. Made from translucent eco-polymer polypropylene, these tips offer exceptional clarity and chemical inertness. Available in filtered and non-filtered variants, they adapt perfectly to any workflow.",
+        features: [
+          "Universal Fit: Compatible with most major pipette brands.",
+          "Low Retention: Hydrophobic inner surface minimizes sample loss.",
+          "Eco-Polymer: Sustainable polypropylene with reduced carbon footprint.",
+          "Fully Certified: RNase, DNase, and pyrogen-free.",
+          "Color-Coded: Distinct colors for 10 µL, 200 µL, and 1000 µL."
+        ],
+        specs: {
+          "Volume Range": "10 µL, 200 µL, 1000 µL",
+          "Material": "Eco-polymer polypropylene (PP)",
+          "Tip Style": "Universal fit; filtered & non-filtered",
+          "Retention": "Low-retention hydrophobic inner surface",
+          "Packaging": "Rack-ready, reload system, bulk bag"
+        }
+      }
+    },
+    {
+      id: 5,
+      name: "Petri Plate Cell Culture & Microbiology Dish",
+      shortDesc: "Crystal-clear plates available in 60 mm and 90 mm formats. UV-treated hydrophilic surface for uniform cell adhesion.",
+      image: "/assets/5.jpg",
+      details: {
+        about: "The Micrylis Biotech Petri Plate is engineered for consistent, contamination-free results. Manufactured from premium crystal-clear polystyrene, it provides exceptional optical transparency for microscopic observation. The 3-vent lid maintains optimal humidity while shielding from contaminants.",
+        features: [
+          "Optical Clarity: Enables microscopy without removing the lid.",
+          "3-Vent Lid: Controlled gas exchange distributes airflow evenly.",
+          "Hydrophilic Surface: UV-treated for even agar spreading.",
+          "Anti-Static Treatment: Reduces airborne particle attraction.",
+          "Anti-Stacking Ridge: Prevents lid suction during stacking."
+        ],
+        specs: {
+          "Sizes": "60 mm and 90 mm diameter",
+          "Material": "Crystal-clear polystyrene (PS)",
+          "Lid": "Tight-fit vented lid (3 vents)",
+          "Sterility": "Gamma-irradiated, individually wrapped"
+        }
+      }
+    },
+    {
+      id: 6,
+      name: "Beaker Eco-Polymer Laboratory Beaker",
+      shortDesc: "Heat-resistant beakers in 50 mL to 500 mL formats. Designed for rock-solid stability and stir bar compatibility.",
+      image: "/assets/6.jpg",
+      details: {
+        about: "The Micrylis Biotech Laboratory Beaker is engineered for the demands of modern chemistry, biology, and materials science workflows. Constructed from eco-polymer polypropylene (PP) with slight translucency, it delivers outstanding heat resistance rated for continuous use up to 135°C and autoclavable at 121°C. The wide flat base ensures rock-solid stability on heated stirrer plates, while the low-form design is fully compatible with magnetic stir bars for efficient mixing. Embossed dual-scale graduation markings provide reliable liquid measurement at a glance, and the wide pour spout enables controlled, splash-free liquid transfer every time.",
+        features: [
+          "Textured Outer Body: Slightly textured surface provides a secure grip with gloved hands.",
+          "Wide Flat Base: Ensures maximum stability on heated stirrer plates, reducing spill risk.",
+          "Stir Bar Compatible: Low-form design is optimised for magnetic stir bar use.",
+          "Translucent Body: Allows liquid-level visibility at a distance.",
+          "Autoclave-Compatible: Withstands repeated sterilisation cycles at 121°C.",
+          "Embossed Graduations: Dual-scale embossed markings remain legible after use."
+        ],
+        specs: {
+          "Sizes": "50 mL, 100 mL, 250 mL, 500 mL",
+          "Material": "Eco-polymer PP with slight translucency, heat-stable",
+          "Temperature": "Continuous use up to 135°C; autoclavable at 121°C",
+          "Chemical Resistance": "Resistant to most acids, bases, alcohols, solvents",
+          "Graduation": "Embossed dual-scale markings (±5% accuracy)",
+          "Spout": "Wide pour spout for controlled liquid transfer"
+        }
+      }
+    }
+  ];
+
+  return (
+    <section id="products" style={{ padding: '4rem 0', background: '#FFFFFF' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Portfolio</div>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+            Precision <span className="gradient-text">Labware Solutions</span>
+          </h2>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          {products.map((product) => (
+            <div key={product.id} className="product-row" style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1.2fr',
+              gap: '2rem',
+              alignItems: 'center',
+              padding: '1.5rem',
+              borderRadius: '32px',
+              background: '#F8FAFC',
+              border: '1px solid rgba(0,0,0,0.03)',
+              transition: 'all 0.3s ease'
+            }}>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.08)', background: 'white' }}
+              >
+                <img src={product.image} alt={product.name} style={{ width: '100%', display: 'block' }} />
+              </motion.div>
+
+              <div style={{ padding: '1rem 0' }}>
+                <h3 style={{ fontSize: '1.8rem', color: 'var(--primary)', marginBottom: '1rem', fontWeight: 800 }}>{product.name}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                  {product.shortDesc}
+                </p>
+
+                <AnimatePresence>
+                  {expandedProduct === product.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '1.5rem', marginTop: '1rem' }}>
+                        <h4 style={{ color: 'var(--primary)', marginBottom: '0.8rem', fontWeight: 700 }}>About this product</h4>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>{product.details.about}</p>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                          <div>
+                            <h4 style={{ color: 'var(--primary)', marginBottom: '0.8rem', fontWeight: 700 }}>Key Features</h4>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                              {product.details.features.map((f, i) => (
+                                <li key={i} style={{ display: 'flex', gap: '0.6rem', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                                  <div style={{ marginTop: '5px' }}><Check size={14} color="var(--secondary)" /></div>
+                                  {f}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 style={{ color: 'var(--primary)', marginBottom: '0.8rem', fontWeight: 700 }}>Technical Specifications</h4>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                              {Object.entries(product.details.specs).map(([key, val]) => (
+                                <div key={key} style={{ fontSize: '0.85rem' }}>
+                                  <span style={{ fontWeight: 700, color: 'var(--primary)' }}>{key}:</span> <span style={{ color: 'var(--text-muted)' }}>{val}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <button
+                  onClick={() => setExpandedProduct(expandedProduct === product.id ? null : product.id)}
+                  style={{
+                    marginTop: '1.5rem',
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--secondary)',
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    fontSize: '1rem',
+                    padding: 0
+                  }}
+                >
+                  {expandedProduct === product.id ? 'Show Less' : 'Read More'}
+                  <motion.div animate={{ rotate: expandedProduct === product.id ? 180 : 0 }}>
+                    <ChevronRight size={18} />
+                  </motion.div>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
 function App() {
   const [page, setPage] = useState('home');
@@ -602,7 +865,7 @@ function App() {
       if (hash === 'calculators') setPage('calculators');
       else if (hash === 'about') setPage('about');
       else if (hash === 'pioneers') setPage('pioneers');
-      else if (hash === 'solutions') setPage('solutions');
+      else if (hash === 'products') setPage('products');
       else setPage('home');
     };
     window.addEventListener('hashchange', handleHash);
@@ -664,7 +927,7 @@ function App() {
         </div>
         <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <a href="#" onClick={(e) => { e.preventDefault(); setPage('home'); window.location.hash = ''; setIsMobileMenuOpen(false); }} style={{ color: page === 'home' ? 'var(--secondary)' : 'inherit' }}>HOME</a>
-          <a href="#solutions" onClick={() => { setPage('solutions'); window.location.hash = 'solutions'; setIsMobileMenuOpen(false); }} style={{ color: page === 'solutions' ? 'var(--secondary)' : 'inherit' }}>PRODUCT</a>
+          <a href="#products" onClick={(e) => { e.preventDefault(); setPage('products'); window.location.hash = 'products'; setIsMobileMenuOpen(false); }} style={{ color: page === 'products' ? 'var(--secondary)' : 'inherit' }}>PRODUCTS</a>
           <div className="dropdown">
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'about' ? 'var(--secondary)' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>ABOUT US</a>
             <div className="dropdown-content">
@@ -734,8 +997,8 @@ function App() {
         <AboutPage activeSection={aboutSection} />
       ) : page === 'pioneers' ? (
         <PioneersPage />
-      ) : page === 'solutions' ? (
-        <SolutionsPage />
+      ) : page === 'products' ? (
+        <ProductsPage />
       ) : (
         <>
           <div style={{
@@ -1409,7 +1672,7 @@ function App() {
         </>
       )}
 
-      <footer style={{ marginTop:'4rem'}}>
+      <footer style={{ marginTop: '4rem' }}>
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand-section">
@@ -1429,7 +1692,7 @@ function App() {
             <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
               <h4 className="footer-heading no-line">SOLUTIONS</h4>
               <ul className="footer-links-list">
-                <li style={{ cursor: 'pointer' }} onClick={() => {setPage('solutions'); window.location.hash = 'solutions'; window.scrollTo({ top: 0, behavior: 'smooth'});}} className="footer-link" > Our Product </li>
+                <li style={{ cursor: 'pointer' }} onClick={() => { setPage('solutions'); window.location.hash = 'solutions'; }} className="footer-link">Our Product</li>
               </ul>
             </div>
             <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
@@ -1440,7 +1703,7 @@ function App() {
                 <li className="footer-link">Certifications</li>
               </ul>
             </div>
-            <div className="footer-links-column"style={{ position: 'relative', bottom: '-2vh' }}>
+            <div className="footer-links-column" style={{ position: 'relative', bottom: '-2vh' }}>
               <h4 className="footer-heading no-line">CONNECT</h4>
               <div className="footer-social-box">
                 <a href="mailto:contact@micrylisbiotech.com" className="social-pill"><Mail size={18} /> Email</a>
