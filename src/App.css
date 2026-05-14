@@ -115,8 +115,8 @@ a:hover {
 
 @keyframes fadeInDown {
   from {
-    opacity: 0;
-    transform: translate(-50%, -10px);
+    opacity: 0.7;
+    transform: translate(-50%, -2px);
   }
 
   to {
@@ -277,7 +277,7 @@ a:hover {
 
   .nav-links.open {
     display: flex;
-    animation: fadeInDown 0.3s ease-out;
+    /* animation: fadeInDown 0.8s ease-out; */
   }
 
   .mobile-menu-toggle {
