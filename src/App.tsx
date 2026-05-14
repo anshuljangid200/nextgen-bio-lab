@@ -1487,7 +1487,7 @@ function App() {
 
                 <p style={{ marginBottom: '3rem' }}>Finally, Micrylis is committed to global scientific dialogue. We contribute to the community through peer-reviewed studies and actively participate in sustainability forums, helping to shape the future of environmentally responsible research practices worldwide.</p>
 
-                <div style={{ marginTop: '4rem' }}>
+                <div style={{ marginTop: '4rem',display: 'flex', justifyContent: 'center' }}>
                   <img
                     src="/assets/home_rd.jpg"
                     alt="R&D Lab Research"
