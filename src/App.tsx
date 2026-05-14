@@ -927,7 +927,7 @@ function App() {
         </div>
         <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <a href="#" onClick={(e) => { e.preventDefault(); setPage('home'); window.location.hash = ''; setIsMobileMenuOpen(false); }} style={{ color: page === 'home' ? 'var(--secondary)' : 'inherit' }}>HOME</a>
-          <a href="#solutions" onClick={() => { setPage('solutions'); window.location.hash = 'solutions'; setIsMobileMenuOpen(false); }} style={{ color: page === 'solutions' ? 'var(--secondary)' : 'inherit' }}>SOLUTIONS</a>
+          <a href="#products" onClick={(e) => { e.preventDefault(); setPage('products'); window.location.hash = 'products'; setIsMobileMenuOpen(false); }} style={{ color: page === 'products' ? 'var(--secondary)' : 'inherit' }}>PRODUCTS</a>
           <div className="dropdown">
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ color: page === 'about' ? 'var(--secondary)' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>ABOUT US</a>
             <div className="dropdown-content">
