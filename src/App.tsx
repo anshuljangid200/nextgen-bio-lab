@@ -9,7 +9,7 @@ import './App.css';
 const teamMembers = [
   {
     name: "Karan Panchal",
-    role: "Founder",
+    role: "Co-Founder",
     image: "/assets/karan_v2.jpg",
     bio: "Visionary leader bridging biotechnology and strategic management. Focused on FESEM imaging and advanced material science research.",
     linkedin: "https://www.linkedin.com/in/karan-panchal-66211b361/",
@@ -116,7 +116,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                         Micrylis was founded on the belief that scientific excellence and environmental stewardship are complementary, not competing, values. Our sustainable pipette tips prove that laboratories need not choose between research quality and planetary health. With equivalent performance, competitive pricing, and comprehensive end-of-life management, the barriers to sustainable laboratory practice are falling.
                       </p>
                       <p style={{ marginBottom: '1.5rem' }}>
-                        We invite you to join us in redefining precision for a sustainable future. The transition to sustainable laboratory practices is not just an environmental imperative—it is a scientific and ethical responsibility. Every research discovery, every diagnostic test, and every quality control analysis depends on tools that should not compromise the planet we are working to understand and protect.
+                        We invite you to join us in redefining precision for a sustainable future. The transition to sustainable laboratory practices is not just an environmental imperative it is a scientific and ethical responsibility. Every research discovery, every diagnostic test, and every quality control analysis depends on tools that should not compromise the planet we are working to understand and protect.
                       </p>
 
                       <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 800, marginTop: '2rem', marginBottom: '1rem' }}>Scientific Design & Quality</h3>
@@ -201,8 +201,8 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     <section>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>a. Sustainable Sourcing</h3>
-                      <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock—waste cooking oil from food service operations—would otherwise be destined for disposal or low-value applications. By converting this waste into high-performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
-                      <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse—agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
+                      <p style={{ marginBottom: '1rem' }}><strong>Raw Material Selection:</strong> We exclusively use second-generation biopolymers derived from waste and residual streams. Our primary feedstock waste cooking oil from food service operations would otherwise be destined for disposal or low value applications. By converting this waste into high performance laboratory consumables, we close material loops and reduce dependence on virgin fossil fuels.</p>
+                      <p><strong>Agricultural Residue Utilization:</strong> Our natural fiber reinforcement comes from rice husks and sugarcane bagasse agricultural byproducts traditionally burned in open fields, contributing to air pollution. By incorporating these materials, we provide an economic value stream for farmers while reducing agricultural waste.</p>
                     </section>
 
                     <section style={{ marginBottom: '-100px' }}>
@@ -278,7 +278,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
 
                   <section>
                     <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>b. Cell Culture and Cell Biology</h3>
-                    <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma-sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
+                    <p style={{ marginBottom: '1rem' }}><strong>Mammalian Cell Culture:</strong> Sterile technique is paramount in cell culture to prevent microbial contamination. Micrylis sterile pipette tips are gamma sterilized and individually packaged or provided in sterile racks. Wide-bore tips reduce shear stress when transferring sensitive cell lines, improving viability. Extended length tips allow access to deep culture vessels while maintaining aseptic conditions.</p>
                     <p><strong>Cell Line Authentication:</strong> Flow cytometry, immunophenotyping, and mycoplasma testing all depend on accurate cell counting and sample preparation. Precise pipetting with certified tips ensures reliable results in these quality control applications.</p>
                   </section>
 
@@ -339,7 +339,7 @@ const AboutPage = ({ activeSection = 'overview' }: { activeSection?: string }) =
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <section>
                       <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>a. Prototype Testing</h3>
-                      <p>Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows—ensuring that liquids don't permeate or stick in undesirable ways.</p>
+                      <p>Each tip design is rigorously tested for volume accuracy, mechanical robustness, chemical compatibility (e.g resistance to solvents), and sterilizability. We also evaluate how the biodegradable material behaves in lab workflows ensuring that liquids don't permeate or stick in undesirable ways.</p>
                     </section>
 
                     <section>
@@ -1553,7 +1553,7 @@ function App() {
                     Micrylis was founded on the belief that scientific excellence and environmental stewardship are complementary, not competing, values. Our sustainable pipette tips prove that laboratories need not choose between research quality and planetary health. With equivalent performance, competitive pricing, and comprehensive end-of-life management, the barriers to sustainable laboratory practice are falling.
                   </p>
                   <p style={{ marginBottom: '2rem' }}>
-                    We invite you to join us in redefining precision for a sustainable future. The transition to sustainable laboratory practices is not just an environmental imperative—it is a scientific and ethical responsibility. Every research discovery, every diagnostic test, and every quality control analysis depends on tools that should not compromise the planet we are working to understand and protect.
+                    We invite you to join us in redefining precision for a sustainable future. The transition to sustainable laboratory practices is not just an environmental imperative it is a scientific and ethical responsibility. Every research discovery, every diagnostic test, and every quality control analysis depends on tools that should not compromise the planet we are working to understand and protect.
                   </p>
                 </div>
                 <div className="vision-img-container" style={{ marginTop: '4rem' }}>
