@@ -277,7 +277,7 @@ a:hover {
 
   .nav-links.open {
     display: flex;
-    /* animation: fadeInDown 0.8s ease-out; */
+    animation: fadeInDown 0.3s ease-out;
   }
 
   .mobile-menu-toggle {
