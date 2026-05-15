@@ -1688,7 +1688,9 @@ function App() {
                   style={{
                     width: '64px',
                     height: '64px',
-                    objectFit: 'contain'
+                    objectFit: 'contain',
+                    filter: 'brightness(1.02) contrast(1.05)',
+                    mixBlendMode: 'darken'
                   }}
                 />
                 <span className="footer-logo-text" > MICRYLIS BIOTECH </span>
