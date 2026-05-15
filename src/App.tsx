@@ -9,7 +9,7 @@ import './App.css';
 const teamMembers = [
   {
     name: "Karan Panchal",
-    role: "Co-Founder",
+    role: "Director & Co-Founder",
     image: "/assets/karan_v2.jpg",
     bio: "Visionary leader bridging biotechnology and strategic management. Focused on FESEM imaging and advanced material science research.",
     linkedin: "https://www.linkedin.com/in/karan-panchal-66211b361/",
@@ -904,14 +904,19 @@ function App() {
         left: '50%',
         transform: 'translateX(-50%)',
         width: '90%',
-        maxWidth: '1200px',
+        maxWidth: '100%',
         zIndex: 1000,
         padding: '0.8rem 2rem',
         display: 'flex',
+        background: 'blur',
         justifyContent: 'space-between',
         alignItems: 'center',
         border: '1px solid rgba(255, 255, 255, 0.4)',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.05)'
+        boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
+        // --- The Glassmorphism Effect ---
+        backgroundColor: 'rgba(255, 255, 255, 0.29)', // A semi-transparent white base
+        backdropFilter: 'blur(10px)',                 // The actual background blur
+      WebkitBackdropFilter: 'blur(12px)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }} onClick={() => window.location.hash = ''}>
           <img
