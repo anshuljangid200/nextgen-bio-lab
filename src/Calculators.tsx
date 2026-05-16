@@ -286,7 +286,7 @@ export const Calculators = () => {
                                         <div className="input-group-modern"><label>Dilution Factor</label><input type="number" value={dilution} onChange={e => handleNumInput(e.target.value, setDilution)} /></div>
                                         <button className="btn btn-primary" onClick={calculateHemo} style={{ padding: '1.2rem' }}>Assess Concentration</button>
                                         {hemoResult !== null && (
-                                            <div className="result-card"><div className="result-label">CELL CONCENTRATION</div><div className="result-value">{hemoResult.toExponential(2)} <span>cells/mL</span></div></div>
+                                            <div className="result-card"><div className="result-label">CELL CONCENTRATION</div><div className="result-value">{hemoResult.toExponential(2).replace('e+6', '×10⁶').replace('e+5', '×10⁵').replace('e+4', '×10⁴').replace('e+3', '×10³')} <span>cells/mL</span></div></div>
                                         )}
                                     </div>
                                 )}
