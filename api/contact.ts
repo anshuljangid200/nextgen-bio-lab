@@ -8,14 +8,14 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { name, email, message } = req.body;
+    const { name, email, mobile, message } = req.body;
 
     // Send notification email to you
     await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'anshuljangid.indian@gmail.com',
+      to: ['anshuljangid.indian@gmail.com', 'contact@micrylisbiotech.com'],
       subject: 'New Contact Form Submission - Micrylis Biotech',
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nMessage: ${message}`,
     });
 
     // Send auto-reply to user
