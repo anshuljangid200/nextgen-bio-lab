@@ -1728,7 +1728,7 @@ function App() {
       {isContactOpen && (
         <div className="modal-overlay" onClick={() => setIsContactOpen(false)}>
           <motion.div
-            className="modal-content"
+            className="modal-content no-scrollbar"
             onClick={e => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -1743,6 +1743,7 @@ function App() {
               const data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
+                mobile: formData.get('mobile'),
                 message: formData.get('message'),
               };
               try {
@@ -1768,6 +1769,10 @@ function App() {
               <div className="form-group">
                 <label>EMAIL ADDRESS</label>
                 <input name="email" type="email" placeholder="john@example.com" required />
+              </div>
+              <div className="form-group">
+                <label>MOBILE NO</label>
+                <input name="mobile" type="tel" placeholder="+91 12345 67890" required />
               </div>
               <div className="form-group">
                 <label>MESSAGE</label>
@@ -1799,7 +1804,7 @@ function App() {
       {isApplicationsDetailOpen && (
         <div className="modal-overlay" onClick={() => setIsApplicationsDetailOpen(false)}>
           <motion.div
-            className="modal-content"
+            className="modal-content no-scrollbar"
             onClick={e => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
