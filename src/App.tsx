@@ -1737,18 +1737,41 @@ function App() {
             <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.9rem' }}>
               Have questions about our precision labware? Our team of experts is here to help.
             </p>
-            <form onSubmit={(e) => { e.preventDefault(); alert('Message sent successfully!'); setIsContactOpen(false); }}>
+            <form onSubmit={async (e) => { 
+              e.preventDefault(); 
+              const formData = new FormData(e.currentTarget);
+              const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message'),
+              };
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                  alert('Message sent successfully!');
+                  setIsContactOpen(false);
+                } else {
+                  alert('Failed to send message. Please try again.');
+                }
+              } catch (err) {
+                alert('An error occurred. Please try again.');
+              }
+            }}>
               <div className="form-group">
                 <label>FULL NAME</label>
-                <input type="text" placeholder="John Doe" required />
+                <input name="name" type="text" placeholder="John Doe" required />
               </div>
               <div className="form-group">
                 <label>EMAIL ADDRESS</label>
-                <input type="email" placeholder="john@example.com" required />
+                <input name="email" type="email" placeholder="john@example.com" required />
               </div>
               <div className="form-group">
                 <label>MESSAGE</label>
-                <textarea rows={4} placeholder="How can we help you?" required></textarea>
+                <textarea name="message" rows={4} placeholder="How can we help you?" required></textarea>
               </div>
               <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
                 SEND MESSAGE
