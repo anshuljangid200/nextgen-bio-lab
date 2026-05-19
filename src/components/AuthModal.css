@@ -518,11 +518,11 @@ backdrop-filter: blur(22px);
 }
 
 .btn-auth-login:hover {
-  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-  color: #ffffff;
-  border-color: #2563eb;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0f5132 0%, #16a34a 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.3);
+  transform: translateY(-1px);
 }
 
 .mobile-auth-btn {
