@@ -1197,7 +1197,7 @@ function App() {
                     }}
                     poster="/assets/solutions_lab.png"
                   >
-                    <source src="/assets/new-video.mp4" type="video/mp4" />
+                    <source src="/assets/Micrylis_Biotech.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
