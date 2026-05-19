@@ -20,8 +20,8 @@
 
   position: relative;
   overflow: hidden;
-  max-width: 520px;
-  padding: 2rem 2.25rem 1.75rem;
+  max-width: 580px;
+  padding: 1.5rem 1.8rem;
   border-radius: 28px;
   background: linear-gradient(
     165deg,
@@ -35,8 +35,9 @@
     0 24px 48px rgba(15, 61, 46, 0.12),
     0 48px 96px rgba(15, 61, 46, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  max-height: 92vh;
+  max-height: 95vh;
   overflow-y: auto;
+  width: min(580px, 95vw);
 }
 
 .auth-modal::before {
@@ -100,7 +101,7 @@
 
 .auth-brand {
   text-align: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.8rem;
   position: relative;
   z-index: 1;
 }
@@ -161,7 +162,7 @@
 
 .auth-heading {
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.9rem;
+  font-size: 1.60rem;
   font-weight: 700;
   color: var(--auth-text);
   margin: 0 0 0.35rem;
@@ -217,7 +218,7 @@
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.70rem;
   position: relative;
   z-index: 1;
 }
