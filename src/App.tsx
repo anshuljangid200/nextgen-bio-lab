@@ -4,6 +4,7 @@ import { Mail, Linkedin, Instagram, ChevronRight, Beaker, Dna, Calculator, Activ
 import { ThreeScene } from './components/ThreeScene';
 import { Calculators } from './Calculators';
 //import { ChatBot } from './components/ChatBot';
+import { AuthModal } from './components/AuthModal';
 import './App.css';
 
 const teamMembers = [
@@ -856,6 +857,8 @@ function App() {
   const [page, setPage] = useState('home');
   const [aboutSection, setAboutSection] = useState('overview');
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [authTab, setAuthTab] = useState<'login' | 'register'>('login');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isApplicationsDetailOpen, setIsApplicationsDetailOpen] = useState(false);
 
@@ -977,6 +980,12 @@ function App() {
           </div>
           <a href="#pioneers" onClick={() => { setIsMobileMenuOpen(false); window.location.hash = 'pioneers'; }} style={{ color: page === 'pioneers' ? 'var(--secondary)' : 'inherit' }}>PIONEERS</a>
           <button
+            className="btn-auth-login mobile-auth-btn"
+            onClick={() => { setAuthTab('login'); setIsAuthOpen(true); setIsMobileMenuOpen(false); }}
+          >
+            LOGIN
+          </button>
+          <button
             className="btn-primary mobile-contact-btn"
             onClick={() => { setIsContactOpen(true); setIsMobileMenuOpen(false); }}
             style={{ padding: '0.5rem 1.2rem', borderRadius: '8px', fontSize: '0.8rem', border: 'none', cursor: 'pointer', display: 'none' }}
@@ -987,13 +996,22 @@ function App() {
         <div className="mobile-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </div>
-        <button
-          className="btn-primary desktop-contact-btn"
-          onClick={() => setIsContactOpen(true)}
-          style={{ padding: '0.6rem 1.5rem', borderRadius: '12px', fontSize: '0.9rem', border: 'none', cursor: 'pointer', fontWeight: 700 }}
-        >
-          CONTACT US
-        </button>
+        <div className="nav-auth-group">
+          <button
+            type="button"
+            className="btn-auth-login"
+            onClick={() => { setAuthTab('login'); setIsAuthOpen(true); }}
+          >
+            LOGIN
+          </button>
+          <button
+            className="btn-primary desktop-contact-btn"
+            onClick={() => setIsContactOpen(true)}
+            style={{ padding: '0.6rem 1.5rem', borderRadius: '12px', fontSize: '0.9rem', border: 'none', cursor: 'pointer', fontWeight: 700 }}
+          >
+            CONTACT US
+          </button>
+        </div>
       </nav>
 
       {page === 'calculators' ? (
@@ -1496,7 +1514,7 @@ function App() {
                   <img
                     src="/assets/home_rd.jpg"
                     alt="R&D Lab Research"
-                    style={{ width: '100%', maxWidth: '600px', borderRadius: '40px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%', maxWidth: '600px', borderRadius: '40px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)'}}
                   />
                 </div>
               </div>
@@ -1724,6 +1742,12 @@ function App() {
           </div>
         </div>
       </footer>
+
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+        initialTab={authTab}
+      />
 
       {isContactOpen && (
         <div className="modal-overlay" onClick={() => setIsContactOpen(false)}>

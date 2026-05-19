@@ -115,8 +115,8 @@ a:hover {
 
 @keyframes fadeInDown {
   from {
-    opacity: 0;
-    transform: translate(-50%, -10px);
+    opacity: 0.7;
+    transform: translate(-50%, -2px);
   }
 
   to {

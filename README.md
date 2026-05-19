@@ -47,16 +47,16 @@ Micrylis Biotech is a cutting-edge biotechnology platform designed to showcase a
 
 ```
 nextgen-bio-lab/
+├── backend/             # Express API — login & register (see backend/README.md)
+├── api/                 # Vercel serverless — contact form email
 ├── public/              # Static assets (images, models)
 ├── src/
-│   ├── components/      # Reusable UI components (ThreeScene, etc.)
+│   ├── components/      # UI (AuthModal, ThreeScene, etc.)
 │   ├── Calculators.tsx  # Scientific calculator logic
 │   ├── App.tsx          # Main application component
-│   ├── main.tsx         # Application entry point
-│   └── index.css        # Global styles
-├── index.html           # HTML entry point
-├── vite.config.ts       # Vite configuration
-└── tsconfig.json        # TypeScript configuration
+│   └── main.tsx         # Application entry point
+├── index.html
+└── vite.config.ts
 ```
 
 ## 🤝 Contributing
