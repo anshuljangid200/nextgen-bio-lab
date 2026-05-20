@@ -1,4 +1,4 @@
-import { Suspense, useRef, useMemo } from 'react';
+import { Suspense, useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, PerspectiveCamera, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -66,29 +66,46 @@ const DnaHelix = () => {
 };
 
 export const ThreeScene = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="hero-3d" style={{ filter: 'blur(3px)' }}>
-      <Canvas dpr={[1, 2]} shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-        <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
-        <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
+    <div ref={containerRef} className="hero-3d" style={{ filter: 'blur(3px)', width: '100%', height: '100%' }}>
+      {isVisible && (
+        <Canvas dpr={[1, 1.5]} shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+          <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
+          <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
 
-        <ambientLight intensity={0.4} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-        <pointLight position={[-10, 5, 10]} intensity={1} color="#ffffff" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#1E3A8A" />
+          <ambientLight intensity={0.4} />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+          <pointLight position={[-10, 5, 10]} intensity={1} color="#ffffff" />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#1E3A8A" />
 
-        <Suspense fallback={null}>
-          <DnaHelix />
-          <Environment preset="studio" />
-        </Suspense>
+          <Suspense fallback={null}>
+            <DnaHelix />
+            <Environment preset="studio" />
+          </Suspense>
 
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          maxPolarAngle={Math.PI / 1.5}
-          minPolarAngle={Math.PI / 3}
-        />
-      </Canvas>
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            maxPolarAngle={Math.PI / 1.5}
+            minPolarAngle={Math.PI / 3}
+          />
+        </Canvas>
+      )}
     </div>
   );
 };

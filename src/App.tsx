@@ -1211,7 +1211,10 @@ function App() {
                       height: '100%',
                       borderRadius: '0',
                       display: 'block',
-                      objectFit: 'cover'
+                      objectFit: 'contain',
+                      transform: 'translate3d(0, 0, 0)',
+                      backfaceVisibility: 'hidden',
+                      willChange: 'transform'
                     }}
                     poster="/assets/solutions_lab.png"
                   >
