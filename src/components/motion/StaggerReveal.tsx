@@ -1,43 +1,43 @@
-import { motion } from "framer-motion";
-import { getMotionPreset, staggerDelay, viewport, type MotionVariant } from "../../motion/presets";
+import { createContext, useContext, type CSSProperties, type ReactNode } from "react";
+import { ANIMATION_MODE } from "../../motion/config";
+import "../../motion/scroll-reveal.css";
+import { staggerDelay, variantClass, type MotionVariant } from "../../motion/presets";
+import { useInView } from "../../motion/useInView";
+
+const StaggerContext = createContext(false);
 
 type StaggerRevealProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  style?: React.CSSProperties;
-  stagger?: number;
+  style?: CSSProperties;
 };
 
-export function StaggerReveal({
-  children,
-  className,
-  style,
-  stagger = staggerDelay,
-}: StaggerRevealProps) {
+export function StaggerReveal({ children, className, style }: StaggerRevealProps) {
+  const { ref, inView } = useInView();
+  const mode =
+    ANIMATION_MODE === "legacy" ? "stagger--legacy" : "stagger--premium";
+
   return (
-    <motion.div
-      className={className}
-      style={style}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewport}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: stagger, delayChildren: 0.05 },
-        },
-      }}
-    >
-      {children}
-    </motion.div>
+    <StaggerContext.Provider value={inView}>
+      <div
+        ref={ref}
+        className={["stagger", mode, inView && "stagger--in", className]
+          .filter(Boolean)
+          .join(" ")}
+        style={style}
+      >
+        {children}
+      </div>
+    </StaggerContext.Provider>
   );
 }
 
 type StaggerItemProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: MotionVariant;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
+  index?: number;
 };
 
 export function StaggerItem({
@@ -45,22 +45,31 @@ export function StaggerItem({
   variant = "fadeUp",
   className,
   style,
+  index = 0,
 }: StaggerItemProps) {
-  const preset = getMotionPreset(variant);
+  const inView = useContext(StaggerContext);
+  const mode =
+    ANIMATION_MODE === "legacy" ? "reveal--legacy" : "reveal--premium";
 
   return (
-    <motion.div
-      className={className}
-      style={style}
-      variants={{
-        hidden: preset.initial,
-        visible: {
-          ...preset.animate,
-          transition: preset.transition,
-        },
-      }}
+    <div
+      className={[
+        "stagger-item",
+        "reveal",
+        mode,
+        variantClass[variant],
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      style={
+        {
+          ...style,
+          "--stagger-delay": inView ? `${index * staggerDelay}s` : "0s",
+        } as CSSProperties
+      }
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

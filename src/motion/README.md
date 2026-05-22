@@ -1,7 +1,10 @@
 # Site animations
 
 ## Premium mode (default)
-Scroll par fade-up, blur, pop, stagger — corporate sites (Adani-style) jaisa feel.
+Scroll par fast fade / pop / stagger (CSS + GPU). **Har baar repeat** — up/down scroll par dubara animate.
+
+## Performance
+Scroll sections Framer `whileInView` ki jagah lightweight CSS use karte hain (kam lag).
 
 ## Pehle wala simple animation wapas lana
 `src/motion/config.ts` mein change karo:

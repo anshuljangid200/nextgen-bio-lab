@@ -1,4 +1,4 @@
-import { useRef} from "react";
+import { useRef } from "react";
 import "./VideoPlayer.css";
 
 export function VideoPlayer() {
@@ -17,20 +17,15 @@ export function VideoPlayer() {
   return (
     <div className="video-player">
       <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      style={{
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    willChange: 'transform',
-    transform: 'translateZ(0)',
-    backfaceVisibility: 'hidden',
-  }}
->
+        ref={videoRef}
+        className="video-player__video"
+        controls
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      >
         <source src="/assets/main_video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

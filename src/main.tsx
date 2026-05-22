@@ -5,10 +5,11 @@ import './index.css'
 import App from './App.tsx'
 
 const lenis = new Lenis({
-  duration: 0.8,
+  duration: 1.05,
+  lerp: 0.09,
   smoothWheel: true,
-  wheelMultiplier: 0.9,
-  touchMultiplier: 1.2,
+  wheelMultiplier: 0.85,
+  touchMultiplier: 1,
   infinite: false,
 });
 

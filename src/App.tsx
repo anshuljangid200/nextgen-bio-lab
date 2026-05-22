@@ -8,7 +8,6 @@ import { AuthModal } from './components/AuthModal';
 import { VideoPlayer } from './components/VideoPlayer';
 import { ScrollReveal } from './components/motion/ScrollReveal';
 import { StaggerReveal, StaggerItem } from './components/motion/StaggerReveal';
-import { getMotionPreset, viewport, staggerDelay } from './motion/presets';
 import './App.css';
 
 const teamMembers = [
@@ -443,17 +442,11 @@ const PioneersPage = () => (
 
       <div className="team-grid">
         {teamMembers.map((member, i) => (
-          <motion.div
+          <ScrollReveal
             key={i}
+            variant="pop"
+            delay={i * 0.06}
             className="team-card-modern"
-            initial={getMotionPreset("pop").initial}
-            whileInView={getMotionPreset("pop").animate}
-            viewport={viewport}
-            transition={{
-              ...getMotionPreset("pop").transition,
-              delay: i * staggerDelay,
-            }}
-            whileHover={{ y: -6, scale: 1.015 }}
           >
             <div style={{ position: 'relative', marginBottom: '2.5rem', display: 'flex', justifyContent: 'center' }}>
               <div style={{
@@ -495,7 +488,7 @@ const PioneersPage = () => (
                 PROFILE <ChevronRight size={16} />
               </button>
             </div>
-          </motion.div>
+          </ScrollReveal>
         ))}
       </div>
     </motion.div>
@@ -511,13 +504,7 @@ const ProductsPage = () => (
 
       {/* Solutions content below */}
       <div style={{ marginTop: '8rem' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '5rem' }}
-        >
+        <ScrollReveal variant="fadeUp" style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.2em' }}>
             <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
             OUR SOLUTIONS
@@ -529,15 +516,10 @@ const ProductsPage = () => (
           <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7', fontWeight: 500 }}>
             Our pipette tips represent the intersection of analytical precision and ecological innovation.
           </p>
-        </motion.div>
+        </ScrollReveal>
 
         <div className="grid-responsive-2" style={{ alignItems: 'start' }}>
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <ScrollReveal variant="slideRight" delay={0.06}>
             <div style={{ padding: '3rem', background: 'white', borderRadius: '40px', boxShadow: '0 20px 50px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)' }}>
               <h2 style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 800 }}>Scientific Design & Quality</h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.8' }}>
@@ -565,15 +547,9 @@ const ProductsPage = () => (
                 </p>
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
-          >
+          <ScrollReveal variant="slideLeft" delay={0.1} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div style={{ padding: '2.5rem', background: 'white', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.02)', boxShadow: '0 15px 35px rgba(0,0,0,0.02)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ padding: '0.8rem', background: 'var(--accent)', borderRadius: '14px' }}>
@@ -596,7 +572,7 @@ const ProductsPage = () => (
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </motion.div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </div>
@@ -766,7 +742,7 @@ const ProductSection = () => {
             <ScrollReveal
               key={product.id}
               variant="fadeUp"
-              delay={0.05}
+              delay={i * 0.04}
             >
             <div className="product-row" style={{
               display: 'grid',
@@ -1184,13 +1160,7 @@ function App() {
 
           <section id="demo" style={{ background: '#F8FAFC', padding: '3rem 0' }}>
             <div className="container">
-              <motion.div
-                initial={getMotionPreset("fadeUp").initial}
-                whileInView={getMotionPreset("fadeUp").animate}
-                transition={getMotionPreset("fadeUp").transition}
-                viewport={viewport}
-                style={{ textAlign: 'center', marginBottom: '3rem' }}
-              >
+              <ScrollReveal variant="fadeUp" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.2em' }}>
                   <div style={{ width: '40px', height: '1px', background: 'var(--secondary)' }}></div>
                   SEE IT IN ACTION
@@ -1202,13 +1172,11 @@ function App() {
                 <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
                   Discover the power and precision of our biotechnology solutions through this comprehensive demonstration
                 </p>
-              </motion.div>
+              </ScrollReveal>
 
-              <motion.div
-                initial={getMotionPreset("scaleUp").initial}
-                whileInView={getMotionPreset("scaleUp").animate}
-                transition={{ ...getMotionPreset("scaleUp").transition, delay: 0.15 }}
-                viewport={viewport}
+              <ScrollReveal
+                variant="scaleUp"
+                delay={0.08}
                 style={{
                   maxWidth: '1000px',
                   margin: '0 auto',
@@ -1216,7 +1184,7 @@ function App() {
                   overflow: 'hidden',
                   background: 'white',
                   boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
-                  transform: 'translateZ(0)' // Force hardware acceleration
+                  transform: 'translateZ(0)',
                 }}
               >
                 <div style={{
@@ -1227,7 +1195,7 @@ function App() {
                 }}>
                   <VideoPlayer />
                 </div>
-              </motion.div>
+              </ScrollReveal>
 
               <section id="features-highlights" style={{ padding: '4rem 0' }}>
                 <div className="container">
@@ -1262,7 +1230,7 @@ function App() {
                         color: '#1E3A8A'
                       }
                     ].map((feature, i) => (
-                      <StaggerItem key={i} variant="pop">
+                      <StaggerItem key={i} variant="pop" index={i}>
                       <motion.div
                         style={{
                           padding: '3rem 2rem',
@@ -1304,13 +1272,7 @@ function App() {
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center',  justifyItems: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-                  <motion.div
-                    initial={getMotionPreset("scaleUp").initial}
-                    whileInView={getMotionPreset("scaleUp").animate}
-                    transition={getMotionPreset("scaleUp").transition}
-                    viewport={viewport}
-                    style={{ position: 'relative' }}
-                  >
+                  <ScrollReveal variant="scaleUp" style={{ position: 'relative' }}>
                     <div style={{
                       position: 'absolute',
                       top: '-30px',
@@ -1350,9 +1312,9 @@ function App() {
                       <div style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '0.2rem' }}>100%</div>
                       <div style={{ fontSize: '0.8rem', fontWeight: 700, opacity: 0.9, textTransform: 'uppercase' }}>Sustainable Material</div>
                     </div>
-                  </motion.div>
+                  </ScrollReveal>
                 </div>
-                <ScrollReveal variant="slideRight" delay={0.12}>
+                <ScrollReveal variant="slideRight" delay={0.08}>
                 <div>
                   <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center' }}>Sustainability</div>
                   <h2 style={{ fontSize: 'clamp(3rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
@@ -1605,7 +1567,7 @@ function App() {
                     { title: "Quality Assurance", desc: "Customers can be confident that every lot meets the claimed specifications." },
                     { title: "Customer Support", desc: "A dedicated team will handle technical inquiries and provide troubleshooting advice." }
                   ].map((item, i) => (
-                    <StaggerItem key={i} variant="fadeUp">
+                    <StaggerItem key={i} variant="fadeUp" index={i}>
                       <h4 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>{item.title}</h4>
                       <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>{item.desc}</p>
                     </StaggerItem>
@@ -1690,11 +1652,8 @@ function App() {
           {/* New Interactive CTA Section */}
           <section style={{ padding: '4rem 0 6rem', background: '#FFFFFF' }}>
             <div className="container">
-              <motion.div
-                initial={getMotionPreset("scaleUp").initial}
-                whileInView={getMotionPreset("scaleUp").animate}
-                transition={getMotionPreset("scaleUp").transition}
-                viewport={viewport}
+              <ScrollReveal
+                variant="scaleUp"
                 style={{
                   background: 'linear-gradient(135deg, var(--primary) 0%, #172554 100%)',
                   borderRadius: '60px',
@@ -1710,15 +1669,12 @@ function App() {
                 <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)', borderRadius: '50%' }}></div>
                 <div style={{ position: 'absolute', bottom: '-15%', left: '-5%', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)', borderRadius: '50%' }}></div>
 
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                <h2
                   className="cta-title"
                   style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', marginBottom: '1.5rem', fontWeight: 900, letterSpacing: '-0.04em', color: 'white' }}
                 >
                   Ready to evolve your lab?
-                </motion.h2>
+                </h2>
                 <p className="cta-subtitle" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', opacity: 0.9, maxWidth: '700px', margin: '0 auto 3rem', lineHeight: 1.6, fontWeight: 500 }}>
                   Join the vanguard of sustainable biotechnology. Experience the pinnacle of precision with Micrylis.
                 </p>
@@ -1755,7 +1711,7 @@ function App() {
                     LEARN MORE
                   </button>
                 </div>
-              </motion.div>
+              </ScrollReveal>
             </div>
           </section>
         </>
