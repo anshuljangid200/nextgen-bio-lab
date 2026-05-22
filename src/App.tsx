@@ -6,6 +6,9 @@ import { Calculators } from './Calculators';
 //import { ChatBot } from './components/ChatBot';
 import { AuthModal } from './components/AuthModal';
 import { VideoPlayer } from './components/VideoPlayer';
+import { ScrollReveal } from './components/motion/ScrollReveal';
+import { StaggerReveal, StaggerItem } from './components/motion/StaggerReveal';
+import { getMotionPreset, viewport, staggerDelay } from './motion/presets';
 import './App.css';
 
 const teamMembers = [
@@ -420,7 +423,7 @@ const PioneersPage = () => (
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)', borderRadius: '48px', background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(10px)', border: '1px solid white', boxShadow: '0 25px 50px rgba(0,0,0,0.05)' }}
+          style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)', borderRadius: '48px', background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(6px)', border: '1px solid white', boxShadow: '0 25px 50px rgba(0,0,0,0.05)' }}
         >
           <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 800 }}>Core Research Ethos</h3>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -443,14 +446,14 @@ const PioneersPage = () => (
           <motion.div
             key={i}
             className="team-card-modern"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={getMotionPreset("pop").initial}
+            whileInView={getMotionPreset("pop").animate}
+            viewport={viewport}
             transition={{
-              delay: i * 0.1,
-              duration: 0.6,
-              ease: [0.16, 1, 0.3, 1]
+              ...getMotionPreset("pop").transition,
+              delay: i * staggerDelay,
             }}
-            whileHover={{ y: -15 }}
+            whileHover={{ y: -6, scale: 1.015 }}
           >
             <div style={{ position: 'relative', marginBottom: '2.5rem', display: 'flex', justifyContent: 'center' }}>
               <div style={{
@@ -464,7 +467,7 @@ const PioneersPage = () => (
                 borderRadius: '60px',
                 opacity: 0.12,
                 zIndex: 0,
-                filter: 'blur(15px)'
+                filter: 'blur(8px)'
               }}></div>
               <img src={member.image} alt={member.name} style={{ position: 'relative', zIndex: 1, height: '180px', width: '180px', borderRadius: '60px', objectFit: 'cover' }} />
             </div>
@@ -472,7 +475,7 @@ const PioneersPage = () => (
             <p style={{ textAlign: 'center', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1.5rem', minHeight: '1rem' }}>{member.role}</p>
             <p style={{ fontSize: '1rem', textAlign: 'center', color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '2rem', flexGrow: 1 }}>{member.bio}</p>
             <div style={{ paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #F1F5F9' }}>
-              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" style={{ background: '#F8FAFC', width: '48px', height: '48px', borderRadius: '16px', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }}>
+              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" style={{ background: '#F8FAFC', width: '48px', height: '48px', borderRadius: '16px', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.25s ease, box-shadow 0.25s ease' }}>
                 <Linkedin size={24} />
               </a>
               <button
@@ -749,16 +752,23 @@ const ProductSection = () => {
   return (
     <section id="products" style={{ padding: '4rem 0', background: '#FFFFFF' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Portfolio</div>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
-            Precision <span className="gradient-text">Labware Solutions</span>
-          </h2>
-        </div>
+        <ScrollReveal variant="fadeUp" delay={0.05}>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Portfolio</div>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
+              Precision <span className="gradient-text">Labware Solutions</span>
+            </h2>
+          </div>
+        </ScrollReveal>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-          {products.map((product) => (
-            <div key={product.id} className="product-row" style={{
+          {products.map((product, i) => (
+            <ScrollReveal
+              key={product.id}
+              variant="fadeUp"
+              delay={0.05}
+            >
+            <div className="product-row" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1.2fr',
               gap: '2rem',
@@ -846,6 +856,7 @@ const ProductSection = () => {
                 </button>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -862,6 +873,19 @@ function App() {
   const [authTab, setAuthTab] = useState<'login' | 'register'>('login');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isApplicationsDetailOpen, setIsApplicationsDetailOpen] = useState(false);
+
+  useEffect(() => {
+  const moveGlow = (e: MouseEvent) => {
+    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+  };
+
+  window.addEventListener('mousemove', moveGlow);
+
+  return () => {
+    window.removeEventListener('mousemove', moveGlow);
+  };
+}, []);
 
   useEffect(() => {
     const handleHash = () => {
@@ -919,7 +943,7 @@ function App() {
         boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
         // --- The Glassmorphism Effect ---
         backgroundColor: 'rgba(255, 255, 255, 0.29)', // A semi-transparent white base
-        backdropFilter: 'blur(10px)',                 // The actual background blur
+        backdropFilter: 'blur(6px)',                 // The actual background blur
       WebkitBackdropFilter: 'blur(12px)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }} onClick={() => window.location.hash = ''}>
@@ -1048,7 +1072,7 @@ function App() {
             height: '100%',
             background: 'rgba(255, 255, 255, 0.67)',
             backdropFilter: 'blur(0px)',
-            WebkitBackdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(6px)',
             zIndex: -1,
             pointerEvents: 'none'
           }}></div>
@@ -1059,8 +1083,8 @@ function App() {
                   className="hero-content"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  style={{ textAlign: 'left', margin: 0, maxWidth: 'none', position: 'relative', zIndex: 10 }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ textAlign: 'left', margin: 0, maxWidth: 'none', position: 'relative', zIndex: 10,willChange: 'transform, opacity', transform: 'translateZ(0)',backfaceVisibility: 'hidden' }}
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -1070,6 +1094,7 @@ function App() {
                   >
                     Micrylis Biotech
                   </motion.div>
+                  <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
                   <h1 className="hero-title" style={{
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     color: 'var(--primary)',
@@ -1083,7 +1108,7 @@ function App() {
                   }}>
                     Redefining precision for a <br />
                     <span className="gradient-text" style={{ fontWeight: 900 }}>sustainable future.</span>
-                  </h1>
+                  </h1></motion.div>
                   <p className="hero-subtitle" style={{ textAlign: 'left', margin: '0 0 2.5rem 0', maxWidth: '600px', fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', lineHeight: '1.6', color: 'var(--text-muted)', fontWeight: 500 }}>
                     Micrylis Biotech is a mission-driven scientific technology company committed to advancing laboratory practice through sustainable, high-precision pipette consumables
                   </p>
@@ -1160,10 +1185,10 @@ function App() {
           <section id="demo" style={{ background: '#F8FAFC', padding: '3rem 0' }}>
             <div className="container">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                initial={getMotionPreset("fadeUp").initial}
+                whileInView={getMotionPreset("fadeUp").animate}
+                transition={getMotionPreset("fadeUp").transition}
+                viewport={viewport}
                 style={{ textAlign: 'center', marginBottom: '3rem' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 700, fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.2em' }}>
@@ -1180,10 +1205,10 @@ function App() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
+                initial={getMotionPreset("scaleUp").initial}
+                whileInView={getMotionPreset("scaleUp").animate}
+                transition={{ ...getMotionPreset("scaleUp").transition, delay: 0.15 }}
+                viewport={viewport}
                 style={{
                   maxWidth: '1000px',
                   margin: '0 auto',
@@ -1206,10 +1231,16 @@ function App() {
 
               <section id="features-highlights" style={{ padding: '4rem 0' }}>
                 <div className="container">
+                  <ScrollReveal
+  variant="fadeUp"
+  delay={0.05}
+>
                   <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
                     <h2 style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.8rem' }}>Engineered for <span className="gradient-text">Absolute Accuracy</span></h2>
                     <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Setting new benchmarks in liquid handling technology.</p>
                   </div>
+                  </ScrollReveal>
+                  <StaggerReveal>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2.5rem' }}>
                     {[
                       {
@@ -1231,12 +1262,8 @@ function App() {
                         color: '#1E3A8A'
                       }
                     ].map((feature, i) => (
+                      <StaggerItem key={i} variant="pop">
                       <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        viewport={{ once: true }}
                         style={{
                           padding: '3rem 2rem',
                           background: 'white',
@@ -1263,8 +1290,10 @@ function App() {
                         <h4 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.25rem', fontWeight: 700 }}>{feature.title}</h4>
                         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.7' }}>{feature.desc}</p>
                       </motion.div>
+                      </StaggerItem>
                     ))}
                   </div>
+                  </StaggerReveal>
                 </div>
               </section>
             </div>
@@ -1276,10 +1305,10 @@ function App() {
               <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center',  justifyItems: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
+                    initial={getMotionPreset("scaleUp").initial}
+                    whileInView={getMotionPreset("scaleUp").animate}
+                    transition={getMotionPreset("scaleUp").transition}
+                    viewport={viewport}
                     style={{ position: 'relative' }}
                   >
                     <div style={{
@@ -1323,6 +1352,7 @@ function App() {
                     </div>
                   </motion.div>
                 </div>
+                <ScrollReveal variant="slideRight" delay={0.12}>
                 <div>
                   <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center' }}>Sustainability</div>
                   <h2 style={{ fontSize: 'clamp(3rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
@@ -1369,6 +1399,7 @@ function App() {
                     Read More <ChevronRight size={18} />
                   </button>
                 </div>
+                </ScrollReveal>
               </div>
             </div>
           </section>
@@ -1376,6 +1407,10 @@ function App() {
           {/* Applications Section */}
           <section id="applications" style={{ padding: '3rem 0', background: '#FFFFFF' }}>
             <div className="container">
+              <ScrollReveal
+  variant="fadeUp"
+  delay={0.05}
+>
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Applications</div>
                 <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
@@ -1385,7 +1420,9 @@ function App() {
                   Micrylis sustainable pipette tips are engineered for absolute accuracy across a wide spectrum of scientific disciplines.
                 </p>
               </div>
+              </ScrollReveal>
 
+              <ScrollReveal variant="fadeUp" delay={0.1}>
               <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
                 <p style={{ marginBottom: '1.5rem' }}>Micrylis sustainable pipette tips are designed for multidisciplinary scientific applications, including but not limited to:</p>
 
@@ -1401,11 +1438,15 @@ function App() {
                   <li><strong>Water Quality Monitoring:</strong> High-throughput aliquoting for contaminant analysis.</li>
                   <li><strong>Soil & Air Matrix Studies:</strong> Reliable sampling for chemical, biological, or particulate assays.</li>
                 </ul>
+                <ScrollReveal variant="scaleUp" delay={0.15}>
                 <div style={{ marginTop: '3rem', textAlign: 'center' }}>
                   <img src="/assets/home_applications_v2.jpg" alt="Applications Overview" style={{ width: '100%', maxWidth: '800px', borderRadius: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.12)' }} />
                 </div>
+                </ScrollReveal>
               </div>
+              </ScrollReveal>
 
+              <ScrollReveal variant="fadeUp" delay={0.2}>
               <div style={{ textAlign: 'center' }}>
                 <button
                   onClick={() => { setPage('about'); setAboutSection('applications'); window.location.hash = 'about'; }}
@@ -1414,12 +1455,17 @@ function App() {
                   Read More <ChevronRight size={20} />
                 </button>
               </div>
+              </ScrollReveal>
             </div>
           </section>
 
           {/* Why Micrylis Section (Moved Up) */}
           <section id="why-micrylis" style={{ padding: '3rem 0', background: '#FFFFFF' }}>
             <div className="container">
+              <ScrollReveal
+  variant="fadeUp"
+  delay={0.05}
+>
               <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Value Proposition</div>
                 <h2 style={{ fontSize: 'clamp(3.5rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
@@ -1429,7 +1475,9 @@ function App() {
                   Micrylis Biotech offers compelling value for laboratories and scientific institutions.
                 </p>
               </div>
+              </ScrollReveal>
 
+              <ScrollReveal variant="fadeUp" delay={0.08}>
               <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
                 <h3 style={{ color: 'var(--primary)', fontWeight: 800, marginBottom: '0.5rem' }}>Precision Meets Sustainability</h3>
                 <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem' }}>
@@ -1455,11 +1503,15 @@ function App() {
                   <li>Supports lab sustainability initiatives and aligns with environmental stewardship.</li>
                 </ul>
 
+                <ScrollReveal variant="scaleUp" delay={0.12}>
                 <div style={{ marginTop: '4rem', textAlign: 'center' }}>
                   <img src="/assets/home_why_choose.jpg" alt="Why Choose Micrylis" style={{ width: '100%', maxWidth: '600px', borderRadius: '32px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
                 </div>
+                </ScrollReveal>
               </div>
+              </ScrollReveal>
 
+              <ScrollReveal variant="fadeUp" delay={0.15}>
               <div style={{ textAlign: 'center', marginTop: '4rem' }}>
                 <button
                   onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
@@ -1468,12 +1520,17 @@ function App() {
                   Read More <ChevronRight size={20} />
                 </button>
               </div>
+              </ScrollReveal>
             </div>
           </section>
 
           {/* Research & Development Section (Moved Down) */}
           <section id="rd" style={{ padding: '3rem 0', background: 'linear-gradient(to bottom, #FFFFFF, #F8FAFC)' }}>
             <div className="container">
+              <ScrollReveal
+  variant="fadeUp"
+  delay={0.05}
+>
               <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Research & Development</div>
                 <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
@@ -1483,7 +1540,9 @@ function App() {
                   Our R&D strategy drives continuous breakthrough in product design, material science, and global quality standards.
                 </p>
               </div>
+              </ScrollReveal>
 
+              <ScrollReveal variant="fadeUp" delay={0.08}>
               <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)', textAlign: 'left' }}>
                 <p style={{ marginBottom: '2rem' }}>Our R&D strategy emphasizes continuous innovation across several key areas to ensure we remain at the forefront of sustainable laboratory technology. We focus on fine-tuning tip geometry to enhance hydrophobicity and reduce liquid retention, while simultaneously expanding compatibility across diverse pipette brands and automated liquid-handling platforms.</p>
 
@@ -1493,6 +1552,7 @@ function App() {
 
                 <p style={{ marginBottom: '3rem' }}>Finally, Micrylis is committed to global scientific dialogue. We contribute to the community through peer-reviewed studies and actively participate in sustainability forums, helping to shape the future of environmentally responsible research practices worldwide.</p>
 
+                <ScrollReveal variant="scaleUp" delay={0.12}>
                 <div style={{ marginTop: '4rem',display: 'flex', justifyContent: 'center' }}>
                   <img
                     src="/assets/home_rd.jpg"
@@ -1500,8 +1560,11 @@ function App() {
                     style={{ width: '100%', maxWidth: '600px', borderRadius: '40px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)'}}
                   />
                 </div>
+                </ScrollReveal>
               </div>
+              </ScrollReveal>
 
+              <ScrollReveal variant="fadeUp" delay={0.15}>
               <div style={{ textAlign: 'center' }}>
                 <button
                   onClick={() => { setPage('about'); setAboutSection('rd'); window.location.hash = 'about'; }}
@@ -1510,22 +1573,31 @@ function App() {
                   Read More <ChevronRight size={20} />
                 </button>
               </div>
+              </ScrollReveal>
             </div>
           </section>
 
           {/* Resources and Support Section */}
           <section id="resources" style={{ padding: '5rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)' }}>
             <div className="container">
+              <ScrollReveal
+  variant="fadeUp"
+  delay={0.05}
+>
               <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Resources & Support</div>
                 <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>Comprehensive <span className="gradient-text">Expert Guidance</span></h2>
               </div>
+              </ScrollReveal>
 
               <div style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
+                <ScrollReveal variant="fadeUp" delay={0.06}>
                 <p style={{ marginBottom: '2.5rem', fontSize: '1.15rem' }}>
                   Micrylis provides comprehensive resources to ensure customers can fully leverage our products. From detailed technical documentation to hands-on training materials, we empower scientists to achieve optimal results.
                 </p>
+                </ScrollReveal>
 
+                <StaggerReveal>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
                   {[
                     { title: "Documentation", desc: "Detailed product datasheets and user manuals will be available online and in print." },
@@ -1533,22 +1605,29 @@ function App() {
                     { title: "Quality Assurance", desc: "Customers can be confident that every lot meets the claimed specifications." },
                     { title: "Customer Support", desc: "A dedicated team will handle technical inquiries and provide troubleshooting advice." }
                   ].map((item, i) => (
-                    <div key={i}>
+                    <StaggerItem key={i} variant="fadeUp">
                       <h4 style={{ color: 'var(--primary)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.8rem' }}>{item.title}</h4>
                       <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>{item.desc}</p>
-                    </div>
+                    </StaggerItem>
                   ))}
                 </div>
+                </StaggerReveal>
 
+                <ScrollReveal variant="scaleUp" delay={0.1}>
                 <div style={{ marginTop: '4rem', textAlign: 'center' }}>
                   <img src="/assets/home_resources.jpg" alt="Scientific Support" style={{ width: '100%', maxWidth: '600px', borderRadius: '32px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }} />
                 </div>
+                </ScrollReveal>
               </div>
             </div>
           </section>
 
           <section id="sustainable-future" style={{ padding: '5rem 0', background: '#FFFFFF' }}>
             <div className="container">
+              <ScrollReveal
+  variant="fadeUp"
+  delay={0.05}
+>
               <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Vision</div>
                 <h2 style={{ fontSize: 'clamp(2.5rem, 7vw, 4rem)', marginBottom: '2.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
@@ -1562,6 +1641,7 @@ function App() {
                     We invite you to join us in redefining precision for a sustainable future. The transition to sustainable laboratory practices is not just an environmental imperative it is a scientific and ethical responsibility. Every research discovery, every diagnostic test, and every quality control analysis depends on tools that should not compromise the planet we are working to understand and protect.
                   </p>
                 </div>
+                <ScrollReveal variant="scaleUp" delay={0.15}>
                 <div className="vision-img-container" style={{ marginTop: '4rem' }}>
                   <img
                     src="/assets/home_sustainable_future_v2.jpg"
@@ -1569,7 +1649,9 @@ function App() {
                     style={{ width: '100%', maxWidth: '450px', borderRadius: '48px', boxShadow: '0 40px 80px rgba(0,0,0,0.12)' }}
                   />
                 </div>
+                </ScrollReveal>
               </div>
+              </ScrollReveal>
             </div>
           </section>
 
@@ -1609,9 +1691,10 @@ function App() {
           <section style={{ padding: '4rem 0 6rem', background: '#FFFFFF' }}>
             <div className="container">
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={getMotionPreset("scaleUp").initial}
+                whileInView={getMotionPreset("scaleUp").animate}
+                transition={getMotionPreset("scaleUp").transition}
+                viewport={viewport}
                 style={{
                   background: 'linear-gradient(135deg, var(--primary) 0%, #172554 100%)',
                   borderRadius: '60px',
@@ -1665,7 +1748,7 @@ function App() {
                       fontWeight: 800,
                       borderRadius: '16px',
                       fontSize: '1.1rem',
-                      backdropFilter: 'blur(10px)'
+                      backdropFilter: 'blur(6px)'
                     }}
                     onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
                   >

@@ -17,13 +17,20 @@ export function VideoPlayer() {
   return (
     <div className="video-player">
       <video
-        ref={videoRef}
-        className="video-player__video"
-        controls
-        playsInline
-        preload="metadata"
-        poster="/assets/solutions_lab.png"
-      >
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    willChange: 'transform',
+    transform: 'translateZ(0)',
+    backfaceVisibility: 'hidden',
+  }}
+>
         <source src="/assets/main_video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
