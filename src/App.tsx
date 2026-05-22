@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useBodyScrollLock } from './hooks/useBodyScrollLock';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Linkedin, Instagram, ChevronRight, Beaker, Dna, Calculator, Activity, FileText, Target, Users, X, Menu, RotateCcw, Check } from 'lucide-react';
 import { ThreeScene } from './components/ThreeScene';
@@ -849,6 +850,15 @@ function App() {
   const [authTab, setAuthTab] = useState<'login' | 'register'>('login');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isApplicationsDetailOpen, setIsApplicationsDetailOpen] = useState(false);
+  const [contactToast, setContactToast] = useState<string | null>(null);
+
+  useBodyScrollLock(isContactOpen || isAuthOpen);
+
+  useEffect(() => {
+    if (!contactToast) return;
+    const timer = window.setTimeout(() => setContactToast(null), 2000);
+    return () => window.clearTimeout(timer);
+  }, [contactToast]);
 
   useEffect(() => {
   const moveGlow = (e: MouseEvent) => {
@@ -1089,10 +1099,10 @@ function App() {
                     Micrylis Biotech is a mission-driven scientific technology company committed to advancing laboratory practice through sustainable, high-precision pipette consumables
                   </p>
 
-                  <div style={{ display: 'flex', gap: '1.2rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                  <div className="hero-cta-row" style={{ display: 'flex', gap: '1.2rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
                     <button
                       onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
-                      className="btn-primary"
+                      className="btn-primary hero-cta-btn"
                       style={{
                         padding: '1rem 2.2rem',
                         borderRadius: '14px',
@@ -1109,7 +1119,7 @@ function App() {
                       Explore More <ChevronRight size={18} />
                     </button>
                     <button
-                      className="btn-outline"
+                      className="btn-outline hero-cta-btn"
                       onClick={() => { setPage('calculators'); window.location.hash = 'calculators'; }}
                       style={{
                         padding: '1rem 2.2rem',
@@ -1268,12 +1278,12 @@ function App() {
           </section>
 
           {/* Redesigned Material Innovation Section */}
-          <section id="solutions" style={{ padding: '6rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)', position: 'relative' }}>
+          <section id="solutions" className="solutions-section" style={{ padding: '6rem 0', background: 'linear-gradient(to bottom, #F8FAFC, #FFFFFF)', position: 'relative' }}>
             <div className="container">
-              <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center',  justifyItems: 'center' }}>
+              <div className="solutions-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center',  justifyItems: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
                   <ScrollReveal variant="scaleUp" style={{ position: 'relative' }}>
-                    <div style={{
+                    <div className="solutions-image-frame" style={{
                       position: 'absolute',
                       top: '-30px',
                       left: '-30px',
@@ -1297,7 +1307,7 @@ function App() {
                         border: '8px solid white'
                       }}
                     />
-                    <div style={{
+                    <div className="solutions-stat-badge" style={{
                       position: 'absolute',
                       bottom: '2rem',
                       right: '-2rem',
@@ -1314,54 +1324,60 @@ function App() {
                     </div>
                   </ScrollReveal>
                 </div>
-                <ScrollReveal variant="slideRight" delay={0.08}>
-                <div>
+                <div className="solutions-text-column">
+                <ScrollReveal variant="fadeUp" delay={0.08} className="solutions-text-wrap">
+                <div className="solutions-text">
                   <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center' }}>Sustainability</div>
-                  <h2 style={{ fontSize: 'clamp(3rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
-                    Engineering a <span className="gradient-text">Greener Lab</span>
+                  <h2 className="solutions-heading" style={{ fontSize: 'clamp(3rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+                    <span className="solutions-heading-line">Engineering a</span>
+                    <span className="solutions-heading-line gradient-text">Greener Lab</span>
                   </h2>
-                  <div style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.8 }}>
+                  <div className="solutions-body" style={{ color: 'var(--text-muted)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.8 }}>
                     <p style={{ marginBottom: '1.5rem', fontWeight: 500 }}>At the core of Micrylis Biotech is an unwavering commitment to sustainability:</p>
-                    <ul style={{ listStyle: 'none', padding: 0 }}>
-                      <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
-                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px' }}>
+                    <ul className="solutions-list" style={{ listStyle: 'none', padding: 0 }}>
+                      <li className="solutions-list-item">
+                        <span className="solutions-check" aria-hidden="true">
                           <Check size={14} color="var(--secondary)" />
-                        </div>
-                        <span>Reducing environmental impact of laboratory consumables through design and production innovation.</span>
+                        </span>
+                        <span className="solutions-list-text">Reducing environmental impact of laboratory consumables through design and production innovation.</span>
                       </li>
-                      <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
-                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px' }}>
+                      <li className="solutions-list-item">
+                        <span className="solutions-check" aria-hidden="true">
                           <Check size={14} color="var(--secondary)" />
-                        </div>
-                        <span>Promoting responsible use and disposal of scientific plastics.</span>
+                        </span>
+                        <span className="solutions-list-text">Promoting responsible use and disposal of scientific plastics.</span>
                       </li>
-                      <li style={{ marginBottom: '1.2rem', display: 'flex', gap: '1rem' }}>
-                        <div style={{ minWidth: '24px', height: '24px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '4px' }}>
+                      <li className="solutions-list-item">
+                        <span className="solutions-check" aria-hidden="true">
                           <Check size={14} color="var(--secondary)" />
-                        </div>
-                        <span>Aligning with broader environmental goals to transition science toward more sustainable practice.</span>
+                        </span>
+                        <span className="solutions-list-text">Aligning with broader environmental goals to transition science toward more sustainable practice.</span>
                       </li>
                     </ul>
                   </div>
+                </div>
+                </ScrollReveal>
 
+                <div className="solutions-cta">
                   <button
+                    type="button"
                     onClick={() => { setPage('about'); setAboutSection('sustainability'); window.location.hash = 'about'; }}
-                    className="btn-primary"
+                    className="btn-primary solutions-read-more"
                     style={{
                       padding: '0.8rem 2rem',
                       borderRadius: '12px',
                       fontWeight: 700,
                       cursor: 'pointer',
-                      display: 'flex',
+                      display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.6rem',
-                      border: 'none'
+                      border: 'none',
                     }}
                   >
                     Read More <ChevronRight size={18} />
                   </button>
                 </div>
-                </ScrollReveal>
+                </div>
               </div>
             </div>
           </section>
@@ -1408,16 +1424,15 @@ function App() {
               </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="fadeUp" delay={0.2}>
-              <div style={{ textAlign: 'center' }}>
+              <div className="section-read-more-wrap">
                 <button
+                  type="button"
+                  className="section-read-more-btn"
                   onClick={() => { setPage('about'); setAboutSection('applications'); window.location.hash = 'about'; }}
-                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
                 >
                   Read More <ChevronRight size={20} />
                 </button>
               </div>
-              </ScrollReveal>
             </div>
           </section>
 
@@ -1428,7 +1443,7 @@ function App() {
   variant="fadeUp"
   delay={0.05}
 >
-              <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+              <div className="home-section-header" style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Value Proposition</div>
                 <h2 style={{ fontSize: 'clamp(3.5rem, 9vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>
                   WHY CHOOSE <span className="gradient-text">MICRYLIS</span>
@@ -1473,16 +1488,15 @@ function App() {
               </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="fadeUp" delay={0.15}>
-              <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+              <div className="section-read-more-wrap">
                 <button
+                  type="button"
+                  className="section-read-more-btn"
                   onClick={() => { setPage('about'); setAboutSection('overview'); window.location.hash = 'about'; }}
-                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
                 >
                   Read More <ChevronRight size={20} />
                 </button>
               </div>
-              </ScrollReveal>
             </div>
           </section>
 
@@ -1526,16 +1540,15 @@ function App() {
               </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="fadeUp" delay={0.15}>
-              <div style={{ textAlign: 'center' }}>
+              <div className="section-read-more-wrap">
                 <button
+                  type="button"
+                  className="section-read-more-btn"
                   onClick={() => { setPage('about'); setAboutSection('rd'); window.location.hash = 'about'; }}
-                  style={{ background: 'none', border: 'none', color: 'var(--secondary)', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem' }}
                 >
                   Read More <ChevronRight size={20} />
                 </button>
               </div>
-              </ScrollReveal>
             </div>
           </section>
 
@@ -1546,7 +1559,7 @@ function App() {
   variant="fadeUp"
   delay={0.05}
 >
-              <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+              <div className="home-section-header" style={{ textAlign: 'center', marginBottom: '6rem' }}>
                 <div style={{ color: 'var(--secondary)', fontWeight: 800, fontSize: '0.9rem', marginBottom: '1.2rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Resources & Support</div>
                 <h2 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: 900, letterSpacing: '-0.03em' }}>Comprehensive <span className="gradient-text">Expert Guidance</span></h2>
               </div>
@@ -1785,13 +1798,18 @@ function App() {
             </p>
             <form onSubmit={async (e) => { 
               e.preventDefault(); 
-              const formData = new FormData(e.currentTarget);
+              const form = e.currentTarget;
+              const formData = new FormData(form);
               const data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
                 mobile: formData.get('mobile'),
                 message: formData.get('message'),
               };
+
+              form.reset();
+              setIsContactOpen(false);
+
               try {
                 const res = await fetch('/api/contact', {
                   method: 'POST',
@@ -1799,13 +1817,12 @@ function App() {
                   body: JSON.stringify(data)
                 });
                 if (res.ok) {
-                  alert('Message sent successfully!');
-                  setIsContactOpen(false);
+                  setContactToast('Your message has been sent successfully.');
                 } else {
-                  alert('Failed to send message. Please try again.');
+                  setContactToast('Unable to send your message. Please try again.');
                 }
-              } catch (err) {
-                alert('An error occurred. Please try again.');
+              } catch {
+                setContactToast('Something went wrong. Please try again later.');
               }
             }}>
               <div className="form-group">
@@ -1909,6 +1926,22 @@ function App() {
           </motion.div>
         </div>
       )}
+
+      <AnimatePresence>
+        {contactToast && (
+          <motion.div
+            className="contact-toast"
+            role="status"
+            aria-live="polite"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+          >
+            {contactToast}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

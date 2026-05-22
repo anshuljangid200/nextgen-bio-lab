@@ -196,19 +196,7 @@ export function AuthModal({ isOpen, onClose, initialTab = "login" }: AuthModalPr
         </button>
 
         <div className="auth-brand">
-          <div className="auth-brand-row">
-            <div className="auth-logo-ring">
-              <img
-                src="/assets/company_new_logo.png"
-                alt="Micrylis Biotech"
-                className="auth-brand-logo"
-              />
-            </div>
-            <div className="auth-brand-text">
-              <span className="auth-brand-micrylis">MICRYLIS</span>
-              <span className="auth-brand-biotech">BIOTECH</span>
-            </div>
-          </div>
+          <h1 className="auth-brand-title">MICRYLISBIOTECH</h1>
           <p className="auth-brand-tagline">
             Redefining precision for a sustainable future
           </p>

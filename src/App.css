@@ -126,6 +126,28 @@ a:hover {
   }
 }
 
+.contact-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 3500;
+  max-width: min(90vw, 420px);
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.45;
+  box-shadow: 0 16px 40px rgba(30, 58, 138, 0.35);
+  pointer-events: none;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -854,19 +876,340 @@ footer{
     margin-top: 6rem !important;
   }
 
-  /* Buttons container in hero */
-  .hero-content>div:nth-of-type(1) {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem !important;
-    margin-bottom: 1.5rem !important;
-  }
+  /* Hero CTA — desktop unchanged; mobile override below */
 
   /* Bottom stats container in hero */
   .hero-content>div:nth-of-type(2) {
     justify-content: center !important;
     gap: 1rem !important;
     padding-top: 0.5rem !important;
+  }
+}
+
+/* Hero Explore + Bio-Calculators — side by side on mobile only */
+@media (max-width: 768px) {
+  .hero-cta-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1.25rem !important;
+    padding: 0 0.15rem;
+    box-sizing: border-box;
+  }
+
+  .hero-cta-row .hero-cta-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 50% !important;
+    padding: 0.7rem 0.4rem !important;
+    font-size: clamp(0.68rem, 2.8vw, 0.82rem) !important;
+    justify-content: center !important;
+    white-space: nowrap;
+    gap: 0.25rem !important;
+  }
+
+  .hero-cta-row .hero-cta-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0;
+  }
+
+  /* Sustainability section — mobile center + no overflow */
+  .solutions-section {
+    overflow-x: hidden;
+    overflow-y: visible;
+    max-width: 100vw;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .solutions-section .container {
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  .solutions-grid {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    gap: 2rem !important;
+  }
+
+  .solutions-text-column {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    box-sizing: border-box;
+  }
+
+  .solutions-section .solutions-text-wrap {
+    max-width: 100%;
+    overflow: visible !important;
+    box-sizing: border-box;
+    padding-bottom: 0.5rem;
+  }
+
+  .solutions-image-frame {
+    left: 0 !important;
+    top: -12px !important;
+  }
+
+  .solutions-text {
+    text-align: center !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  .solutions-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+    gap: 0.15rem;
+  }
+
+  .solutions-heading-line {
+    display: block;
+    width: 100%;
+    line-height: 1.15;
+  }
+
+  .solutions-body {
+    text-align: center !important;
+    font-size: 1rem !important;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    box-sizing: border-box;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .solutions-body p {
+    text-align: center !important;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .solutions-list {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .solutions-list-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.65rem !important;
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 0.15rem;
+    overflow: visible;
+  }
+
+  .solutions-check {
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    max-width: 22px;
+    margin-top: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .solutions-list-text {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc(100% - 30px);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .solutions-cta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0.75rem 1.5rem;
+    box-sizing: border-box;
+    overflow: visible;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .solutions-read-more {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto !important;
+    max-width: calc(100% - 1rem);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    color: #fff !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .solutions-stat-badge {
+    right: 0.5rem !important;
+    bottom: 0.75rem !important;
+    max-width: min(160px, 42vw) !important;
+    padding: 1rem !important;
+  }
+
+  .solutions-section img {
+    max-width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box;
+  }
+}
+
+/* Desktop: heading one line optional — keep two spans inline */
+@media (min-width: 769px) {
+  .solutions-heading-line {
+    display: inline;
+  }
+
+  .solutions-heading-line + .solutions-heading-line::before {
+    content: " ";
+  }
+}
+
+.solutions-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.solutions-check {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.solutions-list-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.solutions-text-column {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.solutions-cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.solutions-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Home sections — Read More (Applications, Why Micrylis, R&D) */
+.section-read-more-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 1rem 2.5rem;
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+}
+
+.section-read-more-btn {
+  background: none;
+  border: none;
+  color: var(--secondary);
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.65rem 1.25rem;
+  opacity: 1 !important;
+  visibility: visible !important;
+  flex-shrink: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section-read-more-btn:hover {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  #applications,
+  #why-micrylis,
+  #rd {
+    overflow: visible !important;
+  }
+
+  #applications .container,
+  #why-micrylis .container,
+  #rd .container {
+    overflow: visible !important;
+  }
+
+  .section-read-more-wrap {
+    padding: 1.25rem 0.75rem 2rem;
+    margin-top: 0.25rem;
+  }
+
+  .section-read-more-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .home-section-header {
+    margin-bottom: 3rem !important;
   }
 }
 
