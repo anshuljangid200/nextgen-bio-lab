@@ -5,6 +5,7 @@ import { ThreeScene } from './components/ThreeScene';
 import { Calculators } from './Calculators';
 //import { ChatBot } from './components/ChatBot';
 import { AuthModal } from './components/AuthModal';
+import { VideoPlayer } from './components/VideoPlayer';
 import './App.css';
 
 const teamMembers = [
@@ -980,15 +981,15 @@ function App() {
           </div>
           <a href="#pioneers" onClick={() => { setIsMobileMenuOpen(false); window.location.hash = 'pioneers'; }} style={{ color: page === 'pioneers' ? 'var(--secondary)' : 'inherit' }}>PIONEERS</a>
           <button
-            className="btn-auth-login mobile-auth-btn"
+            className="mobile-auth-btn"
             onClick={() => { setAuthTab('login'); setIsAuthOpen(true); setIsMobileMenuOpen(false); }}
           >
             LOGIN
           </button>
           <button
-            className="btn-primary mobile-contact-btn"
+            type="button"
+            className="mobile-contact-btn"
             onClick={() => { setIsContactOpen(true); setIsMobileMenuOpen(false); }}
-            style={{ padding: '0.5rem 1.2rem', borderRadius: '8px', fontSize: '0.8rem', border: 'none', cursor: 'pointer', display: 'none' }}
           >
             CONTACT US
           </button>
@@ -999,15 +1000,15 @@ function App() {
         <div className="nav-auth-group">
           <button
             type="button"
-            className="btn-auth-login"
+            className="nav-btn-login"
             onClick={() => { setAuthTab('login'); setIsAuthOpen(true); }}
           >
             LOGIN
           </button>
           <button
-            className="btn-primary desktop-contact-btn"
+            type="button"
+            className="nav-btn-contact"
             onClick={() => setIsContactOpen(true)}
-            style={{ padding: '0.6rem 1.5rem', borderRadius: '12px', fontSize: '0.9rem', border: 'none', cursor: 'pointer', fontWeight: 700 }}
           >
             CONTACT US
           </button>
@@ -1198,29 +1199,8 @@ function App() {
                   width: '100%',
                   aspectRatio: '16 / 9',
                   background: 'black',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
                 }}>
-                  <video
-                    controls
-                    playsInline
-                    preload="metadata"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '0',
-                      display: 'block',
-                      objectFit: 'contain',
-                      transform: 'translate3d(0, 0, 0)',
-                      backfaceVisibility: 'hidden',
-                      willChange: 'transform'
-                    }}
-                    poster="/assets/solutions_lab.png"
-                  >
-                    <source src="/assets/main_video.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  <VideoPlayer />
                 </div>
               </motion.div>
 

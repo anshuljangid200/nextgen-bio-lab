@@ -495,14 +495,15 @@ backdrop-filter: blur(22px);
   z-index: 1;
 }
 
-/* Navbar login + contact — same gap as nav-links (1.5rem) */
+/* Navbar group — sirf container spacing (LOGIN/CONTACT alag classes) */
 .nav-auth-group {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-.btn-auth-login {
+/* ——— LOGIN (desktop navbar) ——— */
+.nav-auth-group .nav-btn-login {
   padding: 0.65rem 1.2rem;
   border-radius: 12px;
   font-size: 0.88rem;
@@ -515,9 +516,15 @@ backdrop-filter: blur(22px);
   letter-spacing: 0.02em;
   height: 36px;
   backdrop-filter: blur(12px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1;
 }
 
-.btn-auth-login:hover {
+.nav-auth-group .nav-btn-login:hover {
   background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
   color: #ffffff;
   border-color: #2563eb;
@@ -525,26 +532,62 @@ backdrop-filter: blur(22px);
   transform: translateY(-2px);
 }
 
-.mobile-auth-btn {
-  display: none !important;
+/* ——— CONTACT US (desktop navbar) ——— */
+.nav-auth-group .nav-btn-contact {
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: var(--secondary);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1;
 }
 
-/* Desktop: LOGIN + CONTACT US ek line par, upar-niche na ho */
-@media (min-width: 969px) {
-  .nav-auth-group .btn-auth-login,
-  .nav-auth-group .desktop-contact-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    box-sizing: border-box;
-    margin: 0;
-    line-height: 1;
-  }
+.nav-auth-group .nav-btn-contact:hover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
 
-  .nav-auth-group .desktop-contact-btn {
-    padding: 0 1.5rem !important;
-  }
+/* Mobile menu — LOGIN (sirf mobile) */
+.mobile-auth-btn {
+  display: none !important;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 2px solid #2563eb;
+  background: rgba(255, 255, 255, 0.12);
+  color: #2563eb;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Mobile menu — CONTACT US (sirf mobile) */
+.mobile-contact-btn {
+  display: none !important;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: var(--secondary);
+  color: #ffffff;
+  box-sizing: border-box;
 }
 
 @media (max-width: 968px) {
@@ -552,10 +595,15 @@ backdrop-filter: blur(22px);
     display: none;
   }
 
-  .mobile-auth-btn {
+  /* LOGIN ↔ CONTACT US — sirf nav-links gap, extra margin nahi */
+  .nav-links .mobile-auth-btn {
     display: block !important;
-    width: 100%;
-    margin-top: 0.5rem;
+    margin: 0;
+  }
+
+  .nav-links .mobile-contact-btn {
+    display: block !important;
+    margin: 0;
   }
 
   .auth-row {
