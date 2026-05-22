@@ -495,11 +495,11 @@ backdrop-filter: blur(22px);
   z-index: 1;
 }
 
-/* Navbar login button — matches modal */
+/* Navbar login + contact — same gap as nav-links (1.5rem) */
 .nav-auth-group {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1.5rem;
 }
 
 .btn-auth-login {
@@ -527,6 +527,24 @@ backdrop-filter: blur(22px);
 
 .mobile-auth-btn {
   display: none !important;
+}
+
+/* Desktop: LOGIN + CONTACT US ek line par, upar-niche na ho */
+@media (min-width: 969px) {
+  .nav-auth-group .btn-auth-login,
+  .nav-auth-group .desktop-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .nav-auth-group .desktop-contact-btn {
+    padding: 0 1.5rem !important;
+  }
 }
 
 @media (max-width: 968px) {
